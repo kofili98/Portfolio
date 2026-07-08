@@ -858,7 +858,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="progress-text" id="progressText">04 / 01</div>
+            <div class="progress-text" id="progressText">01 / 04</div>
         </div>
     </section>
 
@@ -1064,7 +1064,7 @@
         }
 
         function prevYear() {
-            const years = ['2019', '2020', '2022', '2025'];
+            const years = ['2025', '2022', '2020', '2019'];
             const active = document.querySelector('.timeline-year.active');
             const currentIndex = years.indexOf(active.textContent);
             if (currentIndex > 0) {
@@ -1073,7 +1073,7 @@
         }
 
         function nextYear() {
-            const years = ['2019', '2020', '2022', '2025'];
+            const years = ['2025', '2022', '2020', '2019'];
             const active = document.querySelector('.timeline-year.active');
             const currentIndex = years.indexOf(active.textContent);
             if (currentIndex < years.length - 1) {
@@ -1082,7 +1082,7 @@
         }
 
         function updateProgressBar() {
-            const years = ['2019', '2020', '2022', '2025'];
+            const years = ['2025', '2022', '2020', '2019'];
             const active = document.querySelector('.timeline-year.active');
             const currentIndex = years.indexOf(active.textContent);
             const progress = ((currentIndex + 1) / years.length) * 100;
