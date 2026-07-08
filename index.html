@@ -103,7 +103,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path[...]
             opacity: 0.3;
         }
 
@@ -247,6 +247,7 @@
             overflow: hidden;
             transition: all 0.3s ease;
             background: var(--card-bg);
+            cursor: pointer;
         }
 
         .project-card:hover {
@@ -300,6 +301,15 @@
         .project-description {
             color: var(--text-secondary);
             line-height: 1.8;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-description {
+            max-height: 500px;
+            opacity: 1;
         }
 
         /* Experience Section */
@@ -536,7 +546,7 @@
             justify-content: center;
         }
 
-        .skill-row.expanded .skill-toggle {
+        .skill-row:hover .skill-toggle {
             transform: rotate(180deg);
         }
 
@@ -553,7 +563,7 @@
             transition: all 0.3s ease;
         }
 
-        .skill-row.expanded .skill-description {
+        .skill-row:hover .skill-description {
             max-height: 200px;
             opacity: 1;
         }
@@ -672,7 +682,7 @@
     <section id="about" class="container">
         <h2>About</h2>
         <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
-            I'm a Product Manager with a unique blend of electrical engineering and data analytics expertise. My career journey spans from early-stage leadership roles through specialized technical functions, building products that solve real problems and drive measurable impact. I'm passionate about bridging the gap between customer needs and technical possibilities.
+            I'm a Product Manager with a unique blend of electrical engineering and data analytics expertise. My career journey spans from early-stage leadership roles through specialized technical fu[...]
         </p>
     </section>
 
@@ -688,7 +698,7 @@
                 </div>
                 <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
                 <div class="project-description">
-                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networks and Arduino-based controllers for seamless device interoperability.
+                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networ[...]
                 </div>
             </div>
 
@@ -700,7 +710,7 @@
                 </div>
                 <div class="project-tech">Research • R Studio, Excel</div>
                 <div class="project-description">
-                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and identify key maternal health factors.
+                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors [...]
                 </div>
             </div>
 
@@ -712,7 +722,7 @@
                 </div>
                 <div class="project-tech">AI Project • Claude, GitHub, R, NLP</div>
                 <div class="project-description">
-                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through connectors for enhanced AI analysis capabilities.
+                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through conne[...]
                 </div>
             </div>
         </div>
@@ -740,7 +750,7 @@
                 <div class="card-date">Feb 2019 – May 2022</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Delivered thousands of customer-facing experiences annually with 80% satisfaction rating. Redesigned tour pathways reducing congestion by 25% through visitor feedback analysis.
+                    Delivered thousands of customer-facing experiences annually with 80% satisfaction rating. Redesigned tour pathways reducing congestion by 25% through visitor feedback analysis[...]
                 </div>
             </div>
 
@@ -752,7 +762,7 @@
                 <div class="card-date">Jun 2019 – Aug 2019</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Identified process bottlenecks and automated reporting workflows in a large-scale manufacturing environment, reducing manual intervention by 20%. Developed dashboards tracking production metrics.
+                    Identified process bottlenecks and automated reporting workflows in a large-scale manufacturing environment, reducing manual intervention by 20%. Developed dashboards tracking[...]
                 </div>
             </div>
 
@@ -765,7 +775,7 @@
                 <div class="card-date">Aug 2020 – May 2021</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Managed daily operations for high-traffic facilities with opening/closing procedures and event coordination. Supervised new attendants providing feedback that improved organizational efficiency.
+                    Managed daily operations for high-traffic facilities with opening/closing procedures and event coordination. Supervised new attendants providing feedback that improved organiz[...]
                 </div>
             </div>
 
@@ -778,7 +788,7 @@
                 <div class="card-date">Dec 2022 – May 2025</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Led end-to-end product strategy for broadband and IP services. Launched internal inventory tool, developed cloud-connected eCommerce platform, and discovered $500K market opportunities.
+                    Led end-to-end product strategy for broadband and IP services. Launched internal inventory tool, developed cloud-connected eCommerce platform, and discovered $500K market oppo[...]
                 </div>
             </div>
         </div>
@@ -803,61 +813,61 @@
         <div class="skills-matrix">
             <div>
                 <span class="category-label">Product Management</span>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Product Strategy & Roadmapping</span>
                         <span class="skill-indicator">•••</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across executive teams.
+                        Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across exe[...]
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Technical PRDs & User Stories</span>
                         <span class="skill-indicator">•••</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate product vision into executable specs.
+                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate pr[...]
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Go-to-Market (GTM) Strategy</span>
                         <span class="skill-indicator">•••</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Develop launch strategies including market analysis, positioning, messaging frameworks, and customer acquisition plans. Coordinate cross-functional execution for successful product launches.
+                        Develop launch strategies including market analysis, positioning, messaging frameworks, and customer acquisition plans. Coordinate cross-functional execution for successfu[...]
                     </div>
                 </div>
             </div>
 
             <div>
                 <span class="category-label">Data & Analytics</span>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Data-Driven Decision-Making</span>
                         <span class="skill-indicator">•••</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Establish metrics frameworks and use data insights to validate product decisions. Build dashboards to track key performance indicators and identify optimization opportunities.
+                        Establish metrics frameworks and use data insights to validate product decisions. Build dashboards to track key performance indicators and identify optimization opportunit[...]
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Product Analytics & KPIs</span>
                         <span class="skill-indicator">•••</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product telemetry and user behavior.
+                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product tel[...]
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Python • SQL • R</span>
                         <span class="skill-indicator">•••</span>
@@ -871,17 +881,17 @@
 
             <div>
                 <span class="category-label">Business & Leadership</span>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Cross-functional Leadership</span>
                         <span class="skill-indicator">•••</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Lead initiatives across engineering, design, marketing, and sales teams without direct authority. Build consensus, align priorities, and drive accountability across organizations.
+                        Lead initiatives across engineering, design, marketing, and sales teams without direct authority. Build consensus, align priorities, and drive accountability across organi[...]
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Stakeholder Management</span>
                         <span class="skill-indicator">•••</span>
@@ -891,7 +901,7 @@
                         Manage expectations with executives, customers, and team members. Present complex product decisions with supporting data and secure buy-in from diverse stakeholder groups.
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Process Improvement & SOPs</span>
                         <span class="skill-indicator">•••</span>
@@ -905,7 +915,7 @@
 
             <div>
                 <span class="category-label">Tools & Technologies</span>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Figma • QuickBase • Excel</span>
                         <span class="skill-indicator">•••</span>
@@ -915,7 +925,7 @@
                         Create wireframes and prototypes in Figma, build no-code applications in QuickBase, and develop advanced Excel models for financial forecasting and analysis.
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">RStudio • MATLAB • GitHub</span>
                         <span class="skill-indicator">•••</span>
@@ -925,7 +935,7 @@
                         Perform statistical analysis and create visualizations in RStudio, conduct numerical computing in MATLAB, and manage version control and collaboration via GitHub.
                     </div>
                 </div>
-                <div class="skill-row" onclick="toggleSkill(this)">
+                <div class="skill-row">
                     <div class="skill-header">
                         <span class="skill-name">Claude • SharePoint</span>
                         <span class="skill-indicator">•••</span>
@@ -961,7 +971,7 @@
         <h2>Get In Touch</h2>
         <div style="max-width: 600px;">
             <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
-                I'm always interested in connecting with teams working on meaningful products. Whether it's discussing strategy, collaboration opportunities, or just saying hello, feel free to reach out!
+                I'm always interested in connecting with teams working on meaningful products. Whether it's discussing strategy, collaboration opportunities, or just saying hello, feel free to re[...]
             </p>
             <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                 <a href="mailto:ofilikene@gmail.com" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
@@ -1002,41 +1012,36 @@
         }
 
         function updateExperience() {
-            const selectedYear = yearsOrder[currentYearIndex];
             const cards = document.querySelectorAll('.experience-card');
             const timelineYears = document.querySelectorAll('.timeline-year');
-            
-            // Update cards visibility
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const currentYear = yearsOrder[currentYearIndex];
+
             cards.forEach(card => {
                 card.classList.remove('active');
-                if (card.getAttribute('data-year') == selectedYear) {
+                if (card.dataset.year == currentYear) {
                     card.classList.add('active');
                 }
             });
 
-            // Update timeline
             timelineYears.forEach(year => {
                 year.classList.remove('active');
-                if (parseInt(year.textContent) === selectedYear) {
+                if (parseInt(year.textContent) === currentYear) {
                     year.classList.add('active');
                 }
             });
 
-            // Update progress
             const progress = ((currentYearIndex + 1) / yearsOrder.length) * 100;
-            document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').textContent = 
-                String(currentYearIndex + 1).padStart(2, '0') + ' / ' + 
-                String(yearsOrder.length).padStart(2, '0');
+            progressFill.style.width = progress + '%';
+            progressText.textContent = String(currentYearIndex + 1).padStart(2, '0') + ' / ' + String(yearsOrder.length).padStart(2, '0');
 
-            // Update buttons
             document.getElementById('prevBtn').disabled = currentYearIndex === 0;
             document.getElementById('nextBtn').disabled = currentYearIndex === yearsOrder.length - 1;
         }
 
-        function toggleSkill(element) {
-            element.classList.toggle('expanded');
-        }
+        // Initialize
+        updateExperience();
 
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
@@ -1044,11 +1049,6 @@
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         }
-
-        // Initialize on load
-        document.addEventListener('DOMContentLoaded', () => {
-            updateExperience();
-        });
     </script>
 </body>
 </html>
