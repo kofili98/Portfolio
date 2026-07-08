@@ -109,54 +109,74 @@
             line-height: 1.6;
         }
 
-        /* Time Carousel Styles */
-        .carousel-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        .carousel-button {
-            background: #667eea;
+        /* Experience Section Styles */
+        .experience-section {
+            background: #1a1a1a;
             color: white;
-            border: none;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: 600;
-            transition: background 0.3s ease, transform 0.2s ease;
-            min-width: 50px;
+            margin-bottom: 2rem;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .carousel-button:hover {
-            background: #764ba2;
-            transform: scale(1.05);
-        }
-
-        .carousel-button:disabled {
-            background: #ccc;
-            cursor: not-allowed;
-            transform: scale(1);
-        }
-
-        .carousel-year-label {
-            font-size: 1.2rem;
-            font-weight: 600;
+        .experience-section h2 {
             color: #667eea;
-            min-width: 80px;
-            text-align: center;
+            border-bottom-color: #667eea;
         }
 
-        .year-group {
+        /* Timeline Header */
+        .timeline-header {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            overflow-x: auto;
+            padding-bottom: 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .timeline-header span {
+            color: #888;
+            white-space: nowrap;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+
+        .timeline-header span.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .timeline-header span:hover {
+            color: #667eea;
+        }
+
+        /* Experience Cards Container */
+        .experience-carousel {
+            position: relative;
+        }
+
+        .experience-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            min-height: 400px;
+        }
+
+        .experience-card {
+            background: rgba(102, 126, 234, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
             display: none;
+            animation: fadeIn 0.3s ease;
         }
 
-        .year-group.active {
+        .experience-card.active {
             display: block;
-            animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
@@ -170,70 +190,100 @@
             }
         }
 
-        .experience-item {
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #eee;
-        }
-
-        .experience-item:last-child {
-            border-bottom: none;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
+        .experience-card-year {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
             margin-bottom: 0.5rem;
-            flex-wrap: wrap;
-            gap: 1rem;
         }
 
-        .job-title {
-            font-size: 1.3rem;
+        .experience-card-badge {
+            display: inline-block;
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
             font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+        }
+
+        .job-title-large {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.3rem;
+            line-height: 1.3;
+        }
+
+        .company-location {
+            color: #aaa;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .company-location strong {
             color: #667eea;
         }
 
-        .company {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .location {
+        .date-range-card {
             color: #888;
-            font-size: 0.95rem;
-        }
-
-        .date-range {
-            color: #888;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
         }
 
-        .job-description {
-            color: #555;
-            margin-top: 0.8rem;
-        }
-
-        .job-description ul {
-            list-style: none;
-            margin-left: 0;
-        }
-
-        .job-description li {
-            margin-bottom: 0.8rem;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .job-description li:before {
-            content: "▸";
-            position: absolute;
-            left: 0;
+        .key-evolution-label {
             color: #667eea;
-            font-weight: bold;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .key-evolution-text {
+            color: #ddd;
+            line-height: 1.7;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(102, 126, 234, 0.2);
+        }
+
+        .carousel-nav button {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            border: 1px solid #667eea;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav button:hover:not(:disabled) {
+            background: #667eea;
+            color: white;
+        }
+
+        .carousel-nav button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .progress-indicator {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 1rem;
         }
 
         .project-item {
@@ -303,11 +353,6 @@
                 font-size: 1.8rem;
             }
 
-            .job-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
             .contact-info {
                 gap: 1rem;
                 font-size: 0.85rem;
@@ -321,20 +366,32 @@
                 grid-template-columns: 1fr;
             }
 
-            .carousel-container {
-                flex-wrap: wrap;
+            .experience-section {
+                padding: 2rem 1.5rem;
             }
 
-            .carousel-button {
-                flex: 1;
-                min-width: 40px;
-                padding: 0.6rem 0.8rem;
-                font-size: 0.9rem;
+            .experience-cards {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            .carousel-year-label {
-                flex-basis: 100%;
-                order: -1;
+            .timeline-header {
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+                font-size: 0.85rem;
+            }
+
+            .timeline-header span {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            .experience-card-year {
+                font-size: 2rem;
+            }
+
+            .job-title-large {
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -383,131 +440,104 @@
             </div>
         </section>
 
-        <!-- Experience Section -->
-        <section>
+        <!-- Experience Section with Carousel -->
+        <div class="experience-section">
             <h2>Work Experience</h2>
 
-            <!-- Carousel Controls -->
-            <div class="carousel-container">
-                <button class="carousel-button" id="prevBtn" onclick="changeYear(-1)">← Prev</button>
-                <div class="carousel-year-label" id="yearLabel">2022</div>
-                <button class="carousel-button" id="nextBtn" onclick="changeYear(1)">Next →</button>
+            <!-- Timeline Header -->
+            <div class="timeline-header">
+                <span class="timeline-year active" onclick="selectYear(2019)">2019</span>
+                <span class="timeline-year" onclick="selectYear(2020)">2020</span>
+                <span class="timeline-year" onclick="selectYear(2022)">2022</span>
+                <span class="timeline-year" onclick="selectYear(2025)">2025</span>
             </div>
 
-            <!-- 2022 Year Group -->
-            <div class="year-group active" data-year="2022">
-                <div class="experience-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Product Manager</div>
-                            <div class="company">Viaero Wireless</div>
-                        </div>
-                        <div>
-                            <div class="location">Fort Morgan, CO</div>
-                            <div class="date-range">Dec 2022 – May 2025</div>
+            <!-- Experience Carousel -->
+            <div class="experience-carousel">
+                <div class="experience-cards" id="cardsContainer">
+                    <!-- 2019 Cards -->
+                    <div class="experience-card active" data-year="2019">
+                        <div class="experience-card-year">2019</div>
+                        <div class="experience-card-badge">Leadership</div>
+                        <div class="job-title-large">Tour Ambassador</div>
+                        <div class="company-location"><strong>Purdue University</strong> — West Lafayette, IN</div>
+                        <div class="date-range-card">Feb 2019 – May 2022</div>
+                        <div class="key-evolution-label">Key Evolution</div>
+                        <div class="key-evolution-text">
+                            Delivered thousands of customer-facing experiences annually with 80% satisfaction rating. Redesigned tour pathways reducing congestion by 25% through visitor feedback analysis and collaborative stakeholder engagement.
                         </div>
                     </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Formulated end-to-end Product Strategy and roadmap ownership for broadband and IP services by driving comprehensive Customer Discovery initiatives; integrated customer feed[...]
-                            <li>Exercised cross-functional leadership across supply chain, engineering, and commercial teams to launch an internal inventory-request tool; optimized relational data models [...]
-                            <li>Spearheaded development of a cloud-connected eCommerce platform from requirements gathering through validation; co-authored comprehensive technical PRDs and user stories wi[...]
-                            <li>Conducted deep market and competitive analysis to architect rigorous ROI models, discovering an unmapped, scalable market segment opportunity valued at $500K in net-new rec[...]
-                            <li>Reduced cart and checkout abandonment by identifying friction points and drove a 15% conversion increase through usability testing and flow redesign.</li>
-                            <li>Developed executive-facing KPI dashboards tracking customer acquisition, adoption, retention, and revenue performance to support strategic planning.</li>
-                            <li>Developed a centralized product and compliance knowledge repository (SharePoint) empowering sales and marketing teams across multi-channel touchpoints.</li>
-                            <li>Expanded the unified voice (VoIP) ecosystem portfolio, scaling total addressable market (TAM) footprint by 18%.</li>
-                        </ul>
+
+                    <div class="experience-card active" data-year="2019">
+                        <div class="experience-card-year">2019</div>
+                        <div class="experience-card-badge">Internship</div>
+                        <div class="job-title-large">Manufacturing Operations Intern</div>
+                        <div class="company-location"><strong>Heineken (Nigerian Breweries)</strong> — Lagos, Nigeria</div>
+                        <div class="date-range-card">Jun 2019 – Aug 2019</div>
+                        <div class="key-evolution-label">Key Evolution</div>
+                        <div class="key-evolution-text">
+                            Identified process bottlenecks and automated reporting workflows, reducing manual intervention by 20%. Developed dashboards tracking production metrics and improved decision-making speed by 15%.
+                        </div>
+                    </div>
+
+                    <div class="experience-card active" data-year="2019">
+                        <div class="experience-card-year">2019</div>
+                        <div class="experience-card-badge">Education</div>
+                        <div class="job-title-large">First-Year Engineering Undergraduate Teaching Assistant</div>
+                        <div class="company-location"><strong>Purdue College of Engineering</strong> — West Lafayette, IN</div>
+                        <div class="date-range-card">Aug 2019 – May 2020</div>
+                        <div class="key-evolution-label">Key Evolution</div>
+                        <div class="key-evolution-text">
+                            Supported students during engineering activities and problem-solving sessions. Collaborated with instructors to deliver consistent classroom support while maintaining FERPA compliance and accurate grading standards.
+                        </div>
+                    </div>
+
+                    <!-- 2020 Cards -->
+                    <div class="experience-card" data-year="2020">
+                        <div class="experience-card-year">2020</div>
+                        <div class="experience-card-badge">Operations</div>
+                        <div class="job-title-large">Building Attendant</div>
+                        <div class="company-location"><strong>Purdue Morial Union</strong> — West Lafayette, IN</div>
+                        <div class="date-range-card">Aug 2020 – May 2021</div>
+                        <div class="key-evolution-label">Key Evolution</div>
+                        <div class="key-evolution-text">
+                            Managed daily operations for high-traffic facilities with opening/closing procedures and event coordination. Supervised new attendants providing feedback that improved policy adherence and maintained service standards.
+                        </div>
+                    </div>
+
+                    <!-- 2022 Cards -->
+                    <div class="experience-card" data-year="2022">
+                        <div class="experience-card-year">2022</div>
+                        <div class="experience-card-badge">Product Management</div>
+                        <div class="job-title-large">Product Manager</div>
+                        <div class="company-location"><strong>Viaero Wireless</strong> — Fort Morgan, CO</div>
+                        <div class="date-range-card">Dec 2022 – May 2025</div>
+                        <div class="key-evolution-label">Key Evolution</div>
+                        <div class="key-evolution-text">
+                            Led end-to-end product strategy for broadband and IP services. Launched internal inventory tool, developed cloud-connected eCommerce platform, and discovered $500K market opportunity. Reduced cart abandonment by 15% and scaled TAM by 18%.
+                        </div>
+                    </div>
+
+                    <!-- 2025 Summary Card -->
+                    <div class="experience-card" data-year="2025">
+                        <div class="experience-card-year">2025</div>
+                        <div class="experience-card-badge">Summary</div>
+                        <div class="job-title-large">Professional Journey</div>
+                        <div class="key-evolution-label">Career Progression</div>
+                        <div class="key-evolution-text">
+                            From early-career roles in education and operations through specialized internship experience, evolved into senior product management. Led cross-functional teams, delivered transformative digital solutions, and drove significant business impact through data-driven strategy and customer-centric innovation.
+                        </div>
                     </div>
                 </div>
+
+                <!-- Navigation -->
+                <div class="carousel-nav">
+                    <button id="prevBtn" onclick="prevYear()">← Previous</button>
+                    <button id="nextBtn" onclick="nextYear()">Next →</button>
+                </div>
+                <div class="progress-indicator" id="progress">1 of 4 years</div>
             </div>
-
-            <!-- 2020 Year Group -->
-            <div class="year-group" data-year="2020">
-                <div class="experience-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Building Attendant</div>
-                            <div class="company">Purdue Morial Union</div>
-                        </div>
-                        <div>
-                            <div class="location">West Lafayette, IN</div>
-                            <div class="date-range">Aug 2020 – May 2021</div>
-                        </div>
-                    </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Managed daily operations for high-traffic facilities, executing opening/closing procedures and coordinating setups for events and visitors.</li>
-                            <li>Supervised new Building Attendants, providing feedback and coaching that improved policy adherence and maintained high service standards.</li>
-                            <li>Logged detailed shift reports that informed process improvements and policy updates.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 2019 Year Group -->
-            <div class="year-group" data-year="2019">
-                <div class="experience-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Tour Ambassador</div>
-                            <div class="company">Purdue University</div>
-                        </div>
-                        <div>
-                            <div class="location">West Lafayette, IN</div>
-                            <div class="date-range">Feb 2019 – May 2022</div>
-                        </div>
-                    </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Delivered thousands of customer-facing experiences annually while maintaining an average satisfaction rating of 80% for prospective students and families.</li>
-                            <li>Leveraged visitor feedback and observational analysis to redesign tour pathways, reducing congestion by 25% and improving overall visitor experience.</li>
-                            <li>Collaborated with university stakeholders to refine messaging and engagement strategies based on audience needs and feedback trends.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">First-Year Engineering Undergraduate Teaching Assistant</div>
-                            <div class="company">Purdue College of Engineering</div>
-                        </div>
-                        <div>
-                            <div class="location">West Lafayette, IN</div>
-                            <div class="date-range">Aug 2019 – May 2020</div>
-                        </div>
-                    </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Supported students during in-class engineering activities, assignments, and team-based problem solving.</li>
-                            <li>Collaborated with instructors and teaching team to deliver consistent classroom support and accurate grading.</li>
-                            <li>Maintained professionalism, confidentiality, and compliance with FERPA requirements.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-item">
-                    <div class="job-header">
-                        <div>
-                            <div class="job-title">Manufacturing Operations Intern</div>
-                            <div class="company">Heineken (Nigerian Breweries)</div>
-                        </div>
-                        <div>
-                            <div class="location">Lagos, Nigeria</div>
-                            <div class="date-range">Jun 2019 – Aug 2019</div>
-                        </div>
-                    </div>
-                    <div class="job-description">
-                        <ul>
-                            <li>Collaborated with engineering, production, and operations teams to identify process bottlenecks and automate reporting workflows, reducing manual intervention by 20%.<[...]
-                            <li>Developed dashboards tracking production output, quality compliance, and operational performance metrics, improving decision-making speed by 15%.</li>
-                            <li>Created technical documentation and SOPs to support process standardization and workforce training initiatives.</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+        </div>
 
         <!-- Projects Section -->
         <section>
@@ -561,35 +591,56 @@
     </footer>
 
     <script>
-        const years = [2022, 2020, 2019];
-        let currentIndex = 0;
+        const yearsOrder = [2019, 2020, 2022, 2025];
+        let currentYearIndex = 0;
 
-        function showYear(index) {
-            // Hide all year groups
-            document.querySelectorAll('.year-group').forEach(group => {
-                group.classList.remove('active');
-            });
-
-            // Show current year group
-            const currentYear = years[index];
-            document.querySelector(`.year-group[data-year="${currentYear}"]`).classList.add('active');
-            document.getElementById('yearLabel').textContent = currentYear;
-
-            // Update button states
-            document.getElementById('prevBtn').disabled = index === 0;
-            document.getElementById('nextBtn').disabled = index === years.length - 1;
+        function selectYear(year) {
+            currentYearIndex = yearsOrder.indexOf(year);
+            updateCarousel();
         }
 
-        function changeYear(direction) {
-            const newIndex = currentIndex + direction;
-            if (newIndex >= 0 && newIndex < years.length) {
-                currentIndex = newIndex;
-                showYear(currentIndex);
+        function nextYear() {
+            if (currentYearIndex < yearsOrder.length - 1) {
+                currentYearIndex++;
+                updateCarousel();
             }
         }
 
+        function prevYear() {
+            if (currentYearIndex > 0) {
+                currentYearIndex--;
+                updateCarousel();
+            }
+        }
+
+        function updateCarousel() {
+            const currentYear = yearsOrder[currentYearIndex];
+            
+            // Update cards
+            document.querySelectorAll('.experience-card').forEach(card => {
+                if (card.dataset.year == currentYear) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+
+            // Update timeline header
+            document.querySelectorAll('.timeline-year').forEach(span => {
+                span.classList.remove('active');
+            });
+            document.querySelector(`.timeline-year[onclick="selectYear(${currentYear})"]`).classList.add('active');
+
+            // Update buttons
+            document.getElementById('prevBtn').disabled = currentYearIndex === 0;
+            document.getElementById('nextBtn').disabled = currentYearIndex === yearsOrder.length - 1;
+
+            // Update progress
+            document.getElementById('progress').textContent = `${currentYearIndex + 1} of ${yearsOrder.length} years`;
+        }
+
         // Initialize
-        showYear(0);
+        updateCarousel();
     </script>
 </body>
 </html>
