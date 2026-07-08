@@ -201,6 +201,12 @@
             border-top: none;
         }
 
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
         .stat-item {
             text-align: left;
         }
@@ -674,22 +680,23 @@
             <div class="hero-cta">
                 <button class="cta-button primary-btn" onclick="scrollToSection('journey')">View My Journey</button>
             </div>
-            
             <div class="stats">
                 <h2 class="achievements-header">
                     Key <span class="highlight">Achievements</span>
                 </h2>
-                <div class="stat-item">
-                    <div class="stat-number">27%</div>
-                    <div class="stat-label">Customer Retention Lift</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">60%</div>
-                    <div class="stat-label">Inventory Anomaly Reduction</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">$500K</div>
-                    <div class="stat-label">Net-New Recurring Revenue</div>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-number">27%</div>
+                        <div class="stat-label">Customer Retention Lift</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">60%</div>
+                        <div class="stat-label">Inventory Anomaly Reduction</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">$500K</div>
+                        <div class="stat-label">Net-New Recurring Revenue</div>
+                    </div>
                 </div>
             </div>
         </div>
