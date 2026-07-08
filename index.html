@@ -103,7 +103,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="40" y2="0" stroke="%23ffffff" stroke-width="0.5"/><line x1="0" y1="0" x2="0" y2="40" stroke="%23ffffff" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="40" stroke="rgba(0,255,65,0.1)" stroke-width="1"/><line x1="0" y1="0" x2="40" y2="0" stroke="rgba(0,255,65,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="none"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
             opacity: 0.3;
         }
 
@@ -177,14 +177,28 @@
             border-color: var(--primary-green);
         }
 
+        /* Key Achievements Header */
+        .achievements-header {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 800;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            color: var(--text-primary);
+        }
+
+        .achievements-header .highlight {
+            color: var(--primary-green);
+            font-style: italic;
+        }
+
         /* Stats Section */
         .stats {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-top: 4rem;
-            padding-top: 4rem;
-            border-top: 1px solid var(--border-color);
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
         }
 
         .stat-item {
@@ -661,6 +675,7 @@
                 <button class="cta-button primary-btn" onclick="scrollToSection('journey')">View My Journey</button>
                 <button class="cta-button" onclick="scrollToSection('contact')">Get In Touch</button>
             </div>
+            <h2 class="achievements-header">Key <span class="highlight">Achievements</span></h2>
             <div class="stats">
                 <div class="stat-item">
                     <div class="stat-number">27%</div>
@@ -682,7 +697,7 @@
     <section id="about" class="container">
         <h2>About</h2>
         <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
-            I'm a Product Manager with a unique blend of electrical engineering and data analytics expertise. My career journey spans from early-stage leadership roles through specialized technical fu[...]
+            I'm a Product Manager with a unique blend of electrical engineering and data analytics expertise. My career journey spans from early-stage leadership roles through specialized technical functions, enabling me to bridge the gap between complex technical requirements and user-centric product strategy.
         </p>
     </section>
 
@@ -698,7 +713,7 @@
                 </div>
                 <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
                 <div class="project-description">
-                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networ[...]
+                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networking protocol, created PCB schematics in KiCad, and developed firmware in Verilog for FPGA integration and Arduino microcontrollers.
                 </div>
             </div>
 
@@ -710,7 +725,7 @@
                 </div>
                 <div class="project-tech">Research • R Studio, Excel</div>
                 <div class="project-description">
-                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors [...]
+                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and their impact on birth outcomes. Generated actionable insights for public health policy recommendations.
                 </div>
             </div>
 
@@ -722,7 +737,7 @@
                 </div>
                 <div class="project-tech">AI Project • Claude, GitHub, R, NLP</div>
                 <div class="project-description">
-                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through conne[...]
+                    Built an NLP sentiment classification model in R to analyze text and predict sentiment polarity. Deployed the source code to GitHub and connected the repository to Claude through custom connectors for real-time analysis integration.
                 </div>
             </div>
         </div>
@@ -750,7 +765,7 @@
                 <div class="card-date">Feb 2019 – May 2022</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Served as a primary customer-facing representative for prospective students and families, delivering thousands of high-satisfaction campus experiences each year. Used visitor feedback and observational data to redesign tour pathways, reducing congestion and improving the overall visitor experience.
+                    Served as a primary customer-facing representative for prospective students and families, delivering thousands of high-satisfaction campus experiences each year. Used visitor feedback to continuously improve tour content and delivery.
                 </div>
             </div>
 
@@ -762,7 +777,7 @@
                 <div class="card-date">Jun 2019 – Aug 2019</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Partnered with engineering, production, and operations teams in a large-scale manufacturing environment to identify bottlenecks and automate reporting, cutting manual work and speeding up decision-making. Created dashboards and SOPs that supported process standardization and workforce training.
+                    Partnered with engineering, production, and operations teams in a large-scale manufacturing environment to identify bottlenecks and automate reporting, cutting manual work and speeding up decision-making processes.
                 </div>
             </div>
 
@@ -775,7 +790,7 @@
                 <div class="card-date">Aug 2020 – May 2021</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Managed daily facility operations and supervised a team of Building Attendants, ensuring safe, consistent conditions for events and visitors. Improved service standards through coaching and detailed shift reporting that gave leadership visibility into recurring operational issues.
+                    Managed daily facility operations and supervised a team of Building Attendants, ensuring safe, consistent conditions for events and visitors. Improved service standards through coaching and process documentation.
                 </div>
             </div>
 
@@ -788,7 +803,7 @@
                 <div class="card-date">Dec 2022 – May 2025</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Owned product strategy and roadmap for broadband and IP services, using customer discovery and data analysis to boost engagement, streamline operations, and uncover new revenue opportunities. Led cross-functional teams to launch new tools and platforms, from an internal inventory system to a cloud-connected eCommerce site, while building reporting and knowledge resources that supported sales, marketing, and executive decision-making.
+                    Owned product strategy and roadmap for broadband and IP services, using customer discovery and data analysis to boost engagement, streamline operations, and uncover new revenue opportunities.
                 </div>
             </div>
 
@@ -801,7 +816,7 @@
                 <div class="card-date">Aug 2025 - May 2027</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Realizing the importance of data driven decision making, I made the committment to further my ability to drive into data to better understand and utilize the abundance of data available.
+                    Realizing the importance of data driven decision making, I made the committment to further my ability to drive into data to better understand and utilize the abundance of data available in modern businesses.
                 </div>
             </div>
         </div>
@@ -832,7 +847,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across exe[...]
+                        Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across executive teams.
                     </div>
                 </div>
                 <div class="skill-row">
@@ -842,7 +857,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate pr[...]
+                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate product needs into actionable tasks.
                     </div>
                 </div>
                 <div class="skill-row">
@@ -852,7 +867,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Develop launch strategies including market analysis, positioning, messaging frameworks, and customer acquisition plans. Coordinate cross-functional execution for successfu[...]
+                        Develop launch strategies including market analysis, positioning, messaging frameworks, and customer acquisition plans. Coordinate cross-functional execution for successful product launches.
                     </div>
                 </div>
             </div>
@@ -866,7 +881,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Establish metrics frameworks and use data insights to validate product decisions. Build dashboards to track key performance indicators and identify optimization opportunit[...]
+                        Establish metrics frameworks and use data insights to validate product decisions. Build dashboards to track key performance indicators and identify optimization opportunities.
                     </div>
                 </div>
                 <div class="skill-row">
@@ -876,7 +891,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product tel[...]
+                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product telemetry.
                     </div>
                 </div>
                 <div class="skill-row">
@@ -900,7 +915,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Lead initiatives across engineering, design, marketing, and sales teams without direct authority. Build consensus, align priorities, and drive accountability across organi[...]
+                        Lead initiatives across engineering, design, marketing, and sales teams without direct authority. Build consensus, align priorities, and drive accountability across organizations.
                     </div>
                 </div>
                 <div class="skill-row">
@@ -983,7 +998,7 @@
         <h2>Get In Touch</h2>
         <div style="max-width: 600px;">
             <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
-                I'm always interested in connecting with teams working on meaningful products. Whether it's discussing strategy, collaboration opportunities, or just saying hello, feel free to re[...]
+                I'm always interested in connecting with teams working on meaningful products. Whether it's discussing strategy, collaboration opportunities, or just saying hello, feel free to reach out.
             </p>
             <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                 <a href="mailto:ofilikene@gmail.com" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
@@ -1001,66 +1016,70 @@
     </footer>
 
     <script>
-        const yearsOrder = [2019, 2020, 2022, 2025];
-        let currentYearIndex = 0;
-
-        function selectYear(year) {
-            currentYearIndex = yearsOrder.indexOf(year);
-            updateExperience();
-        }
-
-        function nextYear() {
-            if (currentYearIndex < yearsOrder.length - 1) {
-                currentYearIndex++;
-                updateExperience();
-            }
-        }
-
-        function prevYear() {
-            if (currentYearIndex > 0) {
-                currentYearIndex--;
-                updateExperience();
-            }
-        }
-
-        function updateExperience() {
-            const cards = document.querySelectorAll('.experience-card');
-            const timelineYears = document.querySelectorAll('.timeline-year');
-            const progressFill = document.getElementById('progressFill');
-            const progressText = document.getElementById('progressText');
-            const currentYear = yearsOrder[currentYearIndex];
-
-            cards.forEach(card => {
-                card.classList.remove('active');
-                if (card.dataset.year == currentYear) {
-                    card.classList.add('active');
-                }
-            });
-
-            timelineYears.forEach(year => {
-                year.classList.remove('active');
-                if (parseInt(year.textContent) === currentYear) {
-                    year.classList.add('active');
-                }
-            });
-
-            const progress = ((currentYearIndex + 1) / yearsOrder.length) * 100;
-            progressFill.style.width = progress + '%';
-            progressText.textContent = String(currentYearIndex + 1).padStart(2, '0') + ' / ' + String(yearsOrder.length).padStart(2, '0');
-
-            document.getElementById('prevBtn').disabled = currentYearIndex === 0;
-            document.getElementById('nextBtn').disabled = currentYearIndex === yearsOrder.length - 1;
-        }
-
-        // Initialize
-        updateExperience();
-
+        // Smooth scroll to section
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
             if (element) {
                 element.scrollIntoView({ behavior: 'smooth' });
             }
         }
+
+        // Experience timeline functionality
+        function selectYear(year) {
+            const cards = document.querySelectorAll('.experience-card');
+            const years = document.querySelectorAll('.timeline-year');
+            
+            cards.forEach(card => {
+                card.classList.remove('active');
+                if (card.getAttribute('data-year') == year) {
+                    card.classList.add('active');
+                }
+            });
+            
+            years.forEach(yearBtn => {
+                yearBtn.classList.remove('active');
+                if (yearBtn.textContent == year) {
+                    yearBtn.classList.add('active');
+                }
+            });
+            
+            updateProgressBar();
+        }
+
+        function prevYear() {
+            const years = ['2019', '2020', '2022', '2025'];
+            const active = document.querySelector('.timeline-year.active');
+            const currentIndex = years.indexOf(active.textContent);
+            if (currentIndex > 0) {
+                selectYear(years[currentIndex - 1]);
+            }
+        }
+
+        function nextYear() {
+            const years = ['2019', '2020', '2022', '2025'];
+            const active = document.querySelector('.timeline-year.active');
+            const currentIndex = years.indexOf(active.textContent);
+            if (currentIndex < years.length - 1) {
+                selectYear(years[currentIndex + 1]);
+            }
+        }
+
+        function updateProgressBar() {
+            const years = ['2019', '2020', '2022', '2025'];
+            const active = document.querySelector('.timeline-year.active');
+            const currentIndex = years.indexOf(active.textContent);
+            const progress = ((currentIndex + 1) / years.length) * 100;
+            
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = 
+                String(currentIndex + 1).padStart(2, '0') + ' / 0' + years.length;
+            
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === years.length - 1;
+        }
+
+        // Initialize progress bar
+        updateProgressBar();
     </script>
 </body>
 </html>
