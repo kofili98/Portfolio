@@ -11,267 +11,428 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary-green: #00ff41;
+            --dark-bg: #0a0e27;
+            --card-bg: #111827;
+            --border-color: #1f2937;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --accent-green: #10b981;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--text-primary);
+            background: var(--dark-bg);
             min-height: 100vh;
         }
 
-        header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        header .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-info {
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 14, 39, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 2rem;
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            font-size: 0.95rem;
+            justify-content: space-between;
+            align-items: center;
+            backdrop-filter: blur(10px);
         }
 
-        .contact-info a {
-            color: white;
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
             text-decoration: none;
-            transition: opacity 0.3s ease;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            transition: color 0.3s ease;
         }
 
-        .contact-info a:hover {
-            opacity: 0.8;
+        .nav-links a:hover {
+            color: var(--primary-green);
         }
 
-        .container {
-            max-width: 1000px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+        .cta-button {
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 0.6rem 1.2rem;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: transparent;
         }
 
-        section {
-            background: white;
+        .cta-button:hover {
+            background: var(--primary-green);
+            color: var(--dark-bg);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(16,185,129,0.05)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="url(%23grid)" /></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
             margin-bottom: 2rem;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--primary-green);
+        }
+
+        .status-badge::before {
+            content: '';
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            background: var(--primary-green);
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        .hero h1 .highlight {
+            color: var(--primary-green);
+            font-style: italic;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .hero-cta .cta-button {
+            padding: 0.8rem 2rem;
+        }
+
+        .primary-btn {
+            background: var(--text-primary);
+            color: var(--dark-bg);
+            border: 1px solid var(--text-primary);
+        }
+
+        .primary-btn:hover {
+            background: var(--primary-green);
+            border-color: var(--primary-green);
+        }
+
+        /* Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+            padding-top: 4rem;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--text-secondary);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
         section h2 {
-            color: #667eea;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 3px solid #667eea;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+            letter-spacing: -0.02em;
         }
 
-        .summary-text {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #555;
+        .section-number {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            display: block;
         }
 
-        .skills-grid {
+        /* Projects Section */
+        .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
         }
 
-        .skill-category {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid #667eea;
+        .project-card {
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            background: var(--card-bg);
         }
 
-        .skill-category h3 {
-            color: #667eea;
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
+        .project-card:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
         }
 
-        .skill-category p {
-            color: #666;
-            line-height: 1.6;
+        .project-number {
+            font-size: 4rem;
+            font-weight: 800;
+            color: rgba(0, 255, 65, 0.1);
+            position: absolute;
+            top: 1rem;
+            left: 2rem;
+            line-height: 1;
         }
 
-        /* Experience Section Styles */
-        .experience-section {
-            background: #1a1a1a;
-            color: white;
-            margin-bottom: 2rem;
-            padding: 3rem 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .experience-section h2 {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        /* Timeline Header */
-        .timeline-header {
+        .project-header {
             display: flex;
-            gap: 1.5rem;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .project-tag {
+            background: transparent;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 0.4rem 0.8rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            white-space: nowrap;
+        }
+
+        .project-tech {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Experience Section */
+        .experience-section {
+            padding: 6rem 0;
+        }
+
+        .timeline-full {
+            display: flex;
+            gap: 0.5rem;
             margin-bottom: 3rem;
             overflow-x: auto;
             padding-bottom: 1rem;
-            font-size: 0.95rem;
-            font-weight: 500;
         }
 
-        .timeline-header span {
-            color: #888;
-            white-space: nowrap;
+        .timeline-year {
             padding: 0.5rem 1rem;
+            color: var(--text-secondary);
             cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
             transition: all 0.3s ease;
-            border-bottom: 3px solid transparent;
+            white-space: nowrap;
         }
 
-        .timeline-header span.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
+        .timeline-year.active {
+            color: var(--primary-green);
+            border-bottom: 2px solid var(--primary-green);
         }
 
-        .timeline-header span:hover {
-            color: #667eea;
-        }
-
-        /* Experience Cards Container */
-        .experience-carousel {
-            position: relative;
-        }
-
-        .experience-cards {
+        .experience-cards-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            min-height: 400px;
+            margin-bottom: 3rem;
         }
 
         .experience-card {
-            background: rgba(102, 126, 234, 0.05);
-            border: 1px solid rgba(102, 126, 234, 0.2);
+            border: 1px solid var(--border-color);
             padding: 2rem;
-            border-radius: 8px;
-            border-left: 4px solid #667eea;
             display: none;
-            animation: fadeIn 0.3s ease;
+            position: relative;
+            background: var(--card-bg);
+            min-height: 300px;
         }
 
         .experience-card.active {
             display: block;
+            border-color: var(--primary-green);
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .experience-card-year {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #667eea;
+        .card-year {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--text-secondary);
             margin-bottom: 0.5rem;
         }
 
-        .experience-card-badge {
+        .card-badge {
             display: inline-block;
-            background: rgba(102, 126, 234, 0.2);
-            color: #667eea;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
+            border: 1px solid var(--primary-green);
+            color: var(--primary-green);
+            padding: 0.3rem 0.7rem;
+            font-size: 0.65rem;
             text-transform: uppercase;
+            letter-spacing: 0.1em;
             margin-bottom: 1rem;
-            letter-spacing: 0.5px;
         }
 
-        .job-title-large {
-            font-size: 1.5rem;
+        .card-title {
+            font-size: 1.4rem;
             font-weight: 700;
-            color: white;
-            margin-bottom: 0.3rem;
-            line-height: 1.3;
+            margin-bottom: 0.5rem;
         }
 
-        .company-location {
-            color: #aaa;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        .company-location strong {
-            color: #667eea;
-        }
-
-        .date-range-card {
-            color: #888;
+        .card-company {
+            color: var(--text-secondary);
             font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            font-style: italic;
+            margin-bottom: 0.5rem;
         }
 
-        .key-evolution-label {
-            color: #667eea;
+        .card-date {
+            color: var(--text-secondary);
             font-size: 0.85rem;
-            font-weight: 600;
+            margin-bottom: 1.5rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
         }
 
-        .key-evolution-text {
-            color: #ddd;
+        .card-evolution-label {
+            color: var(--primary-green);
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-evolution-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
             line-height: 1.7;
+        }
+
+        .carousel-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-top: 2rem;
         }
 
         .carousel-nav {
             display: flex;
-            justify-content: center;
-            gap: 1rem;
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(102, 126, 234, 0.2);
+            gap: 0.5rem;
         }
 
         .carousel-nav button {
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            border: 1px solid #667eea;
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--border-color);
+            background: transparent;
+            color: var(--text-primary);
             cursor: pointer;
-            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             transition: all 0.3s ease;
         }
 
         .carousel-nav button:hover:not(:disabled) {
-            background: #667eea;
-            color: white;
+            border-color: var(--primary-green);
+            color: var(--primary-green);
         }
 
         .carousel-nav button:disabled {
@@ -279,343 +440,454 @@
             cursor: not-allowed;
         }
 
-        .progress-indicator {
-            text-align: center;
+        .progress-bar {
+            flex: 1;
+            height: 2px;
+            background: var(--border-color);
+            position: relative;
+            margin: 0 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .progress-text {
+            color: var(--text-secondary);
             font-size: 0.85rem;
-            color: #888;
-            margin-top: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .project-item {
-            margin-bottom: 1.5rem;
-            padding: 1.2rem;
-            background: #f8f9fa;
-            border-radius: 6px;
-            border-left: 4px solid #764ba2;
+        /* Skills Section */
+        .skills-matrix {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border-color);
+            border: 1px solid var(--border-color);
         }
 
-        .project-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #764ba2;
-            margin-bottom: 0.5rem;
+        .skill-category-section {
+            background: var(--dark-bg);
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .project-tech {
-            color: #667eea;
-            font-size: 0.9rem;
-            font-weight: 500;
-            margin-bottom: 0.8rem;
+        .skill-category-section:nth-child(odd):nth-last-child(-n+2) {
+            border-bottom: none;
         }
 
-        .project-description {
-            color: #555;
-            line-height: 1.6;
+        .skill-category-section:nth-child(2n) {
+            border-left: 1px solid var(--border-color);
         }
 
-        .education-item {
-            margin-bottom: 1.5rem;
+        .skill-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border-color);
         }
 
-        .degree {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 0.3rem;
+        .skill-row:last-child {
+            border-bottom: none;
         }
 
-        .university {
-            color: #667eea;
-            font-weight: 500;
-        }
-
-        .education-location {
-            color: #888;
+        .skill-name {
             font-size: 0.95rem;
+            color: var(--text-primary);
         }
 
+        .skill-indicator {
+            color: var(--primary-green);
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+        }
+
+        .category-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: block;
+        }
+
+        /* Footer */
         footer {
-            text-align: center;
             padding: 2rem;
-            color: #666;
+            text-align: center;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
 
-        .highlight {
-            background: linear-gradient(120deg, #84fab0 0%, #8fd3f4 100%);
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-weight: 500;
-        }
-
+        /* Mobile */
         @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            .contact-info {
-                gap: 1rem;
-                font-size: 0.85rem;
-            }
-
-            section {
-                padding: 1.5rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-section {
-                padding: 2rem 1.5rem;
-            }
-
-            .experience-cards {
-                grid-template-columns: 1fr;
+            nav {
+                flex-direction: column;
                 gap: 1.5rem;
+                padding: 1rem;
             }
 
-            .timeline-header {
-                gap: 0.5rem;
-                margin-bottom: 2rem;
-                font-size: 0.85rem;
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
             }
 
-            .timeline-header span {
-                padding: 0.4rem 0.8rem;
-                font-size: 0.8rem;
+            .nav-links a {
+                font-size: 0.7rem;
             }
 
-            .experience-card-year {
+            .hero {
+                min-height: 80vh;
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
                 font-size: 2rem;
             }
 
-            .job-title-large {
-                font-size: 1.2rem;
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-matrix {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-category-section:nth-child(2n) {
+                border-left: none;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Kenechukwu Ofili</h1>
-        <p class="subtitle">Product Manager | Data Analytics | Product Strategy</p>
-        <div class="contact-info">
-            <span>📍 Denver, CO</span>
-            <span>📱 (570) 939-5874</span>
-            <a href="https://linkedin.com/in/kofili" target="_blank">LinkedIn</a>
-            <a href="mailto:ofilikene@gmail.com">ofilikene@gmail.com</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">KOFILI</div>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#journey">Journey</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <button class="cta-button" onclick="scrollToSection('contact')">Get In Touch</button>
         </div>
-    </header>
+    </nav>
 
-    <div class="container">
-        <!-- Summary Section -->
-        <section>
-            <h2>Professional Summary</h2>
-            <p class="summary-text">
-                Product Manager with senior-level experience leading end-to-end product strategy and roadmap for B2B and B2C solutions. Delivered a <span class="highlight">27% lift in customer retenti[...]
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="status-badge">Open to opportunities</div>
+            <h1>Kenechukwu <span class="highlight">Ofili</span></h1>
+            <p class="hero-subtitle">
+                Product Manager with senior-level experience leading end-to-end product strategy and roadmap for B2B and B2C solutions — translating data-driven insights into clear PRDs, user stories, and go-to-market plans that accelerate growth and value.
             </p>
-        </section>
-
-        <!-- Skills Section -->
-        <section>
-            <h2>Skills & Expertise</h2>
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3>Product Management</h3>
-                    <p>Product Strategy & Roadmapping, Lifecycle Management, Requirements Gathering, Technical PRDs & User Stories, Customer Discovery, Go-to-Market (GTM) Strategy</p>
+            <div class="hero-cta">
+                <button class="cta-button primary-btn" onclick="scrollToSection('journey')">View My Journey</button>
+                <button class="cta-button" onclick="scrollToSection('contact')">Get In Touch</button>
+            </div>
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number">27%</div>
+                    <div class="stat-label">Customer Retention Lift</div>
                 </div>
-                <div class="skill-category">
-                    <h3>Data & Analytics</h3>
-                    <p>Data-Driven Decision-Making, Data Modeling & Pipelines, ROI Modeling, Product Analytics, KPI Dashboards, Statistical Analysis, Python, SQL, R</p>
+                <div class="stat-item">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Inventory Anomaly Reduction</div>
                 </div>
-                <div class="skill-category">
-                    <h3>Business & Leadership</h3>
-                    <p>Cross-functional Leadership, Stakeholder Management, Competitive Analysis, Compliance & Quality Assurance, Process Improvement, Standard Operating Procedures (SOPs)</p>
-                </div>
-                <div class="skill-category">
-                    <h3>Tools & Technologies</h3>
-                    <p>Figma, QuickBase, Excel, RStudio, MATLAB, SharePoint, Python, SQL, R, Claude, GitHub</p>
+                <div class="stat-item">
+                    <div class="stat-number">$500K</div>
+                    <div class="stat-label">Net-New Recurring Revenue</div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Experience Section with Carousel -->
-        <div class="experience-section">
-            <h2>Work Experience</h2>
-
-            <!-- Timeline Header -->
-            <div class="timeline-header">
-                <span class="timeline-year active" onclick="selectYear(2019)">2019</span>
-                <span class="timeline-year" onclick="selectYear(2020)">2020</span>
-                <span class="timeline-year" onclick="selectYear(2022)">2022</span>
-                <span class="timeline-year" onclick="selectYear(2025)">2025</span>
+    <!-- Projects Section -->
+    <section id="projects" class="container">
+        <span class="section-number">04</span>
+        <h2>Things I've <span class="highlight">Built</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <div class="project-header">
+                    <div class="project-title">Smart Home IoT Platform</div>
+                    <div class="project-tag">IOT / HARDWARE</div>
+                </div>
+                <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
+                <div class="project-description">
+                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networks and validated performance under load.
+                </div>
             </div>
 
-            <!-- Experience Carousel -->
-            <div class="experience-carousel">
-                <div class="experience-cards" id="cardsContainer">
-                    <!-- 2019 Cards -->
-                    <div class="experience-card active" data-year="2019">
-                        <div class="experience-card-year">2019</div>
-                        <div class="experience-card-badge">Leadership</div>
-                        <div class="job-title-large">Tour Ambassador</div>
-                        <div class="company-location"><strong>Purdue University</strong> — West Lafayette, IN</div>
-                        <div class="date-range-card">Feb 2019 – May 2022</div>
-                        <div class="key-evolution-label">Key Evolution</div>
-                        <div class="key-evolution-text">
-                            Delivered thousands of customer-facing experiences annually with 80% satisfaction rating. Redesigned tour pathways reducing congestion by 25% through visitor feedback analysis and collaborative stakeholder engagement.
-                        </div>
-                    </div>
-
-                    <div class="experience-card active" data-year="2019">
-                        <div class="experience-card-year">2019</div>
-                        <div class="experience-card-badge">Internship</div>
-                        <div class="job-title-large">Manufacturing Operations Intern</div>
-                        <div class="company-location"><strong>Heineken (Nigerian Breweries)</strong> — Lagos, Nigeria</div>
-                        <div class="date-range-card">Jun 2019 – Aug 2019</div>
-                        <div class="key-evolution-label">Key Evolution</div>
-                        <div class="key-evolution-text">
-                            Identified process bottlenecks and automated reporting workflows, reducing manual intervention by 20%. Developed dashboards tracking production metrics and improved decision-making speed by 15%.
-                        </div>
-                    </div>
-
-                    <div class="experience-card active" data-year="2019">
-                        <div class="experience-card-year">2019</div>
-                        <div class="experience-card-badge">Education</div>
-                        <div class="job-title-large">First-Year Engineering Undergraduate Teaching Assistant</div>
-                        <div class="company-location"><strong>Purdue College of Engineering</strong> — West Lafayette, IN</div>
-                        <div class="date-range-card">Aug 2019 – May 2020</div>
-                        <div class="key-evolution-label">Key Evolution</div>
-                        <div class="key-evolution-text">
-                            Supported students during engineering activities and problem-solving sessions. Collaborated with instructors to deliver consistent classroom support while maintaining FERPA compliance and accurate grading standards.
-                        </div>
-                    </div>
-
-                    <!-- 2020 Cards -->
-                    <div class="experience-card" data-year="2020">
-                        <div class="experience-card-year">2020</div>
-                        <div class="experience-card-badge">Operations</div>
-                        <div class="job-title-large">Building Attendant</div>
-                        <div class="company-location"><strong>Purdue Morial Union</strong> — West Lafayette, IN</div>
-                        <div class="date-range-card">Aug 2020 – May 2021</div>
-                        <div class="key-evolution-label">Key Evolution</div>
-                        <div class="key-evolution-text">
-                            Managed daily operations for high-traffic facilities with opening/closing procedures and event coordination. Supervised new attendants providing feedback that improved policy adherence and maintained service standards.
-                        </div>
-                    </div>
-
-                    <!-- 2022 Cards -->
-                    <div class="experience-card" data-year="2022">
-                        <div class="experience-card-year">2022</div>
-                        <div class="experience-card-badge">Product Management</div>
-                        <div class="job-title-large">Product Manager</div>
-                        <div class="company-location"><strong>Viaero Wireless</strong> — Fort Morgan, CO</div>
-                        <div class="date-range-card">Dec 2022 – May 2025</div>
-                        <div class="key-evolution-label">Key Evolution</div>
-                        <div class="key-evolution-text">
-                            Led end-to-end product strategy for broadband and IP services. Launched internal inventory tool, developed cloud-connected eCommerce platform, and discovered $500K market opportunity. Reduced cart abandonment by 15% and scaled TAM by 18%.
-                        </div>
-                    </div>
-
-                    <!-- 2025 Summary Card -->
-                    <div class="experience-card" data-year="2025">
-                        <div class="experience-card-year">2025</div>
-                        <div class="experience-card-badge">Summary</div>
-                        <div class="job-title-large">Professional Journey</div>
-                        <div class="key-evolution-label">Career Progression</div>
-                        <div class="key-evolution-text">
-                            From early-career roles in education and operations through specialized internship experience, evolved into senior product management. Led cross-functional teams, delivered transformative digital solutions, and drove significant business impact through data-driven strategy and customer-centric innovation.
-                        </div>
-                    </div>
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <div class="project-header">
+                    <div class="project-title">NC Birth Records & Maternal Patterns</div>
+                    <div class="project-tag">DATA ANALYSIS</div>
                 </div>
-
-                <!-- Navigation -->
-                <div class="carousel-nav">
-                    <button id="prevBtn" onclick="prevYear()">← Previous</button>
-                    <button id="nextBtn" onclick="nextYear()">Next →</button>
+                <div class="project-tech">Research • R Studio, Excel</div>
+                <div class="project-description">
+                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and identify key patterns affecting maternal health outcomes.
                 </div>
-                <div class="progress-indicator" id="progress">1 of 4 years</div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">03</div>
+                <div class="project-header">
+                    <div class="project-title">IMDB Review Sentiment Analysis</div>
+                    <div class="project-tag">NLP / AI</div>
+                </div>
+                <div class="project-tech">AI Project • Claude, GitHub, R, NLP</div>
+                <div class="project-description">
+                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through connectors for enhanced analysis capabilities.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="journey" class="experience-section container">
+        <span class="section-number">02</span>
+        <h2>The <span class="highlight">Temporal</span> Ledger</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 2rem;">2016 - Present</p>
+
+        <div class="timeline-full">
+            <span class="timeline-year active" onclick="selectYear(2019)">2019</span>
+            <span class="timeline-year" onclick="selectYear(2020)">2020</span>
+            <span class="timeline-year" onclick="selectYear(2022)">2022</span>
+            <span class="timeline-year" onclick="selectYear(2025)">2025</span>
+        </div>
+
+        <div class="experience-cards-container" id="experienceCardsContainer">
+            <!-- 2019 -->
+            <div class="experience-card active" data-year="2019">
+                <div class="card-year">2019</div>
+                <div class="card-badge">LEADERSHIP</div>
+                <div class="card-title">Tour Ambassador</div>
+                <div class="card-company">Purdue University — West Lafayette, IN</div>
+                <div class="card-date">Feb 2019 – May 2022</div>
+                <div class="card-evolution-label">Key Evolution</div>
+                <div class="card-evolution-text">
+                    Delivered thousands of customer-facing experiences annually with 80% satisfaction rating. Redesigned tour pathways reducing congestion by 25% through visitor feedback analysis.
+                </div>
+            </div>
+
+            <div class="experience-card active" data-year="2019">
+                <div class="card-year">2019</div>
+                <div class="card-badge">INTERNSHIP</div>
+                <div class="card-title">Manufacturing Operations Intern</div>
+                <div class="card-company">Heineken (Nigerian Breweries) — Lagos, Nigeria</div>
+                <div class="card-date">Jun 2019 – Aug 2019</div>
+                <div class="card-evolution-label">Key Evolution</div>
+                <div class="card-evolution-text">
+                    Identified process bottlenecks and automated reporting workflows in a large-scale manufacturing environment, reducing manual intervention by 20%. Developed dashboards tracking production metrics.
+                </div>
+            </div>
+
+            <!-- 2020 -->
+            <div class="experience-card" data-year="2020">
+                <div class="card-year">2020</div>
+                <div class="card-badge">OPERATIONS</div>
+                <div class="card-title">Building Attendant</div>
+                <div class="card-company">Purdue Morial Union — West Lafayette, IN</div>
+                <div class="card-date">Aug 2020 – May 2021</div>
+                <div class="card-evolution-label">Key Evolution</div>
+                <div class="card-evolution-text">
+                    Managed daily operations for high-traffic facilities with opening/closing procedures and event coordination. Supervised new attendants providing feedback that improved organizational procedures.
+                </div>
+            </div>
+
+            <!-- 2022 -->
+            <div class="experience-card" data-year="2022">
+                <div class="card-year">2022</div>
+                <div class="card-badge">PRODUCT MANAGEMENT</div>
+                <div class="card-title">Product Manager</div>
+                <div class="card-company">Viaero Wireless — Fort Morgan, CO</div>
+                <div class="card-date">Dec 2022 – May 2025</div>
+                <div class="card-evolution-label">Key Evolution</div>
+                <div class="card-evolution-text">
+                    Led end-to-end product strategy for broadband and IP services. Launched internal inventory tool, developed cloud-connected eCommerce platform, and discovered $500K market opportunity.
+                </div>
             </div>
         </div>
 
-        <!-- Projects Section -->
-        <section>
-            <h2>Projects</h2>
+        <div class="carousel-controls">
+            <div class="carousel-nav">
+                <button id="prevBtn" onclick="prevYear()">‹</button>
+                <button id="nextBtn" onclick="nextYear()">›</button>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+            <div class="progress-text" id="progressText">01 / 08</div>
+        </div>
+    </section>
 
-            <div class="project-item">
-                <div class="project-title">Digital Systems Senior Design</div>
-                <div class="project-tech">Verilog | KiCad | Zigbee | Arduino</div>
-                <div class="project-description">
-                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networks an[...]
+    <!-- Skills Section -->
+    <section id="skills" class="container">
+        <span class="section-number">03</span>
+        <h2>The Tools I <span class="highlight">Work With</span></h2>
+
+        <div class="skills-matrix">
+            <div>
+                <span class="category-label">Product Management</span>
+                <div class="skill-row">
+                    <span class="skill-name">Product Strategy & Roadmapping</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Technical PRDs & User Stories</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Go-to-Market (GTM) Strategy</span>
+                    <span class="skill-indicator">•••</span>
                 </div>
             </div>
 
-            <div class="project-item">
-                <div class="project-title">North Carolina Birth Records and Maternal Patterns Analysis</div>
-                <div class="project-tech">R Studio | Excel | Statistical Analysis</div>
-                <div class="project-description">
-                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and i[...]
+            <div>
+                <span class="category-label">Data & Analytics</span>
+                <div class="skill-row">
+                    <span class="skill-name">Data-Driven Decision-Making</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Product Analytics & KPIs</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Python • SQL • R</span>
+                    <span class="skill-indicator">•••</span>
                 </div>
             </div>
 
-            <div class="project-item">
-                <div class="project-title">IMDB Review Sentiment Classification</div>
-                <div class="project-tech">Claude | GitHub | R | NLP</div>
-                <div class="project-description">
-                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through connectors[...]
+            <div>
+                <span class="category-label">Business & Leadership</span>
+                <div class="skill-row">
+                    <span class="skill-name">Cross-functional Leadership</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Stakeholder Management</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Process Improvement & SOPs</span>
+                    <span class="skill-indicator">•••</span>
                 </div>
             </div>
-        </section>
 
-        <!-- Education Section -->
-        <section>
-            <h2>Education</h2>
-
-            <div class="education-item">
-                <div class="degree">Bachelor of Science, Electrical Engineering</div>
-                <div class="university">Purdue University</div>
-                <div class="education-location">West Lafayette, IN</div>
+            <div>
+                <span class="category-label">Tools & Technologies</span>
+                <div class="skill-row">
+                    <span class="skill-name">Figma • QuickBase • Excel</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">RStudio • MATLAB • GitHub</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
+                <div class="skill-row">
+                    <span class="skill-name">Claude • SharePoint</span>
+                    <span class="skill-indicator">•••</span>
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="education-item">
-                <div class="degree">Master of Science, Data Analytics</div>
-                <div class="university">Indiana Wesleyan University</div>
-                <div class="education-location">Marion, IN</div>
+    <!-- About Section -->
+    <section id="about" class="container">
+        <span class="section-number">01</span>
+        <h2>About</h2>
+        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
+            I'm a Product Manager with a unique blend of electrical engineering and data analytics expertise. My career journey spans from early-stage leadership roles through specialized internships, evolving into senior product management. I excel at translating complex technical insights into clear, actionable product strategies that drive measurable business impact. Passionate about building solutions that scale and delivering data-driven growth.
+        </p>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <div style="display: grid; gap: 2rem; max-width: 600px;">
+            <div>
+                <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Bachelor of Science, Electrical Engineering</div>
+                <div style="color: var(--primary-green); font-weight: 500;">Purdue University</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">West Lafayette, IN</div>
             </div>
-        </section>
-    </div>
+            <div>
+                <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Master of Science, Data Analytics</div>
+                <div style="color: var(--primary-green); font-weight: 500;">Indiana Wesleyan University</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Marion, IN</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <div style="max-width: 600px;">
+            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                I'm always interested in connecting with teams working on meaningful products. Whether it's discussing strategy, collaboration opportunities, or just saying hello, feel free to reach out.
+            </p>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <a href="mailto:ofilikene@gmail.com" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    📧 ofilikene@gmail.com
+                </a>
+                <a href="https://linkedin.com/in/kofili" target="_blank" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    🔗 LinkedIn Profile
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2025 Kenechukwu Ofili. All rights reserved.</p>
     </footer>
 
     <script>
-        const yearsOrder = [2019, 2020, 2022, 2025];
+        const yearsOrder = [2019, 2020, 2022];
         let currentYearIndex = 0;
+        const totalCards = 4;
 
         function selectYear(year) {
             currentYearIndex = yearsOrder.indexOf(year);
-            updateCarousel();
+            updateExperience();
         }
 
         function nextYear() {
             if (currentYearIndex < yearsOrder.length - 1) {
                 currentYearIndex++;
-                updateCarousel();
+                updateExperience();
             }
         }
 
         function prevYear() {
             if (currentYearIndex > 0) {
                 currentYearIndex--;
-                updateCarousel();
+                updateExperience();
             }
         }
 
-        function updateCarousel() {
+        function updateExperience() {
             const currentYear = yearsOrder[currentYearIndex];
-            
+
             // Update cards
             document.querySelectorAll('.experience-card').forEach(card => {
                 if (card.dataset.year == currentYear) {
@@ -625,7 +897,7 @@
                 }
             });
 
-            // Update timeline header
+            // Update timeline
             document.querySelectorAll('.timeline-year').forEach(span => {
                 span.classList.remove('active');
             });
@@ -636,11 +908,21 @@
             document.getElementById('nextBtn').disabled = currentYearIndex === yearsOrder.length - 1;
 
             // Update progress
-            document.getElementById('progress').textContent = `${currentYearIndex + 1} of ${yearsOrder.length} years`;
+            const cardsForYear = document.querySelectorAll(`[data-year="${currentYear}"]`).length;
+            const activeIndex = currentYearIndex + 1;
+            document.getElementById('progressText').textContent = `0${activeIndex} / 0${yearsOrder.length}`;
+            document.getElementById('progressFill').style.width = `${(activeIndex / yearsOrder.length) * 100}%`;
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         // Initialize
-        updateCarousel();
+        updateExperience();
     </script>
 </body>
 </html>
