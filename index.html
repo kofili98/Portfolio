@@ -103,7 +103,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path[...]
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)" /></svg>');
             opacity: 0.3;
         }
 
@@ -647,15 +647,6 @@
         <div class="hero-content">
             <div class="status-badge">Open to opportunities</div>
             <h1>Kenechukwu <span class="highlight">Ofili</span></h1>
-            <p class="hero-subtitle">
-            </p>
-            <!-- About Section -->
-                        <section id="about" class="container">
-                         <h2>About</h2>
-                            <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
-                                I'm a Product Manager with a unique blend of electrical engineering and data analytics expertise. My career journey spans from early-stage leadership roles through specialized internships, each expanding my ability to translate complex technical challenges into customer-centric product solutions.
-                            </p>
-                        </section>
             <div class="hero-cta">
                 <button class="cta-button primary-btn" onclick="scrollToSection('journey')">View My Journey</button>
                 <button class="cta-button" onclick="scrollToSection('contact')">Get In Touch</button>
@@ -677,9 +668,17 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section id="about" class="container">
+        <h2>About</h2>
+        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
+            I'm a Product Manager with a unique blend of electrical engineering and data analytics expertise. My career journey spans from early-stage leadership roles through specialized technical functions, building products that solve real problems and drive measurable impact. I'm passionate about bridging the gap between customer needs and technical possibilities.
+        </p>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects" class="container">
-        <h2>Outside the<span class="highlight">Office</span></h2>
+        <h2>Outside the <span class="highlight">Office</span></h2>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-number">01</div>
@@ -689,7 +688,7 @@
                 </div>
                 <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
                 <div class="project-description">
-                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networks and Arduino microcontrollers.
+                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networks and Arduino-based controllers for seamless device interoperability.
                 </div>
             </div>
 
@@ -701,7 +700,7 @@
                 </div>
                 <div class="project-tech">Research • R Studio, Excel</div>
                 <div class="project-description">
-                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and identify health patterns.
+                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and identify key maternal health factors.
                 </div>
             </div>
 
@@ -713,7 +712,7 @@
                 </div>
                 <div class="project-tech">AI Project • Claude, GitHub, R, NLP</div>
                 <div class="project-description">
-                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through connectors for real-time integration.
+                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through connectors for enhanced AI analysis capabilities.
                 </div>
             </div>
         </div>
@@ -721,7 +720,7 @@
 
     <!-- Experience Section -->
     <section id="journey" class="experience-section container">
-        <h2>The <span class="highlight">My</span> Journey </h2>
+        <h2>The <span class="highlight">My</span> Journey</h2>
         <p style="color: var(--text-secondary); margin-bottom: 2rem;">2016 - Present</p>
 
         <div class="timeline-full">
@@ -779,7 +778,7 @@
                 <div class="card-date">Dec 2022 – May 2025</div>
                 <div class="card-evolution-label">Key Evolution</div>
                 <div class="card-evolution-text">
-                    Led end-to-end product strategy for broadband and IP services. Launched internal inventory tool, developed cloud-connected eCommerce platform, and discovered $500K market opportunity.
+                    Led end-to-end product strategy for broadband and IP services. Launched internal inventory tool, developed cloud-connected eCommerce platform, and discovered $500K market opportunities.
                 </div>
             </div>
         </div>
@@ -792,7 +791,7 @@
             <div class="progress-bar">
                 <div class="progress-fill" id="progressFill"></div>
             </div>
-            <div class="progress-text" id="progressText">01 / 08</div>
+            <div class="progress-text" id="progressText">01 / 04</div>
         </div>
     </section>
 
@@ -811,7 +810,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across executive leadership.
+                        Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across executive teams.
                     </div>
                 </div>
                 <div class="skill-row" onclick="toggleSkill(this)">
@@ -821,7 +820,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate product vision into actionable tasks.
+                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate product vision into executable specs.
                     </div>
                 </div>
                 <div class="skill-row" onclick="toggleSkill(this)">
@@ -855,7 +854,7 @@
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product telemetry.
+                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product telemetry and user behavior.
                     </div>
                 </div>
                 <div class="skill-row" onclick="toggleSkill(this)">
@@ -962,7 +961,7 @@
         <h2>Get In Touch</h2>
         <div style="max-width: 600px;">
             <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
-                I'm always interested in connecting with teams working on meaningful products. Whether it's discussing strategy, collaboration opportunities, or just saying hello, feel free to reach out.
+                I'm always interested in connecting with teams working on meaningful products. Whether it's discussing strategy, collaboration opportunities, or just saying hello, feel free to reach out!
             </p>
             <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
                 <a href="mailto:ofilikene@gmail.com" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
@@ -980,9 +979,8 @@
     </footer>
 
     <script>
-        const yearsOrder = [2019, 2020, 2022];
+        const yearsOrder = [2019, 2020, 2022, 2025];
         let currentYearIndex = 0;
-        const totalCards = 4;
 
         function selectYear(year) {
             currentYearIndex = yearsOrder.indexOf(year);
@@ -1004,32 +1002,40 @@
         }
 
         function updateExperience() {
-            const currentYear = yearsOrder[currentYearIndex];
-
-            // Update cards
-            document.querySelectorAll('.experience-card').forEach(card => {
-                if (card.dataset.year == currentYear) {
+            const selectedYear = yearsOrder[currentYearIndex];
+            const cards = document.querySelectorAll('.experience-card');
+            const timelineYears = document.querySelectorAll('.timeline-year');
+            
+            // Update cards visibility
+            cards.forEach(card => {
+                card.classList.remove('active');
+                if (card.getAttribute('data-year') == selectedYear) {
                     card.classList.add('active');
-                } else {
-                    card.classList.remove('active');
                 }
             });
 
             // Update timeline
-            document.querySelectorAll('.timeline-year').forEach(span => {
-                span.classList.remove('active');
+            timelineYears.forEach(year => {
+                year.classList.remove('active');
+                if (parseInt(year.textContent) === selectedYear) {
+                    year.classList.add('active');
+                }
             });
-            document.querySelector(`.timeline-year[onclick="selectYear(${currentYear})"]`).classList.add('active');
+
+            // Update progress
+            const progress = ((currentYearIndex + 1) / yearsOrder.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = 
+                String(currentYearIndex + 1).padStart(2, '0') + ' / ' + 
+                String(yearsOrder.length).padStart(2, '0');
 
             // Update buttons
             document.getElementById('prevBtn').disabled = currentYearIndex === 0;
             document.getElementById('nextBtn').disabled = currentYearIndex === yearsOrder.length - 1;
+        }
 
-            // Update progress
-            const cardsForYear = document.querySelectorAll(`[data-year="${currentYear}"]`).length;
-            const activeIndex = currentYearIndex + 1;
-            document.getElementById('progressText').textContent = `0${activeIndex} / 0${yearsOrder.length}`;
-            document.getElementById('progressFill').style.width = `${(activeIndex / yearsOrder.length) * 100}%`;
+        function toggleSkill(element) {
+            element.classList.toggle('expanded');
         }
 
         function scrollToSection(sectionId) {
@@ -1039,12 +1045,10 @@
             }
         }
 
-        function toggleSkill(element) {
-            element.classList.toggle('expanded');
-        }
-
-        // Initialize
-        updateExperience();
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateExperience();
+        });
     </script>
 </body>
 </html>
