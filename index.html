@@ -109,6 +109,67 @@
             line-height: 1.6;
         }
 
+        /* Time Carousel Styles */
+        .carousel-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .carousel-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease;
+            min-width: 50px;
+        }
+
+        .carousel-button:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .carousel-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: scale(1);
+        }
+
+        .carousel-year-label {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #667eea;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .year-group {
+            display: none;
+        }
+
+        .year-group.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .experience-item {
             margin-bottom: 2rem;
             padding-bottom: 2rem;
@@ -259,6 +320,22 @@
             .skills-grid {
                 grid-template-columns: 1fr;
             }
+
+            .carousel-container {
+                flex-wrap: wrap;
+            }
+
+            .carousel-button {
+                flex: 1;
+                min-width: 40px;
+                padding: 0.6rem 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            .carousel-year-label {
+                flex-basis: 100%;
+                order: -1;
+            }
         }
     </style>
 </head>
@@ -279,7 +356,7 @@
         <section>
             <h2>Professional Summary</h2>
             <p class="summary-text">
-                Product Manager with senior-level experience leading end-to-end product strategy and roadmap for B2B and B2C solutions. Delivered a <span class="highlight">27% lift in customer retention</span> by driving discovery and a <span class="highlight">60% reduction in inventory anomalies</span> through a cross-functional inventory-request tool. Skilled in translating data-driven insights into clear PRDs, user stories, and go-to-market plans. Seeking to apply product leadership and analytics expertise to accelerate growth and value for a forward-thinking organization.
+                Product Manager with senior-level experience leading end-to-end product strategy and roadmap for B2B and B2C solutions. Delivered a <span class="highlight">27% lift in customer retenti[...]
             </p>
         </section>
 
@@ -310,108 +387,124 @@
         <section>
             <h2>Work Experience</h2>
 
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Product Manager</div>
-                        <div class="company">Viaero Wireless</div>
+            <!-- Carousel Controls -->
+            <div class="carousel-container">
+                <button class="carousel-button" id="prevBtn" onclick="changeYear(-1)">← Prev</button>
+                <div class="carousel-year-label" id="yearLabel">2022</div>
+                <button class="carousel-button" id="nextBtn" onclick="changeYear(1)">Next →</button>
+            </div>
+
+            <!-- 2022 Year Group -->
+            <div class="year-group active" data-year="2022">
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Product Manager</div>
+                            <div class="company">Viaero Wireless</div>
+                        </div>
+                        <div>
+                            <div class="location">Fort Morgan, CO</div>
+                            <div class="date-range">Dec 2022 – May 2025</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="location">Fort Morgan, CO</div>
-                        <div class="date-range">Dec 2022 – May 2025</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Formulated end-to-end Product Strategy and roadmap ownership for broadband and IP services by driving comprehensive Customer Discovery initiatives; integrated customer feed[...]
+                            <li>Exercised cross-functional leadership across supply chain, engineering, and commercial teams to launch an internal inventory-request tool; optimized relational data models [...]
+                            <li>Spearheaded development of a cloud-connected eCommerce platform from requirements gathering through validation; co-authored comprehensive technical PRDs and user stories wi[...]
+                            <li>Conducted deep market and competitive analysis to architect rigorous ROI models, discovering an unmapped, scalable market segment opportunity valued at $500K in net-new rec[...]
+                            <li>Reduced cart and checkout abandonment by identifying friction points and drove a 15% conversion increase through usability testing and flow redesign.</li>
+                            <li>Developed executive-facing KPI dashboards tracking customer acquisition, adoption, retention, and revenue performance to support strategic planning.</li>
+                            <li>Developed a centralized product and compliance knowledge repository (SharePoint) empowering sales and marketing teams across multi-channel touchpoints.</li>
+                            <li>Expanded the unified voice (VoIP) ecosystem portfolio, scaling total addressable market (TAM) footprint by 18%.</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="job-description">
-                    <ul>
-                        <li>Formulated end-to-end Product Strategy and roadmap ownership for broadband and IP services by driving comprehensive Customer Discovery initiatives; integrated customer feedback to decrease friction points, elevating customer engagement and retention by 27%.</li>
-                        <li>Exercised cross-functional leadership across supply chain, engineering, and commercial teams to launch an internal inventory-request tool; optimized relational data models and pipelines, reducing inventory anomalies by 60% and increasing on-time delivery metrics by 46%.</li>
-                        <li>Spearheaded development of a cloud-connected eCommerce platform from requirements gathering through validation; co-authored comprehensive technical PRDs and user stories within an Agile framework to deliver iterative feature enhancements.</li>
-                        <li>Conducted deep market and competitive analysis to architect rigorous ROI models, discovering an unmapped, scalable market segment opportunity valued at $500K in net-new recurring revenue.</li>
-                        <li>Reduced cart and checkout abandonment by identifying friction points and drove a 15% conversion increase through usability testing and flow redesign.</li>
-                        <li>Developed executive-facing KPI dashboards tracking customer acquisition, adoption, retention, and revenue performance to support strategic planning.</li>
-                        <li>Developed a centralized product and compliance knowledge repository (SharePoint) empowering sales and marketing teams across multi-channel touchpoints.</li>
-                        <li>Expanded the unified voice (VoIP) ecosystem portfolio, scaling total addressable market (TAM) footprint by 18%.</li>
-                    </ul>
                 </div>
             </div>
 
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Tour Ambassador</div>
-                        <div class="company">Purdue University</div>
+            <!-- 2020 Year Group -->
+            <div class="year-group" data-year="2020">
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Building Attendant</div>
+                            <div class="company">Purdue Morial Union</div>
+                        </div>
+                        <div>
+                            <div class="location">West Lafayette, IN</div>
+                            <div class="date-range">Aug 2020 – May 2021</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="location">West Lafayette, IN</div>
-                        <div class="date-range">Feb 2019 – May 2022</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Managed daily operations for high-traffic facilities, executing opening/closing procedures and coordinating setups for events and visitors.</li>
+                            <li>Supervised new Building Attendants, providing feedback and coaching that improved policy adherence and maintained high service standards.</li>
+                            <li>Logged detailed shift reports that informed process improvements and policy updates.</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="job-description">
-                    <ul>
-                        <li>Delivered thousands of customer-facing experiences annually while maintaining an average satisfaction rating of 80% for prospective students and families.</li>
-                        <li>Leveraged visitor feedback and observational analysis to redesign tour pathways, reducing congestion by 25% and improving overall visitor experience.</li>
-                        <li>Collaborated with university stakeholders to refine messaging and engagement strategies based on audience needs and feedback trends.</li>
-                    </ul>
                 </div>
             </div>
 
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Building Attendant</div>
-                        <div class="company">Purdue Morial Union</div>
+            <!-- 2019 Year Group -->
+            <div class="year-group" data-year="2019">
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Tour Ambassador</div>
+                            <div class="company">Purdue University</div>
+                        </div>
+                        <div>
+                            <div class="location">West Lafayette, IN</div>
+                            <div class="date-range">Feb 2019 – May 2022</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="location">West Lafayette, IN</div>
-                        <div class="date-range">Aug 2020 – May 2021</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Delivered thousands of customer-facing experiences annually while maintaining an average satisfaction rating of 80% for prospective students and families.</li>
+                            <li>Leveraged visitor feedback and observational analysis to redesign tour pathways, reducing congestion by 25% and improving overall visitor experience.</li>
+                            <li>Collaborated with university stakeholders to refine messaging and engagement strategies based on audience needs and feedback trends.</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="job-description">
-                    <ul>
-                        <li>Managed daily operations for high-traffic facilities, executing opening/closing procedures and coordinating setups for events and visitors.</li>
-                        <li>Supervised new Building Attendants, providing feedback and coaching that improved policy adherence and maintained high service standards.</li>
-                        <li>Logged detailed shift reports that informed process improvements and policy updates.</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">First-Year Engineering Undergraduate Teaching Assistant</div>
-                        <div class="company">Purdue College of Engineering</div>
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">First-Year Engineering Undergraduate Teaching Assistant</div>
+                            <div class="company">Purdue College of Engineering</div>
+                        </div>
+                        <div>
+                            <div class="location">West Lafayette, IN</div>
+                            <div class="date-range">Aug 2019 – May 2020</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="location">West Lafayette, IN</div>
-                        <div class="date-range">Aug 2019 – May 2020</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Supported students during in-class engineering activities, assignments, and team-based problem solving.</li>
+                            <li>Collaborated with instructors and teaching team to deliver consistent classroom support and accurate grading.</li>
+                            <li>Maintained professionalism, confidentiality, and compliance with FERPA requirements.</li>
+                        </ul>
                     </div>
                 </div>
-                <div class="job-description">
-                    <ul>
-                        <li>Supported students during in-class engineering activities, assignments, and team-based problem solving.</li>
-                        <li>Collaborated with instructors and teaching team to deliver consistent classroom support and accurate grading.</li>
-                        <li>Maintained professionalism, confidentiality, and compliance with FERPA requirements.</li>
-                    </ul>
-                </div>
-            </div>
 
-            <div class="experience-item">
-                <div class="job-header">
-                    <div>
-                        <div class="job-title">Manufacturing Operations Intern</div>
-                        <div class="company">Heineken (Nigerian Breweries)</div>
+                <div class="experience-item">
+                    <div class="job-header">
+                        <div>
+                            <div class="job-title">Manufacturing Operations Intern</div>
+                            <div class="company">Heineken (Nigerian Breweries)</div>
+                        </div>
+                        <div>
+                            <div class="location">Lagos, Nigeria</div>
+                            <div class="date-range">Jun 2019 – Aug 2019</div>
+                        </div>
                     </div>
-                    <div>
-                        <div class="location">Lagos, Nigeria</div>
-                        <div class="date-range">Jun 2019 – Aug 2019</div>
+                    <div class="job-description">
+                        <ul>
+                            <li>Collaborated with engineering, production, and operations teams to identify process bottlenecks and automate reporting workflows, reducing manual intervention by 20%.<[...]
+                            <li>Developed dashboards tracking production output, quality compliance, and operational performance metrics, improving decision-making speed by 15%.</li>
+                            <li>Created technical documentation and SOPs to support process standardization and workforce training initiatives.</li>
+                        </ul>
                     </div>
-                </div>
-                <div class="job-description">
-                    <ul>
-                        <li>Collaborated with engineering, production, and operations teams to identify process bottlenecks and automate reporting workflows, reducing manual intervention by 20%.</li>
-                        <li>Developed dashboards tracking production output, quality compliance, and operational performance metrics, improving decision-making speed by 15%.</li>
-                        <li>Created technical documentation and SOPs to support process standardization and workforce training initiatives.</li>
-                    </ul>
                 </div>
             </div>
         </section>
@@ -424,7 +517,7 @@
                 <div class="project-title">Digital Systems Senior Design</div>
                 <div class="project-tech">Verilog | KiCad | Zigbee | Arduino</div>
                 <div class="project-description">
-                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networks and microcontrollers. Championed API-driven integrations, circuit schematic layouts, and rigorous hardware-software testing protocols to establish reliable, low-latency, and highly scalable system architectures.
+                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networks an[...]
                 </div>
             </div>
 
@@ -432,7 +525,7 @@
                 <div class="project-title">North Carolina Birth Records and Maternal Patterns Analysis</div>
                 <div class="project-tech">R Studio | Excel | Statistical Analysis</div>
                 <div class="project-description">
-                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and infant outcomes, delivering data-driven healthcare recommendations.
+                    Conducted statistical analysis of North Carolina birth records using descriptive statistics, linear regression, t-tests, and chi-square testing to evaluate prenatal behaviors and i[...]
                 </div>
             </div>
 
@@ -440,7 +533,7 @@
                 <div class="project-title">IMDB Review Sentiment Classification</div>
                 <div class="project-tech">Claude | GitHub | R | NLP</div>
                 <div class="project-description">
-                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through connectors, creating an AI-powered interface for interacting with the project. Implemented reproducible data preprocessing, feature engineering, and model training workflows.
+                    Built an NLP sentiment classification model in R to analyze text and predict sentiment. Deployed the source code to GitHub and connected the repository to Claude through connectors[...]
                 </div>
             </div>
         </section>
@@ -466,5 +559,37 @@
     <footer>
         <p>&copy; 2025 Kenechukwu Ofili. All rights reserved.</p>
     </footer>
+
+    <script>
+        const years = [2022, 2020, 2019];
+        let currentIndex = 0;
+
+        function showYear(index) {
+            // Hide all year groups
+            document.querySelectorAll('.year-group').forEach(group => {
+                group.classList.remove('active');
+            });
+
+            // Show current year group
+            const currentYear = years[index];
+            document.querySelector(`.year-group[data-year="${currentYear}"]`).classList.add('active');
+            document.getElementById('yearLabel').textContent = currentYear;
+
+            // Update button states
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === years.length - 1;
+        }
+
+        function changeYear(direction) {
+            const newIndex = currentIndex + direction;
+            if (newIndex >= 0 && newIndex < years.length) {
+                currentIndex = newIndex;
+                showYear(currentIndex);
+            }
+        }
+
+        // Initialize
+        showYear(0);
+    </script>
 </body>
 </html>
