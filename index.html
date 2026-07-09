@@ -340,6 +340,64 @@
             opacity: 1;
         }
 
+        /* Project Showcase */
+        .project-showcase{
+            display:grid;
+            grid-template-columns:1.2fr 1fr;
+            gap:2rem;
+            align-items:start;
+            max-height:0;
+            overflow:hidden;
+            opacity:0;
+            margin-top:0;
+            transition:max-height .6s ease,opacity .4s ease,margin .4s ease;
+        }
+        
+        .project-card:hover .project-showcase{
+            max-height:900px;opacity:1;margin-top:1.5rem;
+        }
+        
+        .project-image{
+            overflow:hidden;
+            border-radius:12px;
+            border:1px solid var(--border-color);
+            background:var(--card-bg);
+        }
+        
+        .project-image::before{
+            content:'';
+            display:block;
+            height:36px;
+            background:#1b2236;
+            border-bottom:1px solid var(--border-color);
+        }
+        
+        .project-image img{
+            width:100%;
+            display:block;
+            transform:scale(.95);
+            opacity:.85;
+            transition:transform .5s ease,opacity .5s ease;
+        }
+        
+        .project-card:hover .project-image img{
+            transform:scale(1);opacity:1;
+        }
+        
+        .image-caption{
+            padding:12px;
+            font-size:.8rem;color:var(--text-secondary);
+            border-top:1px solid var(--border-color);
+        }
+        
+        .project-results{
+            margin-top:1rem;padding-left:1.2rem;
+        }
+        
+        .project-results li{
+            margin-bottom:.5rem;
+        }
+
         /* Experience Section */
         .experience-section {
             padding: 6rem 0;
@@ -985,10 +1043,16 @@
                     <div class="project-tag">IOT / HARDWARE</div>
                 </div>
                 <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
-                <div class="project-description">
-                    Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networking protocol, created PCB schematics in KiCad, and developed firmware in Verilog for FPGA integration and Arduino microcontrollers.
+                <div class="project_showcase">
+                    <div class="project-image">
+                        <img src="https://kofili98.github.io/Portfolio/image/ES9.JPG" alt="battery charging system">
+                        <div class="image-caption"> Schematic for proposed battery charging system based on a buck/boost IC. 
+                        </div>
+                    </div>
+                    <div class="project-description">
+                        Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networking protocol, created PCB schematics in KiCad, and developed firmware in Verilog for FPGA integration and Arduino microcontrollers.
+                    </div>
                 </div>
-            </div>
 
             <div class="project-card">
                 <div class="project-number">02</div>
@@ -1130,7 +1194,6 @@
         let navPinned = false;
         
         // Scroll behavior
-        
         window.addEventListener("scroll", () => {
             if (navPinned) return;
             const currentScrollY = window.scrollY;
