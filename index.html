@@ -48,7 +48,7 @@
         }
         
         nav.hide {
-            transform: translateY(calc(-100% + 8px));
+            transform: translateY(-90%);
         }
 
         .logo {
@@ -74,15 +74,6 @@
 
         .nav-links a:hover {
             color: var(--primary-green);
-        }
-
-        #navTrigger {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 15px;
-            z-index: 999;
         }
 
         .cta-button {
@@ -1052,21 +1043,7 @@
         <p>&copy; 2025 Kenechukwu Ofili. All rights reserved.</p>
     </footer>
 
-    <script>
-        //Show navbar when hovering at the top
-        const navbar = document.querySelector("nav");
-        const navTrigger = document.getElementById("navTrigger");
-
-        navTrigger.addEventListener("mouseenter", () => {
-            navbar.classList.remove("hide");
-        });
-
-        navbar.addEventListener("mouseleave", () => {
-            if (window.scrollY > 20) {
-                navbar.classList.add("hide");
-            }
-        });
-        
+    <script>        
         // Smooth scroll to section
         function scrollToSection(sectionId) {
             const element = document.getElementById(sectionId);
@@ -1134,26 +1111,54 @@
 
         // Hide navbar when scrolling
         const navbar = document.querySelector("nav");
+        const navTrigger = document.getElementById("navTrigger");
+        
         let lastScrollY = window.scrollY;
         const threshold = 15;
+        let navPinned = false;
+        
+        // Scroll behavior
         
         window.addEventListener("scroll", () => {
-            const currentScrollY = window.scrollY; 
+            if (navPinned) return;
+            const currentScrollY = window.scrollY;
+            
+            // Always visible near top
             if (currentScrollY <= 20) {
-            navbar.classList.remove("hide");
-            lastScrollY = currentScrollY;
+                navbar.classList.remove("hide");
+                lastScrollY = currentScrollY;
                 return;
             }
             
-            if (Math.abs(currentScrollY - lastScrollY) < threshold) return;
+            if (Math.abs(currentScrollY - lastScrollY) < threshold)
+                return;
             
             if (currentScrollY > lastScrollY) {
                 navbar.classList.add("hide");
             } else {
                 navbar.classList.remove("hide");
             }
-            
             lastScrollY = currentScrollY;
+        });
+        
+        // Hover trigger
+        navTrigger.addEventListener("mouseenter", () => {
+            navPinned = true;
+            navbar.classList.remove("hide");
+        });
+        
+        // Mouse leaves navbar
+        navbar.addEventListener("mouseleave", () => {
+            navPinned = false;
+            if (window.scrollY > 20) {
+                navbar.classList.add("hide");
+            }
+        });
+
+        document.addEventListener("mousemove", (e) => {
+            if (e.clientY < 20) {
+            navbar.classList.remove("hide");
+            }
         });
     </script>
 </body>
