@@ -27,12 +27,15 @@
             color: var(--text-primary);
             background: var(--dark-bg);
             min-height: 100vh;
+            padding-top: 80px;
         }
 
         /* Navigation */
         nav {
-            position: sticky;
+            position: fixed;
             top: 0;
+            left: 0;
+            width: 100%;
             z-index: 1000;
             background: rgba(10, 14, 39, 0.95);
             border-bottom: 1px solid var(--border-color);
@@ -41,6 +44,11 @@
             justify-content: space-between;
             align-items: center;
             backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+        
+        nav.hide {
+            transform: translateY(-100%);
         }
 
         .logo {
@@ -1098,6 +1106,30 @@
 
         // Initialize progress bar
         updateProgressBar();
+
+        // Hide navbar when scrolling
+        const navbar = document.querySelector("nav");
+        let lastScrollY = window.scrollY;
+        const threshold = 15;
+        
+        window.addEventListener("scroll", () => {
+            const currentScrollY = window.scrollY; 
+            if (currentScrollY <= 20) {
+            navbar.classList.remove("hide");
+            lastScrollY = currentScrollY;
+                return;
+            }
+            
+            if (Math.abs(currentScrollY - lastScrollY) < threshold) return;
+            
+            if (currentScrollY > lastScrollY) {
+                navbar.classList.add("hide");
+            } else {
+                navbar.classList.remove("hide");
+            }
+            
+            lastScrollY = currentScrollY;
+        });
     </script>
 </body>
 </html>
