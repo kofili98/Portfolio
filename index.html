@@ -273,99 +273,88 @@
             padding: 2rem;
             position: relative;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: all .35s ease;
             background: var(--card-bg);
             cursor: pointer;
         }
-
-        .project-card:hover {
-            border-color: var(--primary-green);
-            box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+        
+        .project-card:hover{
+            border-color:var(--primary-green);
+            transform:translateY(-4px);
+            box-shadow:0 20px 40px rgba(0,0,0,.35);
         }
-
-        .project-number {
-            font-size: 4rem;
-            font-weight: 800;
-            color: rgba(255, 69, 0, 0.1);
-            position: absolute;
-            top: 1rem;
-            left: 2rem;
-            line-height: 1;
+        
+        .project-number{
+            font-size:4rem;
+            font-weight:800;
+            color:rgba(255,69,0,.08);
+            position:absolute;
+            top:1rem;
+            left:2rem;
         }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
+        
+        .project-header{
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-start;
+            position:relative;
+            z-index:2;
+            margin-bottom:1rem;
         }
-
-        .project-title {
-            font-size: 1.8rem;
-            font-weight: 700;
+        
+        .project-title{
+            font-size:1.8rem;
+            font-weight:700;
         }
-
-        .project-tag {
-            background: transparent;
-            border: 1px solid var(--primary-green);
-            color: var(--primary-green);
-            padding: 0.4rem 0.8rem;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            white-space: nowrap;
+        
+        .project-tag{
+            border:1px solid var(--primary-green);
+            color:var(--primary-green);
+            padding:.4rem .8rem;
+            font-size:.7rem;
+            letter-spacing:.1em;
         }
-
-        .project-tech {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
+        
+        .project-tech{
+            color:var(--text-secondary);
+            margin-bottom:1rem;
+            text-transform:uppercase;
+            font-size:.9rem;
         }
-
-        .project-description {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .project-card:hover .project-description {
-            max-height: 500px;
-            opacity: 1;
-        }
-
-        /* Project Showcase */
-        .project-showcase{
+        
+        .project-content{
             display:grid;
             grid-template-columns:1.2fr 1fr;
             gap:2rem;
             align-items:start;
-            max-height:0;
             overflow:hidden;
+            max-height:0;
             opacity:0;
+            transform:translateY(25px);
+            transition:
+                max-height .6s ease,
+                opacity .45s ease,
+                transform .45s ease,
+                margin .45s ease;
             margin-top:0;
-            transition:max-height .6s ease,opacity .4s ease,margin .4s ease;
         }
         
-        .project-card:hover .project-showcase{
-            max-height:900px;opacity:1;margin-top:1.5rem;
+        .project-card:hover .project-content.project-card.active .project-content{
+            max-height:900px;
+            opacity:1;
+            transform:translateY(0);
+            margin-top:1.5rem;
         }
         
         .project-image{
-            overflow:hidden;
             border-radius:12px;
+            overflow:hidden;
             border:1px solid var(--border-color);
-            background:var(--card-bg);
+            background:var(--dark-bg);
         }
         
         .project-image::before{
-            content:'';
+            content:"";
             display:block;
             height:36px;
             background:#1b2236;
@@ -375,27 +364,44 @@
         .project-image img{
             width:100%;
             display:block;
-            transform:scale(.95);
+            transform:scale(.96);
             opacity:.85;
-            transition:transform .5s ease,opacity .5s ease;
+            transition:.45s ease;
         }
         
         .project-card:hover .project-image img{
-            transform:scale(1);opacity:1;
+            transform:scale(1);
+            opacity:1;
         }
         
         .image-caption{
             padding:12px;
-            font-size:.8rem;color:var(--text-secondary);
+            font-size:.8rem;
+            color:var(--text-secondary);
             border-top:1px solid var(--border-color);
         }
         
+        .project-description{
+            color:var(--text-secondary);
+        }
+        
+        .project-description h4{
+            color:white;
+            margin:0 0 .6rem;
+            font-size:1rem;
+        }
+        
+        .project-description p{
+            line-height:1.8;
+            margin-bottom:1.2rem;
+        }
+        
         .project-results{
-            margin-top:1rem;padding-left:1.2rem;
+            padding-left:1.2rem;
         }
         
         .project-results li{
-            margin-bottom:.5rem;
+            margin-bottom:.6rem;
         }
 
         /* Experience Section */
@@ -719,6 +725,10 @@
                 border-left: none;
             }
 
+            .project-content{
+                grid-template-columns:1fr;
+            }
+            
             section h2 {
                 font-size: 1.8rem;
             }
@@ -1043,14 +1053,32 @@
                     <div class="project-tag">IOT / HARDWARE</div>
                 </div>
                 <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
-                <div class="project_showcase">
+                <div class="project-content">
                     <div class="project-image">
                         <img src="https://kofili98.github.io/Portfolio/image/ES9.JPG" alt="battery charging system">
-                        <div class="image-caption"> Schematic for proposed battery charging system based on a buck/boost IC. 
-                        </div>
+                        <div class="image-caption">
+                            Schematic for proposed battery charging system based on a buck/boost IC.
+                        </div>   
                     </div>
                     <div class="project-description">
-                        Architected and deployed a secure, modular smart home IoT platform from concept to prototype validation. Designed underlying system communication nodes utilizing Zigbee networking protocol, created PCB schematics in KiCad, and developed firmware in Verilog for FPGA integration and Arduino microcontrollers.
+                        <h4>Problem</h4>
+                        <p>
+                            Existing smarthome ecosystems lock users into propritery hardware and limit interoperability, 
+                            forcing limited flexibility in customer personalization.
+                        </p>
+                        <h4>Solution</h4>
+                        <p>
+                            Designed and implemented a modular Zigbee-based IoT
+                            platform utilizing custom PCB design, FPGA logic,
+                            Arduino firmware, and secure wireless communication 
+                            to allow for a plug and play approach to smarthome customization.
+                        </p>
+                        <h4>Impact</h4>
+                        <ul class="project-results">
+                            <li>Custom PCB designed in KiCad</li>
+                            <li>Arduino + FPGA integration</li>
+                            <li>Modular Zigbee network architecture</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -1235,6 +1263,14 @@
             if (e.clientY < 20) {
             navbar.classList.remove("hide");
             }
+        });
+
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    card.classList.toggle("active");
+                }
+            });
         });
     </script>
 </body>
