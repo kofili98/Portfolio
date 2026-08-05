@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kenechukwu Ofili - Product Manager & Data Analytics</title>
     <style>
         * {
@@ -111,7 +111,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">[...]');
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="40" stroke="rgba(0,255,65,0.1)" stroke-width="1"/><line x1="0" y1="0" x2="40" y2="0" stroke="rgba(0,255,65,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="none"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
             opacity: 0.3;
         }
 
@@ -670,131 +670,16 @@
             display: block;
         }
 
-        /* ABOUT: two-column layout + carousel */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 360px; /* text | carousel */
-            gap: 2rem;
-            align-items: start;
-            margin-top: 1rem;
-        }
-
-        .about-text p,
-        .about-text ul {
+        /* Footer */
+        footer {
+            padding: 2rem;
+            text-align: center;
             color: var(--text-secondary);
-            line-height: 1.8;
-            max-width: 800px;
-            margin-bottom: 1rem;
+            font-size: 0.9rem;
         }
 
-        .about-carousel {
-            width: 100%;
-            max-width: 360px;
-            margin-left: auto;
-            border-radius: 12px;
-            overflow: hidden;
-            background: linear-gradient(180deg, rgba(17,24,39,0.6), rgba(17,24,39,0.4));
-            border: 1px solid var(--border-color);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.45);
-        }
-
-        /* Carousel internal layout */
-        .carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding: 1rem;
-        }
-
-        .carousel-track-container {
-            overflow: hidden;
-            border-radius: 8px;
-            background: var(--dark-bg);
-        }
-
-        .carousel-track {
-            display: flex;
-            transition: transform 0.45s cubic-bezier(.22,.9,.35,1);
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .carousel-slide {
-            min-width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 0.6rem;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 8px;
-            object-fit: cover;
-            max-height: 260px;
-        }
-
-        /* controls */
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(10,14,39,0.7);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-            width: 40px;
-            height: 40px;
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 4;
-        }
-
-        .carousel-btn:hover {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
-        }
-
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
-
-        /* dots */
-        .carousel-dots {
-            display:flex;
-            gap: 8px;
-            justify-content:center;
-            padding: 0.75rem 0;
-        }
-
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--border-color);
-            cursor: pointer;
-            border: none;
-        }
-
-        .carousel-dot.active {
-            background: var(--primary-green);
-        }
-
-        /* Responsive: stack columns on smaller screens */
+        /* Mobile */
         @media (max-width: 768px) {
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-carousel {
-                max-width: 100%;
-                margin: 1.25rem 0 0 0;
-            }
-
             nav {
                 flex-direction: column;
                 gap: 1.5rem;
@@ -857,7 +742,7 @@
     <nav>
         <div class="logo">KOFILI</div>
         <div class="nav-links">
-            <a href="#about" onclick="scrollToSection('about'); return false;">Who am I?</a>
+            <a href="#about"onclick="scrollToSection('about'); return false;">Who am I?</a>
             <a href="#journey" onclick="scrollToSection('journey'); return false;">My journey</a>
             <a href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
             <a href="#projects" onclick="scrollToSection('projects'); return false;">Creations</a>
@@ -899,68 +784,29 @@
     <!-- About Section -->
     <section id="about" class="container">
         <h2>Who am I?</h2>
-
-        <div class="about-grid">
-            <!-- left: text -->
-            <div class="about-text">
-                <p>
-                   <strong>Hello! I go by Kene.</strong> (Think <em>Penne</em> with a K, so if you're suddenly hungry, blame my parents.)
-                </p>
-                <p>
-                    The rest of this site will give you the breakdown of my professional history, but here is who I am at my core:
-                    <strong>someone who loves understanding people and solving meaningful problems.</strong>
-                </p>
-                <p>
-                    The most rewarding moments of my career have come from sitting down with customers and cross-functional teammates,
-                    listening to their frustrations, uncovering the actual root causes, and building solutions that make their lives
-                    noticeably easier. That innate curiosity and empathy are what ultimately led me into product management.
-                </p>
-
-                <h3>What drives me:</h3>
-                <ul>
-                    <li><strong>User-First Mentality:</strong> The best products are built by people who care deeply about the users they serve.</li>
-                    <li><strong>Continuous Improvement:</strong> Every conversation is a chance to learn; every problem is a chance to optimize.</li>
-                </ul>
-
-                <h3>When I'm offline:</h3>
-                <p>
-                    You'll usually find me following Chelsea FC, talking about cars, discovering new music, or enjoying the beauty nature has to offer.
-                    Whether I'm reverse-engineering how a car engine works or failing spectacularly at a pottery wheel, I just love learning how
-                    things are put together, and how to make them work even better.
-                </p>
-            </div>
-
-            <!-- right: carousel -->
-            <aside class="about-carousel" aria-labelledby="about-carousel-heading">
-                <div class="carousel" role="region" aria-label="Photos">
-                    <button class="carousel-btn prev" aria-label="Previous slide">‹</button>
-
-                    <div class="carousel-track-container">
-                        <ul class="carousel-track">
-                            <li class="carousel-slide current">
-                                <img src="image/Graduation.jpeg" alt="UG Graduation">
-                            </li>
-                            <li class="carousel-slide">
-                                <img src="image/GrandCanyon.jpeg" alt="Exploring nature">
-                            </li>
-                           <!--
-                            <li class="carousel-slide">
-                                <img src="assets/about-3.jpg" alt="Kene exploring outdoors">
-                            </li> 
-                            -->
-                        </ul>
-                    </div>
-
-                    <button class="carousel-btn next" aria-label="Next slide">›</button>
-
-                    <div class="carousel-dots" aria-hidden="false">
-                        <button class="carousel-dot active" data-slide="0" aria-label="Go to slide 1"></button>
-                        <button class="carousel-dot" data-slide="1" aria-label="Go to slide 2"></button>
-                        <!-- <button class="carousel-dot" data-slide="2" aria-label="Go to slide 3"></button> -->
-                    </div>
-                </div>
-            </aside>
-        </div>
+        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
+           <strong>Hello! I go by Kene.</strong> (Think <em>Penne</em> with a K, so if you're suddenly hungry, blame my parents.)
+        </p>
+        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
+            The rest of this site will give you the breakdown of my professional history, but here is who I am at my core: 
+            <strong>someone who loves understanding people and solving meaningful problems.</strong> 
+        </p>
+        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
+            The most rewarding moments of my career have come from sitting down with customers and cross-functional teammates, 
+            listening to their frustrations, uncovering the actual root causes, and building solutions that make their lives 
+            noticeably easier. That innate curiosity and empathy are what ultimately led me into product management.
+        </p>
+        <h3>What drives me:</h3>
+        <ul>
+            <li><strong>User-First Mentality:</strong> The best products are built by people who care deeply about the users they serve.</li>
+            <li><strong>Continuous Improvement:</strong> Every conversation is a chance to learn; every problem is a chance to optimize.</li>
+        </ul>
+        <h3>When I'm offline:</h3>
+        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
+            You'll usually find me following Chelsea FC, talking about cars, discovering new music, or enjoying the beauty nature has to offer. 
+            Whether I'm reverse-engineering how a car engine works or failing spectacularly at a pottery wheel, I just love learning how 
+            things are put together, and how to make them work even better.
+        </p>
     </section>
 
     <!-- Experience Section -->
@@ -1121,7 +967,7 @@
                 <div class="card-date">Aug 2025 - May 2027</div>
                 <div class="card-evolution-label">Impact POSITIONING</div>
                 <div class="card-evolution-text">
-                    Realizing the importance of data driven decision making, I made the committment to further my ability to drive into data to better understand and utilize the abundance of data available in modern products.
+                    Realizing the importance of data driven decision making, I made the committment to further my ability to drive into data to better understand and utilize the abundance of data available in modern businesses.
                 </div>
             </div>
         </div>
@@ -1154,14 +1000,22 @@
                         Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across executive teams.
                     </div>
                 </div>
-
                 <div class="skill-row">
                     <div class="skill-header">
-                        <span class="skill-name">Customer Discovery & Research</span>
+                        <span class="skill-name">Technical PRDs & User Stories</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Run qualitative interviews, synthesize insights, and validate hypotheses with data-driven experiments.
+                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate product needs into actionable tasks.
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">Go-to-Market (GTM) Strategy</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Develop launch strategies including market analysis, positioning, messaging frameworks, and customer acquisition plans. Coordinate cross-functional execution for successful product launches.
                     </div>
                 </div>
             </div>
@@ -1170,137 +1024,377 @@
                 <span class="category-label">Data & Analytics</span>
                 <div class="skill-row">
                     <div class="skill-header">
-                        <span class="skill-name">SQL & BI Dashboards</span>
+                        <span class="skill-name">Data-Driven Decision-Making</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Build analytics pipelines and dashboards to provide stakeholders with a single source of truth.
+                        Establish metrics frameworks and use data insights to validate product decisions. Build dashboards to track key performance indicators and identify optimization opportunities.
                     </div>
                 </div>
-
                 <div class="skill-row">
                     <div class="skill-header">
-                        <span class="skill-name">Experimentation</span>
+                        <span class="skill-name">Product Analytics & KPIs</span>
                         <span class="skill-toggle">›</span>
                     </div>
                     <div class="skill-description">
-                        Design A/B tests, measure impact and drive decisions with statistical confidence.
+                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product telemetry.
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">Python • SQL • R</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Write production-quality code for data analysis, statistical modeling, and automation. Query complex databases and build analytical pipelines for insights extraction.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span class="category-label">Business & Leadership</span>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">Cross-functional Leadership</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Lead initiatives across engineering, design, marketing, and sales teams without direct authority. Build consensus, align priorities, and drive accountability across organizations.
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">Stakeholder Management</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Manage expectations with executives, customers, and team members. Present complex product decisions with supporting data and secure buy-in from diverse stakeholder groups.
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">Process Improvement & SOPs</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Identify operational bottlenecks and design scalable processes. Document standard operating procedures and implement systems that reduce manual work by 20%+.
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <span class="category-label">Tools & Technologies</span>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">Figma • QuickBase • Excel</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Create wireframes and prototypes in Figma, build applications in QuickBase using JSON and native integrations, and develop advanced Excel models for financial forecasting and analysis.
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">RStudio • MATLAB • GitHub</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Perform statistical analysis and create visualizations in RStudio, conduct numerical computing in MATLAB, and manage version control and collaboration via GitHub.
+                    </div>
+                </div>
+                <div class="skill-row">
+                    <div class="skill-header">
+                        <span class="skill-name">Claude • SharePoint</span>
+                        <span class="skill-toggle">›</span>
+                    </div>
+                    <div class="skill-description">
+                        Leverage AI capabilities through Claude for content generation and analysis. Organize documentation and enable team collaboration using SharePoint systems.
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- (rest of your site: projects, education, contact, footer) -->
-    <!-- For brevity I keep the rest of your site structure as-is. Insert your projects, education, and contact sections below as in your original file. -->
+     <!-- Projects Section -->
+    <section id="projects" class="container">
+        <h2>Outside the<span class="highlight"> Office</span></h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-number">01</div>
+                <div class="project-header">
+                    <div class="project-title">Smart Home IoT Platform</div>
+                    <div class="project-tag">IOT / HARDWARE</div>
+                </div>
+                <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
+                <div class="project-content">
+                    <div class="project-image">
+                        <img src="https://kofili98.github.io/Portfolio/image/ES9.JPG" alt="battery charging system">
+                        <div class="image-caption">
+                            Schematic for proposed battery charging system based on a buck/boost IC.
+                        </div>   
+                    </div>
+                    <div class="project-description">
+                        <h4>Customer Challenge</h4>
+                        <p>
+                            Existing smarthome ecosystems lock users into propritery hardware and limit interoperability, 
+                            forcing limited flexibility in customer solution personalization.
+                        </p>
+                        <h4>Solution</h4>
+                        <p>
+                            The team designed and implemented a modular Zigbee-based IoT
+                            platform utilizing custom PCB design, FPGA logic,
+                            Arduino firmware, and secure wireless communication 
+                            to allow for a plug and play approach to smarthome customization.
+                        </p>
+                        <h4>Impact</h4>
+                        <ul class="project-results">
+                            <li>Custom PCB designed in KiCad</li>
+                            <li>Arduino + FPGA integration</li>
+                            <li>Modular Zigbee network architecture</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">02</div>
+                <div class="project-header">
+                    <div class="project-title">NC Birth Records & Maternal Patterns</div>
+                    <div class="project-tag">DATA ANALYSIS</div>
+                </div>
+                <div class="project-tech">Research • R Studio, Excel</div>
+                <div class="project-content">
+                    <div class="project-image">
+                        <img src="https://kofili98.github.io/Portfolio/image/MaternalHabits_boxplot.jpg" alt="MaternalHabits boxplot">
+                        <div class="image-caption">
+                            Variance in birthing outcomes based on maternal smoking habits.
+                        </div>   
+                    </div>
+                    <div class="project-description">
+                        <h4>Analytics Gap</h4>
+                        <p>
+                            Public health datasets contain thousands of observations, making it difficult for healthcare professionals
+                            to quickly identify maternal factors associated with infant health outcomes. The objective was to 
+                            determine which variables significantly influenced birth weight using statistical analysis.
+                        </p>
+                        <h4>Solution</h4>
+                        <p>
+                            Conducted exploratory data analysis and hypothesis testing in R using the North Carolina Birth Records 
+                            dataset. I developed regression models and visualizations to evaluate relationships between maternal
+                            smoking, marital status, age, and infant birth weight while communicating findings through reproducible 
+                            reports.
+                        </p>
+                        <h4>Impact</h4>
+                        <ul class="project-results">
+                            <li>Analyzed 1,000+ birth records using R and Excel.</li>
+                            <li>Identified maternal smoking as a statistically significant predictor of lower birth weight (p = 0.019).</li>
+                            <li>Produced executive-ready visualizations translating statistical findings into actionable healthcare insights.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">03</div>
+                <div class="project-header">
+                    <div class="project-title">IMDB Review Sentiment Analysis</div>
+                    <div class="project-tag">NLP / AI</div>
+                </div>
+                <div class="project-tech">AI Project • Claude, GitHub, R, NLP</div>
+                <div class="project-content">
+                    <div class="project-image">
+                        <img src="https://kofili98.github.io/Portfolio/image/IMDB_Sentiment_Analysis.jpg" alt="Review word cloud">
+                        <div class="image-caption">
+                            Word cloud showing the major indicators of review sentiment. 
+                        </div>   
+                    </div>
+                    <div class="project-description">
+                        <h4>Automation Imporvement</h4>
+                        <p>
+                             Organizations receive thousands of customer reviews every day, making manual sentiment analysis 
+                            time-consuming and inconsistent. The goal was to automate review classification while creating a 
+                            reusable NLP workflow.
+                        </p>
+                        <h4>Solution</h4>
+                        <p>
+                            Built an end-to-end natural language processing pipeline in R utilizing TF-IDF feature engineering, 
+                            supervised machine learning, and GitHub version control. I then furthered the project by leveraging Claude 
+                            connectors to create an interactive AI-assisted sentiment analysis application.
+                        </p>
+                        <h4>Impact</h4>
+                        <ul class="project-results">
+                            <li>Developed an automated NLP pipeline for large-scale text classification.</li>
+                            <li>Integrated GitHub repositories with Claude to demonstrate AI-assisted analysis workflows.</li>
+                            <li>Applied feature engineering and machine learning techniques to improve review categorization efficiency.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="container">
+        <h2>Education</h2>
+        <div style="display: grid; gap: 2rem; max-width: 600px;">
+            <div>
+                <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Bachelor of Science, Electrical Engineering</div>
+                <div style="color: var(--primary-green); font-weight: 500;">Purdue University</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">West Lafayette, IN</div>
+            </div>
+            <div>
+                <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Master of Science, Data Analytics</div>
+                <div style="color: var(--primary-green); font-weight: 500;">Indiana Wesleyan University</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Marion, IN</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container">
+        <h2>Get In Touch</h2>
+        <div style="max-width: 600px;">
+            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
+                Whether you think I'd be a good fit for your team, or you just want to say hi, feel free to reach out.
+            </p>
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                <a href="mailto:komofili98@gmail.com" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    📧 email
+                </a>
+                <a href="https://linkedin.com/in/kofili" target="_blank" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                    🔗 LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
 
     <footer>
-        <p>© Kenechukwu Ofili — Built with care.</p>
+        <p>&copy; 2025 Kenechukwu Ofili. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
-    <script>
-        // Basic helpers used across the site (scrolling + simple carousel controls for the experience timeline)
-        function scrollToSection(id) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const top = el.getBoundingClientRect().top + window.pageYOffset - 72; // account for nav height
-            window.scrollTo({ top, behavior: 'smooth' });
+    <script>        
+        // Smooth scroll to section
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
-        // Experience timeline controls (basic placeholders, adapt to your existing logic if you have more)
+        // Experience timeline functionality
         function selectYear(year) {
-            const years = document.querySelectorAll('.timeline-year');
-            years.forEach(y => y.classList.toggle('active', y.textContent.trim() === String(year)));
             const cards = document.querySelectorAll('.experience-card');
-            cards.forEach(c => c.classList.toggle('active', c.dataset.year === String(year)));
-            // update progress text
-            const visible = Array.from(document.querySelectorAll('.experience-card')).filter(c => c.classList.contains('active'));
-            const allYears = Array.from(document.querySelectorAll('.timeline-year'));
-            const idx = allYears.findIndex(y => y.classList.contains('active'));
-            const progressText = document.getElementById('progressText');
-            if (progressText) progressText.textContent = String(idx + 1).padStart(2, '0') + ' / ' + String(allYears.length).padStart(2, '0');
-            const fill = document.getElementById('progressFill');
-            if (fill) fill.style.width = ((idx + 1) / allYears.length * 100) + '%';
+            const years = document.querySelectorAll('.timeline-year');
+            
+            cards.forEach(card => {
+                card.classList.remove('active');
+                if (card.getAttribute('data-year') == year) {
+                    card.classList.add('active');
+                }
+            });
+            
+            years.forEach(yearBtn => {
+                yearBtn.classList.remove('active');
+                if (yearBtn.textContent == year) {
+                    yearBtn.classList.add('active');
+                }
+            });
+            
+            updateProgressBar();
         }
 
         function prevYear() {
-            const years = Array.from(document.querySelectorAll('.timeline-year'));
-            const idx = years.findIndex(y => y.classList.contains('active'));
-            const newIdx = Math.max(0, idx - 1);
-            const year = years[newIdx]?.textContent.trim();
-            if (year) selectYear(year);
+            const years = ['2025', '2022', '2020', '2019'];
+            const active = document.querySelector('.timeline-year.active');
+            const currentIndex = years.indexOf(active.textContent);
+            if (currentIndex > 0) {
+                selectYear(years[currentIndex - 1]);
+            }
         }
 
         function nextYear() {
-            const years = Array.from(document.querySelectorAll('.timeline-year'));
-            const idx = years.findIndex(y => y.classList.contains('active'));
-            const newIdx = Math.min(years.length - 1, idx + 1);
-            const year = years[newIdx]?.textContent.trim();
-            if (year) selectYear(year);
+            const years = ['2025', '2022', '2020', '2019'];
+            const active = document.querySelector('.timeline-year.active');
+            const currentIndex = years.indexOf(active.textContent);
+            if (currentIndex < years.length - 1) {
+                selectYear(years[currentIndex + 1]);
+            }
         }
 
-        // About-section image carousel controller
-        document.addEventListener('DOMContentLoaded', function () {
-            const track = document.querySelector('.carousel-track');
-            if (!track) return;
-            const slides = Array.from(track.children);
-            const prevButton = document.querySelector('.carousel-btn.prev');
-            const nextButton = document.querySelector('.carousel-btn.next');
-            const dotsNav = document.querySelector('.carousel-dots');
-            const dots = Array.from(dotsNav.children);
-            let currentIndex = 0;
+        function updateProgressBar() {
+            const years = ['2025', '2022', '2020', '2019'];
+            const active = document.querySelector('.timeline-year.active');
+            const currentIndex = years.indexOf(active.textContent);
+            const progress = ((currentIndex + 1) / years.length) * 100;
+            
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressText').textContent = 
+                String(currentIndex + 1).padStart(2, '0') + ' / 0' + years.length;
+            
+            document.getElementById('prevBtn').disabled = currentIndex === 0;
+            document.getElementById('nextBtn').disabled = currentIndex === years.length - 1;
+        }
 
-            const setTrackWidth = () => {
-                // Ensure each slide equals the container width
-                const container = track.parentElement.getBoundingClientRect();
-                slides.forEach(slide => slide.style.minWidth = container.width + 'px');
-                moveToSlide(currentIndex);
-            };
+        // Initialize progress bar
+        updateProgressBar();
 
-            const moveToSlide = (index) => {
-                const containerWidth = track.parentElement.getBoundingClientRect().width;
-                const amount = -index * containerWidth;
-                track.style.transform = `translateX(${amount}px)`;
-                slides.forEach((s, i) => s.classList.toggle('current', i === index));
-                dots.forEach((d, i) => d.classList.toggle('active', i === index));
-                currentIndex = index;
-            };
+        // Hide navbar when scrolling
+        const navbar = document.querySelector("nav");
+        const navTrigger = document.getElementById("navTrigger");
+        
+        let lastScrollY = window.scrollY;
+        const threshold = 15;
+        let navPinned = false;
+        
+        // Scroll behavior
+        window.addEventListener("scroll", () => {
+            if (navPinned) return;
+            const currentScrollY = window.scrollY;
+            
+            // Always visible near top
+            if (currentScrollY <= 20) {
+                navbar.classList.remove("hide");
+                lastScrollY = currentScrollY;
+                return;
+            }
+            
+            if (Math.abs(currentScrollY - lastScrollY) < threshold)
+                return;
+            
+            if (currentScrollY > lastScrollY) {
+                navbar.classList.add("hide");
+            } else {
+                navbar.classList.remove("hide");
+            }
+            lastScrollY = currentScrollY;
+        });
+        
+        // Hover trigger
+        navTrigger.addEventListener("mouseenter", () => {
+            navPinned = true;
+            navbar.classList.remove("hide");
+        });
+        
+        // Mouse leaves navbar
+        navbar.addEventListener("mouseleave", () => {
+            navPinned = false;
+            if (window.scrollY > 20) {
+                navbar.classList.add("hide");
+            }
+        });
 
-            // Buttons
-            prevButton.addEventListener('click', () => {
-                const newIndex = (currentIndex - 1 + slides.length) % slides.length;
-                moveToSlide(newIndex);
+        document.addEventListener("mousemove", (e) => {
+            if (e.clientY < 20) {
+            navbar.classList.remove("hide");
+            }
+        });
+
+        document.querySelectorAll(".project-card").forEach(card => {
+            card.addEventListener("click", () => {
+                if (window.innerWidth <= 768) {
+                    card.classList.toggle("active");
+                }
             });
-            nextButton.addEventListener('click', () => {
-                const newIndex = (currentIndex + 1) % slides.length;
-                moveToSlide(newIndex);
-            });
-
-            // Dots
-            dotsNav.addEventListener('click', (e) => {
-                const dot = e.target.closest('.carousel-dot');
-                if (!dot) return;
-                const index = Number(dot.dataset.slide);
-                moveToSlide(index);
-            });
-
-            // Keyboard
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') prevButton.click();
-                if (e.key === 'ArrowRight') nextButton.click();
-            });
-
-            // Resize: re-calc slide width so slides remain positioned after width changes
-            window.addEventListener('resize', () => setTrackWidth());
-
-            // Initialize
-            setTrackWidth();
-
-            Optional: autoplay (uncomment to enable)
-            let autoplay = setInterval(() => nextButton.click(), 5000);
-            document.querySelector('.carousel').addEventListener('mouseenter', () => clearInterval(autoplay));
-            document.querySelector('.carousel').addEventListener('mouseleave', () => autoplay = setInterval(() => nextButton.click(), 5000));
         });
     </script>
 </body>
