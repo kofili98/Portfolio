@@ -1255,11 +1255,10 @@
                         </p>
                         <h4>Solution</h4>
                         <p>
-                            Built a Python CLI that ingests provider records from the public NPI Registry REST API (JSON), 
-                            with pagination, retry, and rate-limit handling into a relational SQLite schema. Wrote 14 SQL 
-                            data-quality rules covering identifier validity, missing fields, and duplicate detection, and 
-                            added config-driven client exports to CSV and JSON. A shared Claude skill triages export issues 
-                            such as a search returning zero results.
+                            Rather than trust registry data as-is, I treated validation as the core deliverable, not a bolt-on. Ingestion normalizes records from
+                            the NPI API into a relational schema; 14 SQL rules then score each one for validity, freshness, and duplication before it reaches a 
+                            client. Config-driven exports let each client define their own fields and filters, with a Claude skill for fast triage when something 
+                            looks off.
                         </p>
                         <h4>Impact</h4>
                         <ul class="project-results">
