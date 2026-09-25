@@ -1198,7 +1198,7 @@
                 <div class="project-number">03</div>
                 <div class="project-header">
                     <div class="project-title">IMDB Review Sentiment Analysis</div>
-                    <div class="project-tag">NLP / AI</div>
+                    <div class="project-tag">NATURAL LANGUAGE PROCESSING (NLP) / AI</div>
                 </div>
                 <div class="project-tech">AI Project • Claude, GitHub, R, NLP</div>
                 <div class="project-content">
@@ -1226,6 +1226,46 @@
                             <li>Developed an automated NLP pipeline for large-scale text classification.</li>
                             <li>Integrated GitHub repositories with Claude to demonstrate AI-assisted analysis workflows.</li>
                             <li>Applied feature engineering and machine learning techniques to improve review categorization efficiency.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-number">04</div>
+                <div class="project-header">
+                    <div class="project-title">Provider Data Pipeline</div>
+                    <div class="project-tag">DATA ENGINEERING</div>
+                </div>
+                <div class="project-tech">DATA PIPELINE • Python, SQL, SQLite, REST API</div>
+                <div class="project-content">
+                    <div class="project-image">
+                        <img src="https://kofili98.github.io/Portfolio/image/Providerdataproject_pipeline.jpg" alt="Provider data pipeline stages and run results">
+                        <div class="image-caption">
+                            SQL validation output flagging stale and incomplete provider records.
+                        </div>   
+                    </div>
+                    <div class="project-description">
+                        <h4>Data Quality Gap</h4>
+                        <p>
+                            Healthcare provider directories are pulled from public registries, but raw records often carry 
+                            stale entries, missing fields, and duplicates that make them unreliable to hand to a client 
+                            as-is. The goal was to build a pipeline that ingests, validates, and exports provider data on 
+                            a schedule instead of by hand.
+                        </p>
+                        <h4>Solution</h4>
+                        <p>
+                            Built a Python CLI that ingests provider records from the public NPI Registry REST API (JSON), 
+                            with pagination, retry, and rate-limit handling into a relational SQLite schema. Wrote 14 SQL 
+                            data-quality rules covering identifier validity, missing fields, and duplicate detection, and 
+                            added config-driven client exports to CSV and JSON. A shared Claude skill triages export issues 
+                            such as a search returning zero results.
+                        </p>
+                        <h4>Impact</h4>
+                        <ul class="project-results">
+                            <li>Loaded 601 unique Colorado providers from 6 API searches with zero data-integrity errors.</li>
+                            <li>Flagged 292 stale records (5+ years unupdated) and 18 missing credentials via automated SQL rules.</li>
+                            <li>Diagnosed and fixed a specialty-name mismatch causing a silent empty export.</li>
                         </ul>
                     </div>
                 </div>
