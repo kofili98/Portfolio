@@ -12,13 +12,21 @@
         }
 
         :root {
-            --primary-green: #ff8c00;
+            --primary-orange: #ff8c00;
             --dark-bg: #0a0e27;
             --card-bg: #111827;
             --border-color: #1f2937;
             --text-primary: #ffffff;
             --text-secondary: #9ca3af;
-            --accent-green: #ff4500;
+            --accent-orange: #ff4500;
+
+            --space-1: 0.5rem;
+            --space-2: 1rem;
+            --space-3: 1.5rem;
+            --space-4: 2rem;
+            --space-5: 2.5rem;
+            --space-6: 3rem;
+            --space-7: 4rem;
         }
 
         body {
@@ -73,12 +81,12 @@
         }
 
         .nav-links a:hover {
-            color: var(--primary-green);
+            color: var(--primary-orange);
         }
 
         .cta-button {
-            border: 1px solid var(--primary-green);
-            color: var(--primary-green);
+            border: 1px solid var(--primary-orange);
+            color: var(--primary-orange);
             padding: 0.6rem 1.2rem;
             text-decoration: none;
             text-transform: uppercase;
@@ -90,7 +98,7 @@
         }
 
         .cta-button:hover {
-            background: var(--primary-green);
+            background: var(--primary-orange);
             color: var(--dark-bg);
         }
 
@@ -131,7 +139,7 @@
             font-size: 0.85rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
-            color: var(--primary-green);
+            color: var(--primary-orange);
         }
 
         .status-badge::before {
@@ -139,7 +147,7 @@
             display: inline-block;
             width: 0.5rem;
             height: 0.5rem;
-            background: var(--primary-green);
+            background: var(--primary-orange);
             border-radius: 50%;
         }
 
@@ -152,7 +160,7 @@
         }
 
         .hero h1 .highlight {
-            color: var(--primary-green);
+            color: var(--primary-orange);
             font-style: italic;
         }
 
@@ -181,8 +189,8 @@
         }
 
         .primary-btn:hover {
-            background: var(--primary-green);
-            border-color: var(--primary-green);
+            background: var(--primary-orange);
+            border-color: var(--primary-orange);
         }
 
         /* Key Achievements Header */
@@ -195,7 +203,7 @@
         }
 
         .achievements-header .highlight {
-            color: var(--primary-green);
+            color: var(--primary-orange);
             font-style: italic;
         }
 
@@ -222,7 +230,7 @@
         .stat-number {
             font-size: 3rem;
             font-weight: 800;
-            color: var(--primary-green);
+            color: var(--primary-orange);
             margin-bottom: 0.5rem;
         }
 
@@ -242,14 +250,14 @@
 
         /* Section */
         section {
-            padding: 6rem 0;
+            padding: var(--space-7) 0;
             border-bottom: 1px solid var(--border-color);
         }
 
         section h2 {
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 800;
-            margin-bottom: 3rem;
+            margin-bottom: var(--space-4);
             letter-spacing: -0.02em;
         }
 
@@ -257,7 +265,7 @@
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--primary-green);
+            color: var(--primary-orange);
             margin-bottom: 1rem;
             display: block;
         }
@@ -279,7 +287,7 @@
         }
         
         .project-card:hover{
-            border-color:var(--primary-green);
+            border-color:var(--primary-orange);
             transform:translateY(-4px);
             box-shadow:0 20px 40px rgba(0,0,0,.35);
         }
@@ -308,8 +316,8 @@
         }
         
         .project-tag{
-            border:1px solid var(--primary-green);
-            color:var(--primary-green);
+            border:1px solid var(--primary-orange);
+            color:var(--primary-orange);
             padding:.4rem .8rem;
             font-size:.7rem;
             letter-spacing:.1em;
@@ -406,13 +414,13 @@
 
         /* Experience Section */
         .experience-section {
-            padding: 6rem 0;
+            padding: 4rem 0;
         }
 
         .timeline-full {
             display: flex;
             gap: 0.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: var(--space-6);
             overflow-x: auto;
             padding-bottom: 1rem;
         }
@@ -429,15 +437,15 @@
         }
 
         .timeline-year.active {
-            color: var(--primary-green);
-            border-bottom: 2px solid var(--primary-green);
+            color: var(--primary-orange);
+            border-bottom: 2px solid var(--primary-orange);
         }
 
         .experience-cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
+            gap: var(--space-4);
+            margin-bottom: var(--space-6);
         }
 
         .experience-card {
@@ -451,7 +459,7 @@
 
         .experience-card.active {
             display: block;
-            border-color: var(--primary-green);
+            border-color: var(--primary-orange);
         }
 
         .card-year {
@@ -463,8 +471,8 @@
 
         .card-badge {
             display: inline-block;
-            border: 1px solid var(--primary-green);
-            color: var(--primary-green);
+            border: 1px solid var(--primary-orange);
+            color: var(--primary-orange);
             padding: 0.3rem 0.7rem;
             font-size: 0.65rem;
             text-transform: uppercase;
@@ -493,7 +501,7 @@
         }
 
         .card-evolution-label {
-            color: var(--primary-green);
+            color: var(--primary-orange);
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.1em;
@@ -533,8 +541,8 @@
         }
 
         .carousel-nav button:hover:not(:disabled) {
-            border-color: var(--primary-green);
-            color: var(--primary-green);
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
         }
 
         .carousel-nav button:disabled {
@@ -552,7 +560,7 @@
 
         .progress-fill {
             height: 100%;
-            background: var(--primary-green);
+            background: var(--primary-orange);
             transition: width 0.3s ease;
         }
 
@@ -564,110 +572,166 @@
         }
 
         /* Skills Section */
-        .skills-matrix {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1px;
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
+        .section {
+            padding: 4rem 0;
         }
 
-        .skill-category-section {
-            background: var(--dark-bg);
-            padding: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
+        .section-header {
+            margin-top: 0;
+            margin-bottom: var(--space-4);
         }
 
-        .skill-category-section:nth-child(odd):nth-last-child(-n+2) {
-            border-bottom: none;
-        }
-
-        .skill-category-section:nth-child(2n) {
-            border-left: 1px solid var(--border-color);
-        }
-
-        .skill-row {
+        .section-header .top {
             display: flex;
-            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: var(--space-2);
+            color: var(--primary-orange);
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+        }
+
+        .mono-label {
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            font-size: 0.72rem;
+            font-weight: 600;
+        }
+
+        .section-header .line,
+        .sg-header .line {
+            display: block;
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin: 0;
+            font-weight: 800;
+            color: var(--text-primary);
+        }
+
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.9);
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: 1fr;
             gap: 0;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border-color);
+        }
+
+        .skill-group {
+            background: rgba(10, 14, 39, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sg-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 1.5rem 0.8rem;
+            color: var(--primary-orange);
+        }
+
+        .sg-header h3 {
+            font-size: 0.72rem;
+            letter-spacing: 0.12em;
+            font-weight: 600;
+            margin: 0;
+            color: var(--primary-orange);
+        }
+
+        .skill-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0;
+        }
+
+        .skill-column {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .skill-column:first-child {
+            border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .skill-item {
+            padding: 1.1rem 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background 0.25s ease;
         }
 
-        .skill-row:hover .skill-name {
-            color: var(--primary-green);
+        .skill-item:hover {
+            background: rgba(255, 255, 255, 0.02);
         }
 
-        .skill-row:last-child {
-            border-bottom: none;
-        }
-
-        .skill-header {
+        .skill-item .top {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            width: 100%;
+            gap: 1rem;
         }
 
-        .skill-name {
-            font-size: 0.95rem;
+        .skill-item .name {
+            font-size: 1.1rem;
             color: var(--text-primary);
-            transition: color 0.3s ease;
-            flex: 1;
+            transition: color 0.25s ease;
+            font-weight: 600;
         }
 
-        .skill-indicator {
-            color: var(--primary-green);
-            font-size: 0.8rem;
-            letter-spacing: 0.2em;
-            min-width: 30px;
-            text-align: right;
+        .skill-item:hover .name {
+            color: var(--primary-orange);
         }
 
-        .skill-toggle {
-            color: var(--primary-green);
-            font-size: 1.2rem;
-            margin-left: 1rem;
-            width: 24px;
-            text-align: center;
-            transition: transform 0.3s ease;
+        .dots {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 0.35rem;
+            min-width: 2.5rem;
+            justify-content: flex-end;
         }
 
-        .skill-row:hover .skill-toggle {
-            transform: rotate(180deg);
+        .dots span {
+            width: 0.46rem;
+            height: 0.46rem;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            display: block;
+            transition: background 0.25s ease, box-shadow 0.25s ease;
         }
 
-        .skill-description {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.6;
-            margin-top: 0.8rem;
-            padding-top: 0.8rem;
-            border-top: 1px solid var(--border-color);
+        .skill-item:hover .dots span {
+            background: var(--primary-orange);
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.45);
+        }
+
+        .proof {
             max-height: 0;
             overflow: hidden;
             opacity: 0;
-            transition: all 0.3s ease;
+            margin: 0;
+            padding-top: 0;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            line-height: 1.7;
+            transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease, padding-top 0.35s ease;
         }
 
-        .skill-row:hover .skill-description {
-            max-height: 200px;
+        .skill-item:hover .proof {
+            max-height: 120px;
             opacity: 1;
-        }
-
-        .category-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--primary-green);
-            margin-bottom: 1rem;
-            font-weight: 600;
-            display: block;
+            margin-top: 0.8rem;
+            padding-top: 0.7rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         /* Footer */
@@ -783,7 +847,10 @@
 
     <!-- About Section -->
     <section id="about" class="container">
-        <h2>Who am I?</h2>
+        <div class="section-header">
+          <div class="top"><span class="mono-label idx">01</span><span class="line"></span><span class="mono-label lbl">THE ORIGIN</span></div>
+          <h2>Who am <span class="text-outline">I</span></h2>
+        </div>
         <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
            <strong>Hello! I go by Kene.</strong> (Think <em>Penne</em> with a K, so if you're suddenly hungry, blame my parents.)
         </p>
@@ -811,7 +878,10 @@
 
     <!-- Experience Section -->
     <section id="journey" class="experience-section container">
-        <h2>My <span class="highlight"> Journey</span> so far</h2>
+        <div class="section-header">
+          <div class="top"><span class="mono-label idx">02</span><span class="line"></span><span class="mono-label lbl">My journey</span></div>
+          <h2>The <span class="text-outline">Timeline</span></h2>
+        </div>
         <p style="color: var(--text-secondary); margin-bottom: 2rem;">2019 - Present</p>
 
         <div class="timeline-full">
@@ -984,140 +1054,86 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="container">
-        <h2>Tools<span class="highlight"> of Success</span></h2>
-
-        <div class="skills-matrix">
-            <div>
-                <span class="category-label">Product Management</span>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Product Strategy & Roadmapping</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Develop comprehensive product vision and multi-year roadmaps aligned with business objectives. Define feature prioritization frameworks and communicate strategy across executive teams.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Technical PRDs & User Stories</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Create detailed product requirements documents with technical specifications, acceptance criteria, and user story definitions. Collaborate with engineering to translate product needs into actionable tasks.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Go-to-Market (GTM) Strategy</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Develop launch strategies including market analysis, positioning, messaging frameworks, and customer acquisition plans. Coordinate cross-functional execution for successful product launches.
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <span class="category-label">Data & Analytics</span>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Data-Driven Decision-Making</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Establish metrics frameworks and use data insights to validate product decisions. Build dashboards to track key performance indicators and identify optimization opportunities.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Product Analytics & KPIs</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Define, track, and analyze critical product metrics including user engagement, retention, conversion rates, and revenue impact. Create actionable insights from product telemetry.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Python • SQL • R</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Write production-quality code for data analysis, statistical modeling, and automation. Query complex databases and build analytical pipelines for insights extraction.
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <span class="category-label">Business & Leadership</span>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Cross-functional Leadership</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Lead initiatives across engineering, design, marketing, and sales teams without direct authority. Build consensus, align priorities, and drive accountability across organizations.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Stakeholder Management</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Manage expectations with executives, customers, and team members. Present complex product decisions with supporting data and secure buy-in from diverse stakeholder groups.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Process Improvement & SOPs</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Identify operational bottlenecks and design scalable processes. Document standard operating procedures and implement systems that reduce manual work by 20%+.
-                    </div>
-                </div>
-            </div>
-
-            <div>
-                <span class="category-label">Tools & Technologies</span>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Figma • QuickBase • Excel</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Create wireframes and prototypes in Figma, build applications in QuickBase using JSON and native integrations, and develop advanced Excel models for financial forecasting and analysis.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">RStudio • MATLAB • GitHub</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Perform statistical analysis and create visualizations in RStudio, conduct numerical computing in MATLAB, and manage version control and collaboration via GitHub.
-                    </div>
-                </div>
-                <div class="skill-row">
-                    <div class="skill-header">
-                        <span class="skill-name">Claude • SharePoint</span>
-                        <span class="skill-toggle">›</span>
-                    </div>
-                    <div class="skill-description">
-                        Leverage AI capabilities through Claude for content generation and analysis. Organize documentation and enable team collaboration using SharePoint systems.
-                    </div>
-                </div>
-            </div>
+    <!-- SKILLS -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header">
+          <div class="top"><span class="mono-label idx">03</span><span class="line"></span><span class="mono-label lbl">Competency Matrix</span></div>
+          <h2>The Tools I <span class="text-outline">Work With</span></h2>
         </div>
+        <div class="skills-list">
+          <div class="skill-group">
+            <div class="sg-header"><h3 class="mono-label">Product Management</h3><span class="line"></span></div>
+            <div class="skill-grid">
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">Product Strategy &amp; Roadmapping</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Owned end-to-end strategy for broadband and IP services at Viaero Wireless.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Lifecycle Management</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Managed products from discovery through validation and continuous deployment.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Technical PRDs &amp; User Stories</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Co-authored comprehensive PRDs within an Agile framework.</p></div>
+              </div>
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">Customer Discovery</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Drove discovery initiatives that lifted retention by 27%.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Go-to-Market (GTM) Strategy</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Built GTM playbooks and standardized onboarding for sales teams.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Requirements Gathering</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Led requirements from stakeholder intake through validated delivery.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-header"><h3 class="mono-label">Data &amp; Analytics</h3><span class="line"></span></div>
+            <div class="skill-grid">
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">Data-Driven Decision-Making</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Translated analytics into product decisions across teams.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Data Modeling &amp; Pipelines</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Optimized relational data models, reducing anomalies by 60%.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">ROI Modeling</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Architected rigorous ROI models uncovering $500K in new revenue.</p></div>
+              </div>
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">KPI Dashboards</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Built executive-facing dashboards for VP of Sales and Head of Marketing.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Statistical Analysis</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Conducted regression, t-tests, and chi-square on healthcare datasets.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Python · SQL · R</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Core languages for analytics, modeling, and NLP projects.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-header"><h3 class="mono-label">Business &amp; Leadership</h3><span class="line"></span></div>
+            <div class="skill-grid">
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">Cross-functional Leadership</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Led supply chain, engineering, and commercial teams to launch tools.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Stakeholder Management</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Aligned executives, sales, and marketing on product health metrics.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Competitive Analysis</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Conducted deep market analysis to discover unmapped segments.</p></div>
+              </div>
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">Compliance &amp; Quality Assurance</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Built centralized compliance knowledge repository on SharePoint.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Process Improvement</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Redesigned checkout flow, driving 15% conversion increase.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Standard Operating Procedures</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Authored SOPs for process standardization and workforce training.</p></div>
+              </div>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="sg-header"><h3 class="mono-label">Tools</h3><span class="line"></span></div>
+            <div class="skill-grid">
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">Figma</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Design and prototyping for product interfaces.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">QuickBase</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Internal tool development and workflow automation.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Excel</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Advanced analysis, modeling, and reporting.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">GitHub</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof"></p></div>
+              </div>
+              <div class="skill-column">
+                <div class="skill-item"><div class="top"><span class="name">RStudio</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Statistical computing and NLP model development.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">MATLAB</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Engineering computation and signal processing.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">SharePoint</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Centralized product and compliance knowledge repository.</p></div>
+                <div class="skill-item"><div class="top"><span class="name">Claude</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Connected repos to Claude for AI-powered project exploration.</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
      <!-- Projects Section -->
     <section id="projects" class="container">
-        <h2>Outside the<span class="highlight"> Office</span></h2>
+        <div class="section-header">
+          <div class="top"><span class="mono-label idx">04</span><span class="line"></span><span class="mono-label lbl">CASE STUDY GALLERY</span></div>
+          <h2>Things I've <span class="text-outline">Built</span></h2>
+        </div>
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-number">01</div>
@@ -1274,16 +1290,19 @@
 
     <!-- Education Section -->
     <section id="education" class="container">
-        <h2>Education</h2>
+        <div class="section-header">
+          <div class="top"><span class="mono-label idx">05</span><span class="line"></span><span class="mono-label lbl">Education</span></div>
+          <h2>Education</h2>
+        </div>
         <div style="display: grid; gap: 2rem; max-width: 600px;">
             <div>
                 <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Bachelor of Science, Electrical Engineering</div>
-                <div style="color: var(--primary-green); font-weight: 500;">Purdue University</div>
+                <div style="color: var(--primary-orange); font-weight: 500;">Purdue University</div>
                 <div style="color: var(--text-secondary); font-size: 0.9rem;">West Lafayette, IN</div>
             </div>
             <div>
                 <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Master of Science, Data Analytics</div>
-                <div style="color: var(--primary-green); font-weight: 500;">Indiana Wesleyan University</div>
+                <div style="color: var(--primary-orange); font-weight: 500;">Indiana Wesleyan University</div>
                 <div style="color: var(--text-secondary); font-size: 0.9rem;">Marion, IN</div>
             </div>
         </div>
@@ -1291,16 +1310,19 @@
 
     <!-- Contact Section -->
     <section id="contact" class="container">
-        <h2>Get In Touch</h2>
+        <div class="section-header">
+          <div class="top"><span class="mono-label idx">06</span><span class="line"></span><span class="mono-label lbl">Contact</span></div>
+          <h2>Get In Touch</h2>
+        </div>
         <div style="max-width: 600px;">
             <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
                 Whether you think I'd be a good fit for your team, or you just want to say hi, feel free to reach out.
             </p>
             <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                <a href="mailto:komofili98@gmail.com" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="mailto:komofili98@gmail.com" style="color: var(--primary-orange); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
                     📧 email
                 </a>
-                <a href="https://linkedin.com/in/kofili" target="_blank" style="color: var(--primary-green); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
+                <a href="https://linkedin.com/in/kofili" target="_blank" style="color: var(--primary-orange); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
                     🔗 LinkedIn
                 </a>
             </div>
