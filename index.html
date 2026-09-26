@@ -1,1463 +1,1001 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kenechukwu Ofili - Product Manager & Data Analytics</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-orange: #ff8c00;
-            --dark-bg: #0a0e27;
-            --card-bg: #111827;
-            --border-color: #1f2937;
-            --text-primary: #ffffff;
-            --text-secondary: #9ca3af;
-            --accent-orange: #ff4500;
-
-            --space-1: 0.5rem;
-            --space-2: 1rem;
-            --space-3: 1.5rem;
-            --space-4: 2rem;
-            --space-5: 2.5rem;
-            --space-6: 3rem;
-            --space-7: 4rem;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-primary);
-            background: var(--dark-bg);
-            min-height: 100vh;
-            padding-top: 80px;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            background: rgba(10, 14, 39, 0.95);
-            border-bottom: 1px solid var(--border-color);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
-        }
-        
-        nav.hide {
-            transform: translateY(-90%);
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-orange);
-        }
-
-        .cta-button {
-            border: 1px solid var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 0.6rem 1.2rem;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            background: transparent;
-        }
-
-        .cta-button:hover {
-            background: var(--primary-orange);
-            color: var(--dark-bg);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="40" stroke="rgba(0,255,65,0.1)" stroke-width="1"/><line x1="0" y1="0" x2="40" y2="0" stroke="rgba(0,255,65,0.1)" stroke-width="1"/></pattern></defs><rect width="1200" height="600" fill="none"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 2rem;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: var(--primary-orange);
-        }
-
-        .status-badge::before {
-            content: '';
-            display: inline-block;
-            width: 0.5rem;
-            height: 0.5rem;
-            background: var(--primary-orange);
-            border-radius: 50%;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800;
-            margin-bottom: 1rem;
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-        }
-
-        .hero h1 .highlight {
-            color: var(--primary-orange);
-            font-style: italic;
-        }
-
-        .hero-subtitle {
-            font-size: 1rem;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .hero-cta .cta-button {
-            padding: 0.8rem 2rem;
-        }
-
-        .primary-btn {
-            background: var(--text-primary);
-            color: var(--dark-bg);
-            border: 1px solid var(--text-primary);
-        }
-
-        .primary-btn:hover {
-            background: var(--primary-orange);
-            border-color: var(--primary-orange);
-        }
-
-        /* Key Achievements Header */
-        .achievements-header {
-            font-size: clamp(1.5rem, 4vw, 2.5rem);
-            font-weight: 800;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-            color: var(--text-primary);
-        }
-
-        .achievements-header .highlight {
-            color: var(--primary-orange);
-            font-style: italic;
-        }
-
-        /* Stats Section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-            padding-top: 0;
-            border-top: none;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-        }
-
-        .stat-item {
-            text-align: left;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary-orange);
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-secondary);
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Section */
-        section {
-            padding: var(--space-7) 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        section h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 800;
-            margin-bottom: var(--space-4);
-            letter-spacing: -0.02em;
-        }
-
-        .section-number {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .project-card {
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all .35s ease;
-            background: var(--card-bg);
-            cursor: pointer;
-        }
-        
-        .project-card:hover{
-            border-color:var(--primary-orange);
-            transform:translateY(-4px);
-            box-shadow:0 20px 40px rgba(0,0,0,.35);
-        }
-        
-        .project-number{
-            font-size:4rem;
-            font-weight:800;
-            color:rgba(255,69,0,.08);
-            position:absolute;
-            top:1rem;
-            left:2rem;
-        }
-        
-        .project-header{
-            display:flex;
-            justify-content:space-between;
-            align-items:flex-start;
-            position:relative;
-            z-index:2;
-            margin-bottom:1rem;
-        }
-        
-        .project-title{
-            font-size:1.8rem;
-            font-weight:700;
-        }
-        
-        .project-tag{
-            border:1px solid var(--primary-orange);
-            color:var(--primary-orange);
-            padding:.4rem .8rem;
-            font-size:.7rem;
-            letter-spacing:.1em;
-        }
-        
-        .project-tech{
-            color:var(--text-secondary);
-            margin-bottom:1rem;
-            text-transform:uppercase;
-            font-size:.9rem;
-        }
-        
-        .project-content{
-            display:grid;
-            grid-template-columns:1.2fr 1fr;
-            gap:2rem;
-            align-items:start;
-            overflow:hidden;
-            max-height:0;
-            opacity:0;
-            transform:translateY(25px);
-            transition:
-                max-height .6s ease,
-                opacity .45s ease,
-                transform .45s ease,
-                margin .45s ease;
-            margin-top:0;
-        }
-        
-        .project-card:hover .project-content, .project-card.active .project-content{
-            max-height:900px;
-            opacity:1;
-            transform:translateY(0);
-            margin-top:1.5rem;
-        }
-        
-        .project-image{
-            border-radius:12px;
-            overflow:hidden;
-            border:1px solid var(--border-color);
-            background:var(--dark-bg);
-        }
-        
-        .project-image::before{
-            content:"";
-            display:block;
-            height:36px;
-            background:#1b2236;
-            border-bottom:1px solid var(--border-color);
-        }
-        
-        .project-image img{
-            width:100%;
-            display:block;
-            transform:scale(.96);
-            opacity:.85;
-            transition:.45s ease;
-        }
-        
-        .project-card:hover .project-image img{
-            transform:scale(1);
-            opacity:1;
-        }
-        
-        .image-caption{
-            padding:12px;
-            font-size:.8rem;
-            color:var(--text-secondary);
-            border-top:1px solid var(--border-color);
-        }
-        
-        .project-description{
-            color:var(--text-secondary);
-        }
-        
-        .project-description h4{
-            color:white;
-            margin:0 0 .6rem;
-            font-size:1rem;
-        }
-        
-        .project-description p{
-            line-height:1.8;
-            margin-bottom:1.2rem;
-        }
-        
-        .project-results{
-            padding-left:1.2rem;
-        }
-        
-        .project-results li{
-            margin-bottom:.6rem;
-        }
-
-        /* Experience Section */
-        .experience-section {
-            padding: 4rem 0;
-        }
-
-        .timeline-full {
-            display: flex;
-            gap: 0.5rem;
-            margin-bottom: var(--space-6);
-            overflow-x: auto;
-            padding-bottom: 1rem;
-        }
-
-        .timeline-year {
-            padding: 0.5rem 1rem;
-            color: var(--text-secondary);
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .timeline-year.active {
-            color: var(--primary-orange);
-            border-bottom: 2px solid var(--primary-orange);
-        }
-
-        .experience-cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: var(--space-4);
-            margin-bottom: var(--space-6);
-        }
-
-        .experience-card {
-            border: 1px solid var(--border-color);
-            padding: 2rem;
-            display: none;
-            position: relative;
-            background: var(--card-bg);
-            min-height: 300px;
-        }
-
-        .experience-card.active {
-            display: block;
-            border-color: var(--primary-orange);
-        }
-
-        .card-year {
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-        }
-
-        .card-badge {
-            display: inline-block;
-            border: 1px solid var(--primary-orange);
-            color: var(--primary-orange);
-            padding: 0.3rem 0.7rem;
-            font-size: 0.65rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 1rem;
-        }
-
-        .card-title {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-company {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-date {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .card-evolution-label {
-            color: var(--primary-orange);
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin-bottom: 0.8rem;
-            font-weight: 600;
-        }
-
-        .card-evolution-text {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .carousel-controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-            margin-top: 2rem;
-        }
-
-        .carousel-nav {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .carousel-nav button {
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--border-color);
-            background: transparent;
-            color: var(--text-primary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .carousel-nav button:hover:not(:disabled) {
-            border-color: var(--primary-orange);
-            color: var(--primary-orange);
-        }
-
-        .carousel-nav button:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
-        }
-
-        .progress-bar {
-            flex: 1;
-            height: 2px;
-            background: var(--border-color);
-            position: relative;
-            margin: 0 1rem;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary-orange);
-            transition: width 0.3s ease;
-        }
-
-        .progress-text {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        /* Skills Section */
-        .section {
-            padding: 4rem 0;
-        }
-
-        .section-header {
-            margin-top: 0;
-            margin-bottom: var(--space-4);
-        }
-
-        .section-header .top {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: var(--space-2);
-            color: var(--primary-orange);
-            text-transform: uppercase;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-        }
-
-        .mono-label {
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            font-size: 0.72rem;
-            font-weight: 600;
-        }
-
-        .section-header .line,
-        .sg-header .line {
-            display: block;
-            flex: 1;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .section-header h2 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            line-height: 1.1;
-            letter-spacing: -0.02em;
-            margin: 0;
-            font-weight: 800;
-            color: var(--text-primary);
-        }
-
-        .text-outline {
-            color: transparent;
-            -webkit-text-stroke: 1.2px rgba(255, 255, 255, 0.9);
-        }
-
-        .skills-list {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0;
-        }
-
-        .skill-group {
-            background: rgba(10, 14, 39, 0.8);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .sg-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            padding: 1.2rem 1.5rem 0.8rem;
-            color: var(--primary-orange);
-        }
-
-        .sg-header h3 {
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-            margin: 0;
-            color: var(--primary-orange);
-        }
-
-        .skill-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 0;
-        }
-
-        .skill-column {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
-
-        .skill-column:first-child {
-            border-right: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .skill-item {
-            padding: 1.1rem 1.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            cursor: pointer;
-            transition: background 0.25s ease;
-        }
-
-        .skill-item:hover {
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .skill-item .top {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .skill-item .name {
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            transition: color 0.25s ease;
-            font-weight: 600;
-        }
-
-        .skill-item:hover .name {
-            color: var(--primary-orange);
-        }
-
-        .dots {
-            display: flex;
-            align-items: center;
-            gap: 0.35rem;
-            min-width: 2.5rem;
-            justify-content: flex-end;
-        }
-
-        .dots span {
-            width: 0.46rem;
-            height: 0.46rem;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.18);
-            display: block;
-            transition: background 0.25s ease, box-shadow 0.25s ease;
-        }
-
-        .skill-item:hover .dots span {
-            background: var(--primary-orange);
-            box-shadow: 0 0 10px rgba(255, 102, 0, 0.45);
-        }
-
-        .proof {
-            max-height: 0;
-            overflow: hidden;
-            opacity: 0;
-            margin: 0;
-            padding-top: 0;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            line-height: 1.7;
-            transition: max-height 0.35s ease, opacity 0.35s ease, margin-top 0.35s ease, padding-top 0.35s ease;
-        }
-
-        .skill-item:hover .proof {
-            max-height: 120px;
-            opacity: 1;
-            margin-top: 0.8rem;
-            padding-top: 0.7rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        /* Footer */
-        footer {
-            padding: 2rem;
-            text-align: center;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Mobile */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 1rem;
-            }
-
-            .nav-links {
-                flex-direction: column;
-                gap: 1rem;
-                width: 100%;
-            }
-
-            .nav-links a {
-                font-size: 0.7rem;
-            }
-
-            .hero {
-                min-height: 80vh;
-                padding: 2rem 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-cards-container {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-matrix {
-                grid-template-columns: 1fr;
-            }
-
-            .skill-category-section:nth-child(2n) {
-                border-left: none;
-            }
-
-            .project-content{
-                grid-template-columns:1fr;
-            }
-            
-            section h2 {
-                font-size: 1.8rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Kenechukwu Ofili — Product Manager &amp; Data Analytics</title>
+<meta name="description" content="Kenechukwu Ofili: Product Manager. A chronological ledger of product strategy, analytics work, and projects." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --obsidian: #0A0A0A; --mercury: #EDEDED; --terminal: #ff8c00; --stone: #888888;
+  --font-display: 'Inter Tight', system-ui, sans-serif; --font-mono: 'IBM Plex Mono', monospace;
+}
+html { scroll-behavior: smooth; }
+body { background: var(--obsidian); color: var(--mercury); font-family: var(--font-mono); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+::selection { background: var(--terminal); color: var(--obsidian); }
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+ul { list-style: none; }
+.mono-label { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.2em; font-size: 0.7rem; }
+.container { max-width: 1600px; margin: 0 auto; padding: 0 1.25rem; }
+@media (min-width: 768px) { .container { padding: 0 2.5rem; } }
+
+/* NAV */
+header.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .4s, border-color .4s, backdrop-filter .4s; border-bottom: 1px solid transparent; }
+header.nav.scrolled { background: rgba(10,10,10,.85); backdrop-filter: blur(10px); border-bottom-color: rgba(255,255,255,.1); }
+header.nav nav { display: flex; align-items: center; justify-content: space-between; height: 4rem; }
+.logo { font-family: var(--font-display); font-weight: 700; font-size: .875rem; letter-spacing: -.02em; }
+.logo span { color: var(--terminal); }
+.nav-links { display: none; gap: 1.75rem; align-items: center; }
+@media (min-width:900px){ .nav-links{display:flex;} }
+.nav-links a { color: var(--stone); transition: color .2s; }
+.nav-links a:hover { color: var(--mercury); }
+.nav-cta { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .2em; font-size: .7rem; border: 1px solid var(--terminal); color: var(--terminal); padding: .5rem 1rem; transition: background .2s, color .2s; }
+.nav-cta:hover { background: var(--terminal); color: var(--obsidian); }
+
+/* HERO */
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; overflow: hidden; padding: 6rem 0 2.5rem; }
+.hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; opacity: .35;
+  background-image: linear-gradient(rgba(255,140,0,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,140,0,.08) 1px, transparent 1px);
+  background-size: 42px 42px; mask-image: radial-gradient(ellipse 80% 60% at 50% 30%, black 40%, transparent 90%); }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,.2), rgba(10,10,10,.5), var(--obsidian)); }
+.hero-content { position: relative; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.status { color: var(--terminal); margin-bottom: 2rem; display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+.status .dot { width: .5rem; height: .5rem; border-radius: 50%; background: var(--terminal); animation: pulse 2s infinite; flex-shrink: 0; }
+@keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:.4;} }
+.hero h1 { font-family: var(--font-display); font-weight: 900; letter-spacing: -.05em; line-height: .82; font-size: 18vw; }
+@media (min-width:768px){ .hero h1{font-size:12vw;} }
+.hero h1 .first { color: var(--mercury); display: block; }
+.hero h1 .last { display: block; text-align: right; -webkit-text-stroke: 1.5px var(--mercury); color: transparent; }
+.hero-side { margin-top: 2.5rem; max-width: 38rem; border-left: 1px solid var(--terminal); padding-left: 1.5rem; }
+.hero-side .role { margin-bottom: .75rem; }
+.hero-side p { color: var(--stone); font-size: 1.05rem; line-height: 1.6; }
+@media (min-width:768px){ .hero-side p{font-size:1.1rem;} }
+.hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.btn-primary { background: var(--mercury); color: var(--obsidian); padding: .75rem 1.5rem; transition: background .2s; }
+.btn-primary:hover { background: var(--terminal); }
+.btn-secondary { border: 1px solid rgba(255,255,255,.25); color: var(--mercury); padding: .75rem 1.5rem; transition: border-color .2s, color .2s; }
+.btn-secondary:hover { border-color: var(--terminal); color: var(--terminal); }
+.hero-stats { position: relative; display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; border-top: 1px solid rgba(255,255,255,.1); padding-top: 1.5rem; margin-top: 3rem; }
+.hero-stats .val { font-family: var(--font-display); font-weight: 700; font-size: 1.875rem; color: var(--mercury); }
+@media (min-width:768px){ .hero-stats .val{font-size:3rem;} }
+.hero-stats .lbl { color: var(--stone); margin-top: .25rem; }
+
+/* SECTION HEADER */
+.section { padding: 6rem 0; border-top: 1px solid rgba(255,255,255,.1); }
+@media (min-width:768px){ .section{padding:8rem 0;} }
+.section-header { margin-bottom: 4rem; }
+@media (min-width:768px){ .section-header{margin-bottom:5rem;} }
+.section-header .top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+.section-header .idx { color: var(--terminal); }
+.section-header .line { height: 1px; flex: 1; background: rgba(255,255,255,.15); }
+.section-header .lbl { color: var(--stone); }
+.section-header h2 { font-family: var(--font-display); font-weight: 800; letter-spacing: -.03em; line-height: .95; font-size: 12vw; color: var(--mercury); }
+@media (min-width:768px){ .section-header h2{font-size:6.5vw;} }
+.text-outline { -webkit-text-stroke: 1.5px var(--mercury); color: transparent; }
+
+/* ABOUT */
+.about-grid { display: grid; gap: 3rem; }
+@media (min-width:768px){ .about-grid{grid-template-columns:7fr 5fr;} }
+.about-text { color: rgba(237,237,237,.9); font-size: 1.05rem; line-height: 1.75; }
+.about-text p { margin-bottom: 1.25rem; }
+.about-text h3 { font-family: var(--font-display); font-weight: 700; font-size: 1rem; color: var(--mercury); margin: 2rem 0 .75rem; }
+.about-text ul { margin-bottom: 1rem; }
+.about-text li { padding-left: 1.25rem; position: relative; margin-bottom: .6rem; color: rgba(237,237,237,.85); }
+.about-text li::before { content: '—'; position: absolute; left: 0; color: var(--terminal); }
+.identity-card { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.02); padding: 2rem; height: fit-content; }
+.identity-card .ic-label { color: var(--terminal); margin-bottom: 1.5rem; }
+.identity-card .ic-name { font-family: var(--font-display); font-weight: 700; font-size: 1.5rem; color: var(--mercury); }
+.identity-card .ic-role { color: var(--stone); font-size: .875rem; margin-top: .25rem; margin-bottom: 2rem; }
+.identity-card ul li { display: flex; align-items: flex-start; gap: .75rem; color: rgba(237,237,237,.9); font-size: .875rem; margin-bottom: 1rem; }
+.identity-card .icon { color: var(--terminal); flex-shrink: 0; }
+.identity-card a:hover { color: var(--terminal); }
+
+/* JOURNEY */
+.journey { background: rgba(255,255,255,.015); }
+.year-anchors { display: flex; gap: .25rem; overflow-x: auto; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 1rem; scrollbar-width: none; }
+.year-anchors::-webkit-scrollbar { display: none; }
+.year-anchors button { flex-shrink: 0; min-width: 4rem; min-height: 2.75rem; padding: 0 .75rem; background: none; border: none; cursor: pointer; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .2em; font-size: .7rem; color: var(--stone); transition: color .2s; }
+.year-anchors button:hover, .year-anchors button.active { color: var(--terminal); }
+.cards-scroll { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 1.25rem 1rem; scrollbar-width: none; }
+.cards-scroll::-webkit-scrollbar { display: none; }
+@media (min-width:768px){ .cards-scroll{padding:0 2.5rem 1rem;} }
+.journey-card { flex-shrink: 0; width: 88vw; max-width: 620px; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.02); padding: 2rem; scroll-snap-align: center; transition: border-color .4s, background .4s; }
+@media (min-width:768px){ .journey-card{padding:2.75rem;} }
+.journey-card.active { border-color: var(--terminal); background: rgba(255,140,0,.04); }
+.journey-card .top-row { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 1.75rem; }
+.journey-card .year { font-family: var(--font-display); font-weight: 900; font-size: 3rem; color: var(--mercury); letter-spacing: -.05em; }
+@media (min-width:768px){ .journey-card .year{font-size:4.5rem;} }
+.journey-card .tag { color: var(--terminal); border: 1px solid rgba(255,140,0,.4); padding: .25rem .75rem; }
+.journey-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--mercury); margin-bottom: .5rem; }
+@media (min-width:768px){ .journey-card h3{font-size:1.7rem;} }
+.journey-card .org { color: var(--stone); font-size: .8rem; margin-bottom: 1.5rem; }
+.journey-card .divider { height: 1px; background: rgba(255,255,255,.1); margin-bottom: 1.5rem; }
+.journey-card .evol-label { color: var(--terminal); margin-bottom: .75rem; }
+.journey-card .evol { color: rgba(237,237,237,.85); line-height: 1.7; font-size: .92rem; margin-bottom: 1.25rem; }
+.journey-card .evol:last-child { margin-bottom: 0; }
+.journey-card .evol li { padding-left: 1.1rem; position: relative; margin-bottom: .55rem; }
+.journey-card .evol li::before { content: '—'; position: absolute; left: 0; color: var(--terminal); }
+.journey-controls { display: flex; align-items: center; gap: 1rem; margin-top: 2rem; }
+.journey-controls button { width: 2.75rem; height: 2.75rem; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,.2); background: none; color: var(--mercury); cursor: pointer; transition: border-color .2s, color .2s; font-size: 1rem; }
+.journey-controls button:hover { border-color: var(--terminal); color: var(--terminal); }
+.journey-controls .progress { flex: 1; height: 4px; background: rgba(255,255,255,.1); position: relative; overflow: hidden; }
+.journey-controls .progress-bar { position: absolute; inset: 0 auto 0 0; background: var(--terminal); transition: width .5s; }
+.journey-controls .count { color: var(--stone); }
+
+/* SKILLS */
+.skills-list { display: flex; flex-direction: column; gap: 3rem; }
+.skill-group .sg-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem; }
+.skill-group .sg-header h3 { color: var(--terminal); }
+.skill-group .sg-header .line { height: 1px; flex: 1; background: rgba(255,255,255,.1); }
+.skill-grid { display: grid; gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); }
+@media (min-width:640px){ .skill-grid{grid-template-columns:1fr 1fr;} }
+.skill-item { background: var(--obsidian); padding: 1.25rem; transition: background .2s; position: relative; }
+.skill-item:hover { background: rgba(255,255,255,.03); }
+.skill-item .top { display: flex; align-items: center; justify-content: space-between; }
+.skill-item .name { color: var(--mercury); font-weight: 500; }
+.skill-item .dots { display: flex; gap: .25rem; }
+.skill-item .dots span { width: .375rem; height: .375rem; border-radius: 50%; background: rgba(255,140,0,.7); }
+.skill-item .proof { color: var(--stone); font-size: .72rem; line-height: 1.5; margin-top: .5rem; max-height: 0; overflow: hidden; opacity: 0; transition: max-height .3s, opacity .3s; }
+.skill-item:hover .proof { max-height: 6rem; opacity: 1; }
+
+/* PROJECTS */
+.projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.project-card { border: 1px solid rgba(255,255,255,.12); overflow: hidden; background: rgba(255,255,255,.02); cursor: pointer; transition: border-color .3s; }
+.project-card:hover, .project-card.active { border-color: rgba(255,140,0,.4); }
+.project-card .pc-inner { padding: 1.5rem; }
+@media (min-width:768px){ .project-card .pc-inner{padding:2.5rem;} }
+.project-card .pc-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1rem; }
+.pc-head-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+.pc-hint { color: var(--stone); transition: color .2s; white-space: nowrap; }
+.project-card:hover .pc-hint, .project-card.active .pc-hint { color: var(--terminal); }
+
+/* Expandable region */
+.project-expand { display: grid; gap: 2rem; overflow: hidden; max-height: 0; opacity: 0; transform: translateY(20px); margin-top: 0; transition: max-height .6s ease, opacity .45s ease, transform .45s ease, margin .45s ease; }
+@media (min-width:768px){ .project-expand{grid-template-columns: 1.1fr 1fr;} }
+.project-card:hover .project-expand, .project-card.active .project-expand { max-height: 1200px; opacity: 1; transform: translateY(0); margin-top: 1.5rem; }
+.project-card .num { font-family: var(--font-display); font-weight: 900; font-size: 2.75rem; color: rgba(237,237,237,.35); letter-spacing: -.05em; }
+@media (min-width:768px){ .project-card .num{font-size:3.75rem;} }
+.project-card .tag { color: var(--terminal); border: 1px solid rgba(255,140,0,.4); padding: .25rem .75rem; height: fit-content; }
+.project-card h3 { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; color: var(--mercury); margin-bottom: .5rem; }
+@media (min-width:768px){ .project-card h3{font-size:1.9rem;} }
+.project-card .meta { color: var(--stone); margin-bottom: 1rem; font-size: .72rem; }
+.project-card .desc { color: rgba(237,237,237,.8); line-height: 1.7; font-size: .9rem; margin-bottom: 1.25rem; }
+.project-card .impact-label { color: var(--terminal); margin-bottom: .75rem; }
+.project-card .impact li { color: rgba(237,237,237,.8); font-size: .85rem; line-height: 1.6; padding-left: 1.1rem; position: relative; margin-bottom: .5rem; }
+.project-card .impact li::before { content: '—'; position: absolute; left: 0; color: var(--terminal); }
+.project-card .pc-media { border: 1px solid rgba(255,255,255,.1); background: rgba(0,0,0,.3); }
+.project-card .pc-media img { width: 100%; opacity: .9; }
+.project-card .pc-caption { padding: .85rem 1rem; color: var(--stone); font-size: .72rem; border-top: 1px solid rgba(255,255,255,.1); line-height: 1.5; }
+
+/* ACHIEVEMENTS */
+.achievements-grid { display: grid; gap: 1px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.1); }
+@media (min-width:768px){ .achievements-grid{grid-template-columns:1fr 1fr;} }
+.achievement { background: var(--obsidian); padding: 1.5rem; display: flex; align-items: flex-start; gap: 1rem; transition: background .2s; }
+.achievement:hover { background: rgba(255,255,255,.03); }
+.achievement .icon { color: var(--terminal); flex-shrink: 0; margin-top: .1rem; font-weight: 700; }
+.achievement .text { color: rgba(237,237,237,.9); line-height: 1.6; font-size: .92rem; }
+
+/* EDUCATION */
+.edu-list { display: grid; gap: 1.5rem; max-width: 40rem; }
+.edu-list .edu { border-left: 1px solid var(--terminal); padding-left: 1.5rem; }
+.edu .degree { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; color: var(--mercury); }
+.edu .school { color: var(--stone); font-size: .85rem; margin-top: .35rem; }
+.edu .status { display: inline-block; margin-top: .6rem; color: var(--terminal); border: 1px solid rgba(255,140,0,.4); padding: .2rem .6rem; font-size: .65rem; letter-spacing: .15em; }
+
+/* CONTACT */
+.contact { background: rgba(255,255,255,.015); }
+.contact .c-label { color: var(--terminal); margin-bottom: 1.5rem; }
+.contact h2 { font-family: var(--font-display); font-weight: 900; letter-spacing: -.05em; line-height: .9; font-size: 12vw; color: var(--mercury); margin-bottom: 1.5rem; }
+@media (min-width:768px){ .contact h2{font-size:6.5vw;} }
+.contact-intro { color: var(--stone); max-width: 34rem; line-height: 1.7; margin-bottom: 3rem; font-size: .95rem; }
+.contact-grid { display: grid; gap: 1.5rem; margin-bottom: 4rem; }
+@media (min-width:640px){ .contact-grid{grid-template-columns:1fr 1fr;} }
+@media (min-width:768px){ .contact-grid{grid-template-columns:1fr 1fr 1fr;} }
+.contact-card { border: 1px solid rgba(255,255,255,.12); padding: 1.5rem; transition: border-color .2s; }
+.contact-card:hover { border-color: var(--terminal); }
+.contact-card .icon { color: var(--terminal); margin-bottom: 1rem; font-size: 1.1rem; }
+.contact-card .c-lbl { color: var(--stone); margin-bottom: .25rem; }
+.contact-card .c-val { color: var(--mercury); font-size: .875rem; word-break: break-word; }
+.contact-card:hover .c-val { color: var(--terminal); }
+.contact-bottom { display: flex; flex-direction: column; gap: 1rem; border-top: 1px solid rgba(255,255,255,.1); padding-top: 2rem; }
+@media (min-width:640px){ .contact-bottom{flex-direction:row;align-items:center;justify-content:space-between;} }
+.contact-bottom .name { font-family: var(--font-display); font-weight: 700; color: var(--mercury); }
+.contact-bottom .name span { color: var(--terminal); }
+.contact-bottom .copy { color: var(--stone); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .001ms !important; transition-duration: .001ms !important; }
+}
+</style>
 </head>
 <body>
-    <div id="navTrigger"></div>
-    
-    <!-- Navigation -->
-    <nav>
-        <div class="logo">KOFILI</div>
-        <div class="nav-links">
-            <a href="#about"onclick="scrollToSection('about'); return false;">Who am I?</a>
-            <a href="#journey" onclick="scrollToSection('journey'); return false;">My journey</a>
-            <a href="#skills" onclick="scrollToSection('skills'); return false;">Skills</a>
-            <a href="#projects" onclick="scrollToSection('projects'); return false;">Creations</a>
-            <a href="#education" onclick="scrollToSection('education'); return false;">Education</a>
-            <button class="cta-button" onclick="scrollToSection('contact')">Get In Touch</button>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="status-badge">Open to opportunities | CO | NJ | GA | CA | WA | Remote </div>
-            <h1>Kenechukwu <span class="highlight">Ofili</span></h1>
-            <div class="hero-cta">
-                <button class="cta-button primary-btn" onclick="scrollToSection('journey')">View My Journey</button>
-            </div>
-            <div class="stats">
-                <h2 class="achievements-header">
-                    Biggest <span class="highlight">Success stories</span>
-                </h2>
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">27%</div>
-                        <div class="stat-label">Customer Retention Lift</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">60%</div>
-                        <div class="stat-label">Inventory Anomaly Reduction</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">$500K</div>
-                        <div class="stat-label">Net-New Recurring Revenue</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<!-- NAV -->
+<header class="nav" id="nav">
+  <nav class="container">
+    <a href="#top" class="logo">KOFILI<span>.</span></a>
+    <div class="nav-links">
+      <a href="#about" class="mono-label">About</a>
+      <a href="#journey" class="mono-label">Journey</a>
+      <a href="#skills" class="mono-label">Skills</a>
+      <a href="#projects" class="mono-label">Projects</a>
+      <a href="#achievements" class="mono-label">Achievements</a>
+      <a href="#education" class="mono-label">Education</a>
+    </div>
+    <a href="mailto:komofili98@gmail.com" class="nav-cta">Get In Touch</a>
+  </nav>
+</header>
 
-    <!-- About Section -->
-    <section id="about" class="container">
-        <div class="section-header">
-          <div class="top"><span class="mono-label idx">01</span><span class="line"></span><span class="mono-label lbl">THE ORIGIN</span></div>
-          <h2>Who am <span class="text-outline">I</span></h2>
-        </div>
-        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
-           <strong>Hello! I go by Kene.</strong> (Think <em>Penne</em> with a K, so if you're suddenly hungry, blame my parents.)
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container hero-content">
+    <div class="mono-label status"><span class="dot"></span> Open to Opportunities · CO · NJ · GA · CA · WA · Remote</div>
+    <h1 id="heroTitle">
+      <span class="first">Kenechukwu</span>
+      <span class="last">Ofili</span>
+    </h1>
+    <div class="hero-side">
+      <p class="mono-label role">Product Manager</p>
+      <p>Leads end-to-end product strategy and roadmap for B2B and B2C solutions; translating data-driven insights into clear PRDs, user stories, and go-to-market plans that accelerate growth and value.</p>
+      <div class="hero-btns">
+        <a href="#journey" class="btn-primary mono-label">View My Journey</a>
+        <a href="mailto:komofili98@gmail.com" class="btn-secondary mono-label">Get In Touch</a>
+        <a href="KenechukwuOfili_Resume_Linkedin.pdf" target="_blank" class="btn-secondary mono-label">Download Resume</a>
+      </div>
+    </div>
+  </div>
+  <div class="container hero-stats">
+    <div><div class="val">27%</div><div class="lbl mono-label">Customer Retention Lift</div></div>
+    <div><div class="val">60%</div><div class="lbl mono-label">Inventory Anomaly Reduction</div></div>
+    <div><div class="val">$500K</div><div class="lbl mono-label">Net-New Recurring Revenue</div></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="section-header">
+      <div class="top">
+        <span class="mono-label idx">01</span>
+        <span class="line"></span>
+        <span class="mono-label lbl">The Origin</span>
+      </div>
+      <h2>Who Am <span class="text-outline">I</span></h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text">
+        <p>
+          <strong>Hello! I go by Kene.</strong> (Think <em>penne</em> with a K, so if you're suddenly hungry, blame my parents.)
         </p>
-        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
-            The rest of this site will give you the breakdown of my professional history, but here is who I am at my core: 
-            <strong>someone who loves understanding people and solving meaningful problems.</strong> 
+        <p>
+          The rest of this site gives you the breakdown of my professional history, but here is who I am at my core: someone who loves understanding people and solving meaningful problems. The most rewarding moments of my career have come from sitting down with customers and cross-functional teammates, listening to their frustrations, uncovering the actual root causes, and building solutions that make their lives noticeably easier. That curiosity and empathy are what ultimately led me into product management.
         </p>
-        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
-            The most rewarding moments of my career have come from sitting down with customers and cross-functional teammates, 
-            listening to their frustrations, uncovering the actual root causes, and building solutions that make their lives 
-            noticeably easier. That innate curiosity and empathy are what ultimately led me into product management.
-        </p>
-        <h3>What drives me:</h3>
+
+        <h3>What drives me</h3>
         <ul>
-            <li><strong>User-First Mentality:</strong> The best products are built by people who care deeply about the users they serve.</li>
-            <li><strong>Continuous Improvement:</strong> Every conversation is a chance to learn; every problem is a chance to optimize.</li>
+          <li><strong>User-first mentality</strong>: The best products are built by people who care deeply about the users they serve.</li>
+          <li><strong>Continuous improvement</strong>: Every conversation is a chance to learn, every problem a chance to optimize.</li>
         </ul>
-        <h3>When I'm offline:</h3>
-        <p style="color: var(--text-secondary); line-height: 1.8; max-width: 800px;">
-            You'll usually find me following Chelsea FC, talking about cars, discovering new music, or enjoying the beauty nature has to offer. 
-            Whether I'm reverse-engineering how a car engine works or failing spectacularly at a pottery wheel, I just love learning how 
-            things are put together, and how to make them work even better.
+
+        <h3>When I'm offline</h3>
+        <p>
+          You'll usually find me following Chelsea FC, talking about cars, discovering new music, or enjoying the beauty nature has to offer. Whether I'm reverse-engineering how an engine works or failing spectacularly at a pottery wheel, I just love learning how things are put together, and how to make them work even better.
         </p>
-    </section>
+      </div>
 
-    <!-- Experience Section -->
-    <section id="journey" class="experience-section container">
-        <div class="section-header">
-          <div class="top"><span class="mono-label idx">02</span><span class="line"></span><span class="mono-label lbl">My journey</span></div>
-          <h2>The <span class="text-outline">Timeline</span></h2>
+      <div>
+        <div class="identity-card">
+          <div class="mono-label ic-label">Me at a glance</div>
+          <div class="ic-name">Kenechukwu Ofili</div>
+          <div class="ic-role">Product Manager · M.Sc. Data Analytics (in progress)</div>
+
+          <ul>
+            <li><span class="icon">◎</span> Open to CO · NJ · GA · CA · WA · Remote</li>
+            <li><a href="mailto:komofili98@gmail.com"><span class="icon">✉</span> komofili98@gmail.com</a></li>
+            <li><a href="https://linkedin.com/in/kofili" target="_blank" rel="noopener"><span class="icon">in</span> linkedin.com/in/kofili</a></li>
+            <li><a href="https://github.com/kofili98" target="_blank" rel="noopener"><span class="icon">&lt;/&gt;</span> github.com/kofili98</a></li>
+          </ul>
         </div>
-        <p style="color: var(--text-secondary); margin-bottom: 2rem;">2019 - Present</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="timeline-full">
-            <span class="timeline-year" onclick="selectYear(2025)">2025</span>
-            <span class="timeline-year active" onclick="selectYear(2022)">2022</span>
-            <span class="timeline-year" onclick="selectYear(2020)">2020</span>
-            <span class="timeline-year" onclick="selectYear(2019)">2019</span>
+<!-- JOURNEY -->
+<section class="section journey" id="journey">
+  <div class="container">
+    <div class="section-header">
+      <div class="top">
+        <span class="mono-label idx">02</span>
+        <span class="line"></span>
+        <span class="mono-label lbl">2025 — 2019</span>
+      </div>
+      <h2>The <span class="text-outline">Timeline</span></h2>
+    </div>
+
+    <div class="year-anchors" id="yearAnchors"></div>
+  </div>
+
+  <div class="cards-scroll" id="cardsScroll">
+    <article class="journey-card">
+      <div class="top-row">
+        <span class="year">2025</span>
+        <span class="tag mono-label">Present</span>
+      </div>
+      <h3>M.Sc. Data Analytics Student</h3>
+      <div class="org">Indiana Wesleyan University · Aug 2025 – May 2027</div>
+      <div class="divider"></div>
+      <div class="evol-label mono-label">Impact Positioning</div>
+      <p class="evol">Realizing the importance of data-driven decision-making, I committed to furthering my ability to dig into data to better understand and utilize the abundance of data available in the big data era.</p>
+    </article>
+
+    <article class="journey-card active">
+      <div class="top-row">
+        <span class="year">2022</span>
+        <span class="tag mono-label">Product</span>
+      </div>
+      <h3>Product Manager</h3>
+      <div class="org">Viaero Wireless · Fort Morgan, CO · Dec 2022 – May 2025</div>
+      <div class="divider"></div>
+      <div class="evol-label mono-label">Impact Summary</div>
+      <p class="evol">Led end-to-end B2B and B2C product strategy, customer discovery, and cross-functional execution across telecom, broadband, and IoT portfolios, turning fragmented processes into high-performing digital experiences.</p>
+      <div class="evol-label mono-label">Key Achievements</div>
+      <ul class="evol">
+        <li>Reconciled two conflicting team workflows into a single inventory tool, cutting anomalies by 60% and lifting on-time delivery 46%.</li>
+        <li>Revived an abandoned eCommerce platform through a vendor build to launch, then fixed checkout friction, driving a 15% conversion increase.</li>
+        <li>Uncovered a $500K net-new revenue segment through market modeling and diagnosed a hidden churn pattern.</li>
+        <li>Built the dashboards and playbooks giving sales, marketing, and leadership a shared source of truth.</li>
+        <li>Drove a co-selling partnership and evaluated new VoIP architecture and fraud-prevention identity partnerships.</li>
+      </ul>
+    </article>
+
+    <article class="journey-card">
+      <div class="top-row">
+        <span class="year">2020</span>
+        <span class="tag mono-label">Operations</span>
+      </div>
+      <h3>Building Attendant</h3>
+      <div class="org">Purdue Memorial Union · West Lafayette, IN · Aug 2020 – May 2021</div>
+      <div class="divider"></div>
+      <div class="evol-label mono-label">Impact Summary</div>
+      <p class="evol">Managed operations, visitor safety, and facility logistics for high-traffic campus venues while establishing incident-reporting frameworks.</p>
+      <div class="evol-label mono-label">Key Achievements</div>
+      <ul class="evol">
+        <li>Directed daily facility workflows and opening/closing procedures while coaching new staff.</li>
+        <li>Standardized shift logging, giving directors visibility into recurring issues and driving policy refinements.</li>
+      </ul>
+    </article>
+
+    <article class="journey-card">
+      <div class="top-row">
+        <span class="year">2019</span>
+        <span class="tag mono-label">Leadership</span>
+      </div>
+      <h3>Tour Ambassador</h3>
+      <div class="org">Purdue University · West Lafayette, IN · Feb 2019 – May 2022</div>
+      <div class="divider"></div>
+      <div class="evol-label mono-label">Impact Summary</div>
+      <p class="evol">Served as a key brand representative for Purdue University, managing high-volume customer interactions and using operational data to optimize visitor routes and resource management.</p>
+      <div class="evol-label mono-label">Key Achievements</div>
+      <ul class="evol">
+        <li>Analyzed visitor movement patterns and feedback to redesign campus tour routes, resolving congestion points.</li>
+        <li>Built Excel-based tracking tools to monitor visitor traffic, enabling data-informed staffing decisions.</li>
+        <li>Conducted tours for diverse audiences while mentoring incoming ambassadors on communication standards.</li>
+      </ul>
+    </article>
+
+    <article class="journey-card">
+      <div class="top-row">
+        <span class="year">2019</span>
+        <span class="tag mono-label">Internship</span>
+      </div>
+      <h3>Manufacturing Operations Intern</h3>
+      <div class="org">Heineken (Nigerian Breweries) · Lagos, Nigeria · Jun 2019 – Aug 2019</div>
+      <div class="divider"></div>
+      <div class="evol-label mono-label">Impact Summary</div>
+      <p class="evol">Applied data analytics and engineering principles within a large-scale manufacturing environment to identify operational bottlenecks and digitize performance tracking.</p>
+      <div class="evol-label mono-label">Key Achievements</div>
+      <ul class="evol">
+        <li>Mapped operational bottlenecks with plant engineers to digitize routine reporting, cutting manual workload by 20%.</li>
+        <li>Built centralized performance tracking tools, accelerating leadership reaction time by 15%.</li>
+        <li>Authored operational guidelines to streamline floor procedures and onboard new staff.</li>
+      </ul>
+    </article>
+
+    <article class="journey-card">
+      <div class="top-row">
+        <span class="year">2019</span>
+        <span class="tag mono-label">Academia</span>
+      </div>
+      <h3>Undergraduate TA, First Year Engineering</h3>
+      <div class="org">Purdue College of Engineering · Aug 2019 – May 2020</div>
+      <div class="divider"></div>
+      <div class="evol-label mono-label">Impact Summary</div>
+      <p class="evol">Facilitated hands-on technical problem solving, teamwork, and academic rigor for foundational engineering courses.</p>
+      <div class="evol-label mono-label">Key Achievements</div>
+      <ul class="evol">
+        <li>Mentored student teams through early-stage engineering design challenges.</li>
+        <li>Partnered with faculty on coursework grading and institutional compliance.</li>
+      </ul>
+    </article>
+  </div>
+
+  <div class="container journey-controls">
+    <button id="prevBtn" aria-label="Previous era">←</button>
+    <button id="nextBtn" aria-label="Next era">→</button>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar" style="width:33.33%"></div>
+    </div>
+    <span class="mono-label count" id="journeyCount">02/06</span>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="container">
+    <div class="section-header">
+      <div class="top">
+        <span class="mono-label idx">03</span>
+        <span class="line"></span>
+        <span class="mono-label lbl">Competency Matrix</span>
+      </div>
+      <h2>The Tools I <span class="text-outline">Work With</span></h2>
+    </div>
+
+    <div class="skills-list">
+      <div class="skill-group">
+        <div class="sg-header">
+          <h3 class="mono-label">Product Management</h3>
+          <span class="line"></span>
         </div>
 
-        <div class="experience-cards-container" id="experienceCardsContainer">
-            <!-- 2019 -->
-            <div class="experience-card" data-year="2019">
-                <div class="card-year">2019</div>
-                <div class="card-badge">LEADERSHIP</div>
-                <div class="card-title">Tour Ambassador</div>
-                <div class="card-company">Purdue University — West Lafayette, IN</div>
-                <div class="card-date">Feb 2019 – May 2022</div>
-                <div class="card-evolution-label">IMPACT summary</div>
-                <div class="card-evolution-text">
-                    Served as a key brand representative for Purdue University, managing high-volume customer 
-                    interactions and utilizing operational data to optimize visitor routes and resource 
-                    management.       
-                </div>
-                <div class="card-evolution-label">KEY achievements</div>
-                <div class="card-evolution-text">
-                    <ul>
-                        <li><strong>Experience Optimization: </strong>Analyzed visitor movement patterns and feedback
-                            data to redesign campus tour routes, resolving congestion points and improving tour
-                            narrative flow.</li>
-                        <li><strong>Resource Modeling: </strong>Created Excel-based tracking tools to monitor
-                            visitor traffic, enabling management to make data-informed decisions on staffing 
-                            deployment.</li>
-                        <li><strong>Brand Engagement & Training: </strong>Conducted dynamic tours for diverse 
-                            campus audiences while mentoring incoming ambassadors on effective communication 
-                            standards.</li>
-                    </ul>
-                </div>
+        <div class="skill-grid">
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Product Strategy &amp; Roadmapping</span>
+              <span class="dots"><span></span><span></span><span></span></span>
             </div>
-
-            <div class="experience-card" data-year="2019">
-                <div class="card-year">2019</div>
-                <div class="card-badge">INTERNSHIP</div>
-                <div class="card-title">Manufacturing Operations Intern</div>
-                <div class="card-company">Heineken (Nigerian Breweries) — Lagos, Nigeria</div>
-                <div class="card-date">Jun 2019 – Aug 2019</div>
-                <div class="card-evolution-label">IMPACT summary</div>
-                <div class="card-evolution-text">
-                    Applied data analytics and engineering principles within a large-scale manufacturing 
-                    environment to identify operational bottlenecks, digitize performance tracking, and support
-                    workforce standardization.
-                </div>
-                <div class="card-evolution-label">KEY achievements</div>
-                <div class="card-evolution-text">
-                    <ul>
-                        <li><strong>Process Automation: </strong>Mapped operational bottlenecks alongside plant 
-                            engineers to digitize routine reporting, cutting manual workload by 20%.</li>
-                        <li><strong>Operational Analytics: </strong>Built centralized performance tracking tools 
-                            for production metrics, accelerating leadership reaction time by 15%.</li>
-                        <li><strong>Standardization Frameworks: </strong>Authored operational guidelines and 
-                            technical documentation to streamline floor procedures and onboard new staff efficiently.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="experience-card" data-year="2019">
-                <div class="card-year">2019</div>
-                <div class="card-badge">EDUCATION</div>
-                <div class="card-title">Undergraduate Teaching Assistant, First Year Engineering</div>
-                <div class="card-company">Purdue College of Engineering — West Lafayette, IN</div>
-                <div class="card-date">Aug 2019 – May 2020</div>
-                <div class="card-evolution-label">IMPACT summary</div>
-                <div class="card-evolution-text">
-                    Facilitated hands-on technical problem solving, teamwork, and academic rigor for foundational 
-                    engineering courses.  
-                </div>
-                <div class="card-evolution-label">KEY achievements</div>
-                <div class="card-evolution-text">
-                    <ul>
-                        <li><strong>Technical Guidance: </strong>Mentored student teams through early-stage 
-                            engineering design challenges, facilitating teamwork and analytical problem-solving.</li>
-                        <li><strong>Academic Logistics: </strong>Partnered with faculty to execute precise 
-                            coursework grading and ensure strict compliance with institutional guidelines.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 2020 -->
-            <div class="experience-card" data-year="2020">
-                <div class="card-year">2020</div>
-                <div class="card-badge">OPERATIONS</div>
-                <div class="card-title">Building Attendant</div>
-                <div class="card-company">Purdue Morial Union — West Lafayette, IN</div>
-                <div class="card-date">Aug 2020 – May 2021</div>
-                <div class="card-evolution-label">IMPACT summary</div>
-                <div class="card-evolution-text">
-                    Managed operations, visitor safety, and facility logistics for high-traffic campus venues 
-                    while establishing incident-reporting frameworks for continuous operational improvement.
-                </div>
-                <div class="card-evolution-label">KEY achievements</div>
-                <div class="card-evolution-text">
-                    <ul>
-                        <li><strong>Operations Management: </strong>Directed daily facility workflows, event 
-                            arrangements, and opening/closing procedures while coaching new staff on operational 
-                            standards.</li>
-                        <li><strong>Operational Insights: </strong>Standardized shift logging to give facility 
-                            directors clear visibility into recurring operational issues, driving ongoing policy 
-                            refinements.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 2022 -->
-            <div class="experience-card active" data-year="2022">
-                <div class="card-year">2022</div>
-                <div class="card-badge">PRODUCT MANAGEMENT</div>
-                <div class="card-title">Product Manager</div>
-                <div class="card-company">Viaero Wireless — Fort Morgan, CO</div>
-                <div class="card-date">Dec 2022 – May 2025</div>
-                <div class="card-evolution-label">IMPACT summary</div>
-                <div class="card-evolution-text">
-                    Led end-to-end B2B and B2C product strategy, customer discovery, and cross-functional execution
-                    across telecom, broadband, and IoT portfolios. Transformed fragmented internal processes and 
-                    customer touchpoints into high-performing digital experiences, driving top-line revenue growth 
-                    and operational scalability.
-                </div>
-                <div class="card-evolution-label">KEY achievements</div>
-                <div class="card-evolution-text">
-                    <ul>
-                        <li><strong>Process & Systems Design: </strong>Turned a chronic inventory problem into a 
-                            single, unified tool, reconciling two conflicting team workflows through direct 
-                            stakeholder collaboration.</li>
-                        <li><strong>Digital Platform Ownership: </strong>Revived an abandoned eCommerce platform, 
-                            guided it through a vendor build to launch, then took the reins in-house, fixing 
-                            checkout friction along the way.</li>
-                        <li><strong>Market & Growth Strategy: </strong>Uncovered an untapped revenue segment through
-                            rigorous market modeling and diagnosed a hidden churn pattern that reshaped retention 
-                            thinking.</li>
-                        <li><strong>Cross-Functional Enablement: </strong>Built the dashboards and playbooks that 
-                            gave sales, marketing, and leadership a shared source of truth.</li>
-                        <li><strong>Partnerships & Emerging Tech: </strong>Drove a co-selling partnership, 
-                            evaluated new VoIP architecture, and helped build the case for a fraud-prevention 
-                            identity partnership.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- 2025 -->
-            <div class="experience-card" data-year="2025">
-                <div class="card-year">2025</div>
-                <div class="card-badge">Education/Professional Development</div>
-                <div class="card-title">M.sc Data Analytics Student</div>
-                <div class="card-company">Indiana Wesleyan University</div>
-                <div class="card-date">Aug 2025 - May 2027</div>
-                <div class="card-evolution-label">Impact POSITIONING</div>
-                <div class="card-evolution-text">
-                    Realizing the importance of data driven decision making, I made the committment to further my ability to drive into data to better understand and utilize the abundance of data available in modern businesses.
-                </div>
-            </div>
-        </div>
-
-        <div class="carousel-controls">
-            <div class="carousel-nav">
-                <button id="prevBtn" onclick="prevYear()">‹</button>
-                <button id="nextBtn" onclick="nextYear()">›</button>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressFill"></div>
-            </div>
-            <div class="progress-text" id="progressText">01 / 04</div>
-        </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section-header">
-          <div class="top"><span class="mono-label idx">03</span><span class="line"></span><span class="mono-label lbl">Competency Matrix</span></div>
-          <h2>The Tools I <span class="text-outline">Work With</span></h2>
-        </div>
-        <div class="skills-list">
-          <div class="skill-group">
-            <div class="sg-header"><h3 class="mono-label">Product Management</h3><span class="line"></span></div>
-            <div class="skill-grid">
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">Product Strategy &amp; Roadmapping</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Owned end-to-end strategy for broadband and IP services at Viaero Wireless.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Lifecycle Management</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Managed products from discovery through validation and continuous deployment.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Technical PRDs &amp; User Stories</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Co-authored comprehensive PRDs within an Agile framework.</p></div>
-              </div>
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">Customer Discovery</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Drove discovery initiatives that lifted retention by 27%.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Go-to-Market (GTM) Strategy</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Built GTM playbooks and standardized onboarding for sales teams.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Requirements Gathering</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Led requirements from stakeholder intake through validated delivery.</p></div>
-              </div>
-            </div>
+            <p class="proof">Owned end-to-end strategy for broadband and IP services at Viaero Wireless.</p>
           </div>
-          <div class="skill-group">
-            <div class="sg-header"><h3 class="mono-label">Data &amp; Analytics</h3><span class="line"></span></div>
-            <div class="skill-grid">
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">Data-Driven Decision-Making</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Translated analytics into product decisions across teams.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Data Modeling &amp; Pipelines</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Optimized relational data models, reducing anomalies by 60%.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">ROI Modeling</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Architected rigorous ROI models uncovering $500K in new revenue.</p></div>
-              </div>
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">KPI Dashboards</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Built executive-facing dashboards for VP of Sales and Head of Marketing.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Statistical Analysis</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Conducted regression, t-tests, and chi-square on healthcare datasets.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Python · SQL · R</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Core languages for analytics, modeling, and NLP projects.</p></div>
-              </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Lifecycle Management</span>
+              <span class="dots"><span></span><span></span><span></span></span>
             </div>
+            <p class="proof">Managed products from discovery through validation and continuous deployment.</p>
           </div>
-          <div class="skill-group">
-            <div class="sg-header"><h3 class="mono-label">Business &amp; Leadership</h3><span class="line"></span></div>
-            <div class="skill-grid">
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">Cross-functional Leadership</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Led supply chain, engineering, and commercial teams to launch tools.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Stakeholder Management</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Aligned executives, sales, and marketing on product health metrics.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Competitive Analysis</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Conducted deep market analysis to discover unmapped segments.</p></div>
-              </div>
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">Compliance &amp; Quality Assurance</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Built centralized compliance knowledge repository on SharePoint.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Process Improvement</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Redesigned checkout flow, driving 15% conversion increase.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Standard Operating Procedures</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Authored SOPs for process standardization and workforce training.</p></div>
-              </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Technical PRDs &amp; User Stories</span>
+              <span class="dots"><span></span><span></span><span></span></span>
             </div>
+            <p class="proof">Co-authored comprehensive PRDs within an Agile framework.</p>
           </div>
-          <div class="skill-group">
-            <div class="sg-header"><h3 class="mono-label">Tools</h3><span class="line"></span></div>
-            <div class="skill-grid">
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">Figma</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Design and prototyping for product interfaces.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">QuickBase</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Internal tool development and workflow automation.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Excel</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Advanced analysis, modeling, and reporting.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">GitHub</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Code development, version control, and collaboration.</p></div>
-              </div>
-              <div class="skill-column">
-                <div class="skill-item"><div class="top"><span class="name">RStudio</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Statistical computing and NLP model development.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">MATLAB</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Engineering computation and signal processing.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">SharePoint</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Centralized product and compliance knowledge repository.</p></div>
-                <div class="skill-item"><div class="top"><span class="name">Claude</span><span class="dots"><span></span><span></span><span></span></span></div><p class="proof">Connected repos to Claude for AI-powered project exploration.</p></div>
-              </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Customer Discovery</span>
+              <span class="dots"><span></span><span></span><span></span></span>
             </div>
+            <p class="proof">Drove discovery initiatives that lifted retention by 27%.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Go-to-Market (GTM) Strategy</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Built GTM playbooks and standardized onboarding for sales teams.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Requirements Gathering</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Led requirements from stakeholder intake through validated delivery.</p>
           </div>
         </div>
       </div>
-    </section>
 
-     <!-- Projects Section -->
-    <section id="projects" class="container">
-        <div class="section-header">
-          <div class="top"><span class="mono-label idx">04</span><span class="line"></span><span class="mono-label lbl">CASE STUDY GALLERY</span></div>
-          <h2>Things I've <span class="text-outline">Built</span></h2>
+      <div class="skill-group">
+        <div class="sg-header">
+          <h3 class="mono-label">Data &amp; Analytics</h3>
+          <span class="line"></span>
         </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-number">01</div>
-                <div class="project-header">
-                    <div class="project-title">Smart Home IoT Platform</div>
-                    <div class="project-tag">IOT / HARDWARE</div>
-                </div>
-                <div class="project-tech">Senior Design • Verilog, KiCad, Zigbee, Arduino</div>
-                <div class="project-content">
-                    <div class="project-image">
-                        <img src="https://kofili98.github.io/Portfolio/image/ES9.JPG" alt="battery charging system">
-                        <div class="image-caption">
-                            Schematic for proposed battery charging system based on a buck/boost IC.
-                        </div>   
-                    </div>
-                    <div class="project-description">
-                        <h4>Customer Challenge</h4>
-                        <p>
-                            Existing smarthome ecosystems lock users into propritery hardware and limit interoperability, 
-                            forcing limited flexibility in customer solution personalization.
-                        </p>
-                        <h4>Solution</h4>
-                        <p>
-                            The team designed and implemented a modular Zigbee-based IoT
-                            platform utilizing custom PCB design, FPGA logic,
-                            Arduino firmware, and secure wireless communication 
-                            to allow for a plug and play approach to smarthome customization.
-                        </p>
-                        <h4>Impact</h4>
-                        <ul class="project-results">
-                            <li>Custom PCB designed in KiCad</li>
-                            <li>Arduino + FPGA integration</li>
-                            <li>Modular Zigbee network architecture</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
-            <div class="project-card">
-                <div class="project-number">02</div>
-                <div class="project-header">
-                    <div class="project-title">NC Birth Records & Maternal Patterns</div>
-                    <div class="project-tag">DATA ANALYSIS</div>
-                </div>
-                <div class="project-tech">Research • R Studio, Excel</div>
-                <div class="project-content">
-                    <div class="project-image">
-                        <img src="https://kofili98.github.io/Portfolio/image/MaternalHabits_boxplot.jpg" alt="MaternalHabits boxplot">
-                        <div class="image-caption">
-                            Variance in birthing outcomes based on maternal smoking habits.
-                        </div>   
-                    </div>
-                    <div class="project-description">
-                        <h4>Analytics Gap</h4>
-                        <p>
-                            Public health datasets contain thousands of observations, making it difficult for healthcare professionals
-                            to quickly identify maternal factors associated with infant health outcomes. The objective was to 
-                            determine which variables significantly influenced birth weight using statistical analysis.
-                        </p>
-                        <h4>Solution</h4>
-                        <p>
-                            Conducted exploratory data analysis and hypothesis testing in R using the North Carolina Birth Records 
-                            dataset. I developed regression models and visualizations to evaluate relationships between maternal
-                            smoking, marital status, age, and infant birth weight while communicating findings through reproducible 
-                            reports.
-                        </p>
-                        <h4>Impact</h4>
-                        <ul class="project-results">
-                            <li>Analyzed 1,000+ birth records using R and Excel.</li>
-                            <li>Identified maternal smoking as a statistically significant predictor of lower birth weight (p = 0.019).</li>
-                            <li>Produced executive-ready visualizations translating statistical findings into actionable healthcare insights.</li>
-                        </ul>
-                    </div>
-                </div>
+        <div class="skill-grid">
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Data-Driven Decision-Making</span>
+              <span class="dots"><span></span><span></span><span></span></span>
             </div>
-
-            <div class="project-card">
-                <div class="project-number">03</div>
-                <div class="project-header">
-                    <div class="project-title">IMDB Review Sentiment Analysis</div>
-                    <div class="project-tag">NATURAL LANGUAGE PROCESSING (NLP) / AI</div>
-                </div>
-                <div class="project-tech">AI Project • Claude, GitHub, R, NLP</div>
-                <div class="project-content">
-                    <div class="project-image">
-                        <img src="https://kofili98.github.io/Portfolio/image/IMDB_Sentiment_Analysis.jpg" alt="Review word cloud">
-                        <div class="image-caption">
-                            Word cloud showing the major indicators of review sentiment. 
-                        </div>   
-                    </div>
-                    <div class="project-description">
-                        <h4>Automation Imporvement</h4>
-                        <p>
-                             Organizations receive thousands of customer reviews every day, making manual sentiment analysis 
-                            time-consuming and inconsistent. The goal was to automate review classification while creating a 
-                            reusable NLP workflow.
-                        </p>
-                        <h4>Solution</h4>
-                        <p>
-                            Built an end-to-end natural language processing pipeline in R utilizing TF-IDF feature engineering, 
-                            supervised machine learning, and GitHub version control. I then furthered the project by leveraging Claude 
-                            connectors to create an interactive AI-assisted sentiment analysis application.
-                        </p>
-                        <h4>Impact</h4>
-                        <ul class="project-results">
-                            <li>Developed an automated NLP pipeline for large-scale text classification.</li>
-                            <li>Integrated GitHub repositories with Claude to demonstrate AI-assisted analysis workflows.</li>
-                            <li>Applied feature engineering and machine learning techniques to improve review categorization efficiency.</li>
-                        </ul>
-                    </div>
-                </div>
+            <p class="proof">Translated analytics into product decisions across teams.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Data Modeling &amp; Pipelines</span>
+              <span class="dots"><span></span><span></span><span></span></span>
             </div>
-
-            <div class="project-card">
-                <div class="project-number">04</div>
-                <div class="project-header">
-                    <div class="project-title">Provider Data Pipeline</div>
-                    <div class="project-tag">DATA ENGINEERING</div>
-                </div>
-                <div class="project-tech">DATA PIPELINE • Python, SQL, SQLite, REST API</div>
-                <div class="project-content">
-                    <div class="project-image">
-                        <img src="https://kofili98.github.io/Portfolio/image/Providerdataproject_pipeline.jpg" alt="Provider data pipeline stages and run results">
-                        <div class="image-caption">
-                            SQL validation output flagging stale and incomplete provider records.
-                        </div>   
-                    </div>
-                    <div class="project-description">
-                        <h4>Data Quality Gap</h4>
-                        <p>
-                            Healthcare provider directories are pulled from public registries, but raw records often carry 
-                            stale entries, missing fields, and duplicates that make them unreliable to hand to a client 
-                            as-is. The goal was to build a pipeline that ingests, validates, and exports provider data on 
-                            a schedule instead of by hand.
-                        </p>
-                        <h4>Solution</h4>
-                        <p>
-                            Built a Python CLI that ingests provider records from the public NPI Registry REST API (JSON), 
-                            with pagination, retry, and rate-limit handling into a relational SQLite schema. Wrote 14 SQL 
-                            data-quality rules covering identifier validity, missing fields, and duplicate detection, and 
-                            added config-driven client exports to CSV and JSON. A shared Claude skill triages export issues 
-                            such as a search returning zero results.
-                        </p>
-                        <h4>Impact</h4>
-                        <ul class="project-results">
-                            <li>Loaded 601 unique Colorado providers from 6 API searches with zero data-integrity errors.</li>
-                            <li>Flagged 292 stale records (5+ years unupdated) and 18 missing credentials via automated SQL rules.</li>
-                            <li>Diagnosed and fixed a specialty-name mismatch causing a silent empty export.</li>
-                        </ul>
-                    </div>
-                </div>
+            <p class="proof">Optimized relational data models, reducing anomalies by 60%.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">ROI Modeling</span>
+              <span class="dots"><span></span><span></span><span></span></span>
             </div>
+            <p class="proof">Architected rigorous ROI models uncovering $500K in new revenue.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">KPI Dashboards</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Built executive-facing dashboards for VP of Sales and Head of Marketing.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Statistical Analysis</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Conducted regression, t-tests, and chi-square on healthcare datasets.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Python · SQL · R</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Core languages for analytics, modeling, and NLP projects.</p>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Education Section -->
-    <section id="education" class="container">
-        <div class="section-header">
-          <div class="top"><span class="mono-label idx">05</span><span class="line"></span><span class="mono-label lbl">Education</span></div>
-          <h2>Education</h2>
+      <div class="skill-group">
+        <div class="sg-header">
+          <h3 class="mono-label">Business &amp; Leadership</h3>
+          <span class="line"></span>
         </div>
-        <div style="display: grid; gap: 2rem; max-width: 600px;">
+
+        <div class="skill-grid">
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Cross-functional Leadership</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Led supply chain, engineering, and commercial teams to launch tools.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Stakeholder Management</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Aligned executives, sales, and marketing on product health metrics.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Competitive Analysis</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Conducted deep market analysis to discover unmapped segments.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Compliance &amp; Quality Assurance</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Built centralized compliance knowledge repository on SharePoint.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Process Improvement</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Redesigned checkout flow, driving a 15% conversion increase.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Standard Operating Procedures</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Authored SOPs for process standardization and workforce training.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <div class="sg-header">
+          <h3 class="mono-label">Tools</h3>
+          <span class="line"></span>
+        </div>
+
+        <div class="skill-grid">
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Figma</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Design and prototyping for product interfaces.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">QuickBase</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Internal tool development and workflow automation.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Excel</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Advanced analysis, modeling, and reporting.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">GitHub</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Code development, version control, and collaboration.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">RStudio</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Statistical computing and NLP model development.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">MATLAB</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Engineering computation and signal processing.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">SharePoint</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Centralized product and compliance knowledge repository.</p>
+          </div>
+          <div class="skill-item">
+            <div class="top">
+              <span class="name">Claude</span>
+              <span class="dots"><span></span><span></span><span></span></span>
+            </div>
+            <p class="proof">Connected repos to Claude for AI-powered project exploration.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section" id="projects">
+  <div class="container">
+    <div class="section-header">
+      <div class="top">
+        <span class="mono-label idx">04</span>
+        <span class="line"></span>
+        <span class="mono-label lbl">Case Study Gallery</span>
+      </div>
+      <h2>Things I've <span class="text-outline">Built</span></h2>
+    </div>
+
+    <div class="projects-list">
+      <article class="project-card">
+        <div class="pc-inner">
+          <div class="pc-top">
+            <span class="num">01</span>
+            <span class="tag mono-label">IoT / Hardware</span>
+          </div>
+
+          <h3>Smart Home IoT Platform</h3>
+
+          <div class="pc-head-bottom">
+            <div class="meta mono-label">Senior Design · Verilog, KiCad, Zigbee, Arduino</div>
+            <div class="pc-hint mono-label">+ View Details</div>
+          </div>
+
+          <div class="project-expand">
             <div>
-                <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Bachelor of Science, Electrical Engineering</div>
-                <div style="color: var(--primary-orange); font-weight: 500;">Purdue University</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">West Lafayette, IN</div>
+              <p class="desc">Existing smart-home ecosystems lock users into proprietary hardware and limit interoperability. The team designed and built a modular Zigbee-based IoT platform, custom PCB design, FPGA logic, and Arduino firmware for a plug-and-play approach to smart-home customization.</p>
+              <div class="impact-label mono-label">Impact</div>
+              <ul class="impact">
+                <li>Custom PCB designed in KiCad</li>
+                <li>Arduino + FPGA integration</li>
+                <li>Modular Zigbee network architecture</li>
+              </ul>
             </div>
+
+            <div class="pc-media">
+              <img src="https://kofili98.github.io/Portfolio/image/ES9.JPG" alt="Battery charging system schematic" />
+              <div class="pc-caption">Schematic for the proposed battery charging system based on a buck/boost IC.</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="pc-inner">
+          <div class="pc-top">
+            <span class="num">02</span>
+            <span class="tag mono-label">Data Analytics</span>
+          </div>
+
+          <h3>NC Birth Records &amp; Maternal Patterns</h3>
+
+          <div class="pc-head-bottom">
+            <div class="meta mono-label">Research · R Studio, Excel</div>
+            <div class="pc-hint mono-label">+ View Details</div>
+          </div>
+
+          <div class="project-expand">
             <div>
-                <div style="font-size: 1.1rem; font-weight: 600; margin-bottom: 0.3rem;">Master of Science, Data Analytics</div>
-                <div style="color: var(--primary-orange); font-weight: 500;">Indiana Wesleyan University</div>
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">Marion, IN</div>
+              <p class="desc">Public health datasets contain thousands of observations, making it hard to quickly identify maternal factors tied to infant health outcomes. I ran exploratory analysis and hypothesis testing in R on the North Carolina Birth Records dataset to evaluate maternal smoking, marital status, and age against birth weight.</p>
+              <div class="impact-label mono-label">Impact</div>
+              <ul class="impact">
+                <li>Analyzed 1,000+ birth records using R and Excel</li>
+                <li>Identified maternal smoking as a statistically significant predictor of lower birth weight (p = 0.019)</li>
+                <li>Produced executive-ready visualizations translating findings into healthcare insights</li>
+              </ul>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="container">
-        <div class="section-header">
-          <div class="top"><span class="mono-label idx">06</span><span class="line"></span><span class="mono-label lbl">Contact</span></div>
-          <h2>Get In Touch</h2>
-        </div>
-        <div style="max-width: 600px;">
-            <p style="color: var(--text-secondary); line-height: 1.8; margin-bottom: 2rem;">
-                Whether you think I'd be a good fit for your team, or you just want to say hi, feel free to reach out.
-            </p>
-            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-                <a href="mailto:komofili98@gmail.com" style="color: var(--primary-orange); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    📧 email
-                </a>
-                <a href="https://linkedin.com/in/kofili" target="_blank" style="color: var(--primary-orange); text-decoration: none; display: flex; align-items: center; gap: 0.5rem;">
-                    🔗 LinkedIn
-                </a>
+            <div class="pc-media">
+              <img src="https://kofili98.github.io/Portfolio/image/MaternalHabits_boxplot.jpg" alt="Maternal habits boxplot" />
+              <div class="pc-caption">Variance in birthing outcomes based on maternal smoking habits.</div>
             </div>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <footer>
-        <p>&copy; 2025 Kenechukwu Ofili. All rights reserved.</p>
-    </footer>
+      <article class="project-card">
+        <div class="pc-inner">
+          <div class="pc-top">
+            <span class="num">03</span>
+            <span class="tag mono-label">Natural Language Processing (NLP) / AI</span>
+          </div>
 
-    <script>        
-        // Smooth scroll to section
-        function scrollToSection(sectionId) {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
+          <h3>IMDB Review Sentiment Analysis</h3>
 
-        // Experience timeline functionality
-        function selectYear(year) {
-            const cards = document.querySelectorAll('.experience-card');
-            const years = document.querySelectorAll('.timeline-year');
-            
-            cards.forEach(card => {
-                card.classList.remove('active');
-                if (card.getAttribute('data-year') == year) {
-                    card.classList.add('active');
-                }
-            });
-            
-            years.forEach(yearBtn => {
-                yearBtn.classList.remove('active');
-                if (yearBtn.textContent == year) {
-                    yearBtn.classList.add('active');
-                }
-            });
-            
-            updateProgressBar();
-        }
+          <div class="pc-head-bottom">
+            <div class="meta mono-label">AI Project · Claude, GitHub, R, NLP</div>
+            <div class="pc-hint mono-label">+ View Details</div>
+          </div>
 
-        function prevYear() {
-            const years = ['2025', '2022', '2020', '2019'];
-            const active = document.querySelector('.timeline-year.active');
-            const currentIndex = years.indexOf(active.textContent);
-            if (currentIndex > 0) {
-                selectYear(years[currentIndex - 1]);
-            }
-        }
+          <div class="project-expand">
+            <div>
+                <p class="desc">Organizations receive thousands of reviews daily, making manual sentiment analysis slow and inconsistent. I built an end-to-end NLP pipeline in R using TF-IDF feature engineering and supervised ML, then connected the repo to Claude for interactive, AI-assisted sentiment exploration.</p>
+                <div class="impact-label mono-label">Impact</div>
+                <ul class="impact">
+                    <li>Automated NLP pipeline for large-scale text classification</li>
+                    <li>Integrated GitHub with Claude to demonstrate AI-assisted analysis workflows</li>
+                    <li>Applied feature engineering and ML to improve categorization efficiency</li>
+                </ul>
+          </div>
 
-        function nextYear() {
-            const years = ['2025', '2022', '2020', '2019'];
-            const active = document.querySelector('.timeline-year.active');
-            const currentIndex = years.indexOf(active.textContent);
-            if (currentIndex < years.length - 1) {
-                selectYear(years[currentIndex + 1]);
-            }
-        }
+          <div class="pc-media">
+            <img src="https://kofili98.github.io/Portfolio/image/IMDB_Sentiment_Analysis.jpg" alt="Review sentiment word cloud" />
+            <div class="pc-caption">Word cloud showing the major indicators of review sentiment.</div>
+          </div>
+        </div>
+    </div>
+      </article>
 
-        function updateProgressBar() {
-            const years = ['2025', '2022', '2020', '2019'];
-            const active = document.querySelector('.timeline-year.active');
-            const currentIndex = years.indexOf(active.textContent);
-            const progress = ((currentIndex + 1) / years.length) * 100;
-            
-            document.getElementById('progressFill').style.width = progress + '%';
-            document.getElementById('progressText').textContent = 
-                String(currentIndex + 1).padStart(2, '0') + ' / 0' + years.length;
-            
-            document.getElementById('prevBtn').disabled = currentIndex === 0;
-            document.getElementById('nextBtn').disabled = currentIndex === years.length - 1;
-        }
+      <article class="project-card">
+        <div class="pc-inner">
+          <div class="pc-top">
+            <span class="num">04</span>
+            <span class="tag mono-label">Data Engineering</span>
+          </div>
 
-        // Initialize progress bar
-        updateProgressBar();
+          <h3>Provider Data Pipeline</h3>
 
-        // Hide navbar when scrolling
-        const navbar = document.querySelector("nav");
-        const navTrigger = document.getElementById("navTrigger");
-        
-        let lastScrollY = window.scrollY;
-        const threshold = 15;
-        let navPinned = false;
-        
-        // Scroll behavior
-        window.addEventListener("scroll", () => {
-            if (navPinned) return;
-            const currentScrollY = window.scrollY;
-            
-            // Always visible near top
-            if (currentScrollY <= 20) {
-                navbar.classList.remove("hide");
-                lastScrollY = currentScrollY;
-                return;
-            }
-            
-            if (Math.abs(currentScrollY - lastScrollY) < threshold)
-                return;
-            
-            if (currentScrollY > lastScrollY) {
-                navbar.classList.add("hide");
-            } else {
-                navbar.classList.remove("hide");
-            }
-            lastScrollY = currentScrollY;
-        });
-        
-        // Hover trigger
-        navTrigger.addEventListener("mouseenter", () => {
-            navPinned = true;
-            navbar.classList.remove("hide");
-        });
-        
-        // Mouse leaves navbar
-        navbar.addEventListener("mouseleave", () => {
-            navPinned = false;
-            if (window.scrollY > 20) {
-                navbar.classList.add("hide");
-            }
-        });
+          <div class="pc-head-bottom">
+            <div class="meta mono-label">Data Pipeline · Python, SQL, SQLite, REST API</div>
+            <div class="pc-hint mono-label">+ View Details</div>
+          </div>
 
-        document.addEventListener("mousemove", (e) => {
-            if (e.clientY < 20) {
-            navbar.classList.remove("hide");
-            }
-        });
+          <div class="project-expand">
+            <div>
+              <p class="desc">Healthcare provider directories pulled from public registries carry stale entries, missing fields, and duplicates. I treated validation as the core deliverable: ingestion normalizes NPI API records into a relational schema, and 14 SQL rules score each one for validity, freshness, and duplication before export.</p>
+              <div class="impact-label mono-label">Impact</div>
+              <ul class="impact">
+                <li>Loaded 601 unique Colorado providers from 6 API searches with zero data-integrity errors</li>
+                <li>Flagged 292 stale records and 18 missing credentials via automated SQL rules</li>
+                <li>Diagnosed and fixed a specialty-name mismatch causing a silent empty export</li>
+              </ul>
+            </div>
 
-        document.querySelectorAll(".project-card").forEach(card => {
-            card.addEventListener("click", () => {
-                if (window.innerWidth <= 768) {
-                    card.classList.toggle("active");
-                }
-            });
-        });
-    </script>
+            <div class="pc-media">
+              <img src="https://kofili98.github.io/Portfolio/image/Providerdataproject_pipeline.jpg" alt="Provider data pipeline results" />
+              <div class="pc-caption">SQL validation output flagging stale and incomplete provider records.</div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section class="section" id="achievements">
+  <div class="container">
+    <div class="section-header">
+      <div class="top">
+        <span class="mono-label idx">05</span>
+        <span class="line"></span>
+        <span class="mono-label lbl">Impact</span>
+      </div>
+      <h2>Key <span class="text-outline">Achievements</span></h2>
+    </div>
+
+    <div class="achievements-grid">
+      <div class="achievement"><span class="icon">↑</span><span class="text">27% lift in customer retention through discovery-driven product strategy at Viaero Wireless</span></div>
+      <div class="achievement"><span class="icon">↓</span><span class="text">60% reduction in inventory anomalies and 46% increase in on-time delivery via a cross-functional tool</span></div>
+      <div class="achievement"><span class="icon">$</span><span class="text">$500K net-new recurring revenue opportunity discovered through market and competitive analysis</span></div>
+      <div class="achievement"><span class="icon">↑</span><span class="text">15% conversion increase from checkout flow redesign and usability improvements</span></div>
+      <div class="achievement"><span class="icon">↓</span><span class="text">20% reduction in manual reporting workload through process automation at Heineken</span></div>
+      <div class="achievement"><span class="icon">✓</span><span class="text">601 provider records loaded with zero data-integrity errors across 6 automated API searches</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="container">
+    <div class="section-header">
+      <div class="top">
+        <span class="mono-label idx">06</span>
+        <span class="line"></span>
+        <span class="mono-label lbl">Foundations</span>
+      </div>
+      <h2>Education</h2>
+    </div>
+
+    <div class="edu-list">
+      <div class="edu">
+        <div class="degree">Bachelor of Science, Electrical Engineering</div>
+        <div class="school">Purdue University — West Lafayette, IN</div>
+      </div>
+      <div class="edu">
+        <div class="degree">Master of Science, Data Analytics</div>
+        <div class="school">Indiana Wesleyan University — Marion, IN</div>
+        <span class="status mono-label">In Progress · Aug 2025 – May 2027</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<footer class="section contact" id="contact">
+  <div class="container">
+    <div class="mono-label c-label">Let's Build Something</div>
+    <h2>Get In <span class="text-outline">Touch</span></h2>
+    <p class="contact-intro">Whether you think I'd be a good fit for your team, or you just want to say hi, feel free to reach out.</p>
+
+    <div class="contact-grid">
+      <a href="mailto:komofili98@gmail.com" class="contact-card">
+        <div class="icon">✉</div>
+        <div class="c-lbl mono-label">Email</div>
+        <div class="c-val">komofili98@gmail.com</div>
+      </a>
+      <a href="https://linkedin.com/in/kofili" target="_blank" rel="noopener" class="contact-card">
+        <div class="icon">in</div>
+        <div class="c-lbl mono-label">LinkedIn</div>
+        <div class="c-val">linkedin.com/in/kofili</div>
+      </a>
+      <a href="KenechukwuOfili_Resume_Linkedin.pdf" target="_blank" class="contact-card">
+        <div class="icon">↓</div>
+        <div class="c-lbl mono-label">Resume</div>
+        <div class="c-val">Download PDF</div>
+      </a>
+    </div>
+
+    <div class="contact-bottom">
+      <div class="name">Kenechukwu Ofili<span>.</span></div>
+      <div class="mono-label copy">© 2025 Kenechukwu Ofili. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', function() {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Hero parallax
+const heroTitle = document.getElementById('heroTitle');
+window.addEventListener('mousemove', function(e) {
+  var w = window.innerWidth, h = window.innerHeight;
+  var x = (e.clientX / w - 0.5) * -30;
+  var y = (e.clientY / h - 0.5) * -20;
+  heroTitle.style.transform = 'translate(' + x + 'px, ' + y + 'px)';
+});
+
+// Journey carousel
+var cards = document.querySelectorAll('#cardsScroll .journey-card');
+var scroller = document.getElementById('cardsScroll');
+var anchors = document.getElementById('yearAnchors');
+var progressBar = document.getElementById('progressBar');
+var count = document.getElementById('journeyCount');
+var active = 0;
+
+cards.forEach(function(card, index) {
+  if (card.querySelector('h3') && card.querySelector('h3').textContent.trim() === 'Product Manager') {
+    active = index;
+  }
+});
+
+var seenYears = [];
+cards.forEach(function(card) {
+  var year = card.querySelector('.year').textContent;
+  if (seenYears.indexOf(year) === -1) seenYears.push(year);
+});
+seenYears.sort(function(a, b) { return Number(b) - Number(a); });
+seenYears.forEach(function(year) {
+  var btn = document.createElement('button');
+  btn.textContent = year;
+  btn.addEventListener('click', function() {
+    for (var i = 0; i < cards.length; i++) {
+      if (cards[i].querySelector('.year').textContent === year) {
+        scrollToIndex(i);
+        break;
+      }
+    }
+  });
+  anchors.appendChild(btn);
+});
+
+function scrollToIndex(i) {
+  active = Math.max(0, Math.min(cards.length - 1, i));
+  cards[active].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  updateActive();
+}
+
+function updateActive() {
+  cards.forEach(function(c, i) { c.classList.toggle('active', i === active); });
+  var anchorsBtns = anchors.querySelectorAll('button');
+  var activeYear = cards[active].querySelector('.year').textContent;
+  anchorsBtns.forEach(function(b, i) { b.classList.toggle('active', seenYears[i] === activeYear); });
+  progressBar.style.width = (((active + 1) / cards.length) * 100) + '%';
+  count.textContent = String(active + 1).padStart(2, '0') + '/' + String(cards.length).padStart(2, '0');
+}
+
+scroller.addEventListener('scroll', function() {
+  var center = scroller.scrollLeft + scroller.clientWidth / 2;
+  var closest = 0, min = Infinity;
+  cards.forEach(function(c, i) {
+    var mid = c.offsetLeft + c.offsetWidth / 2;
+    var d = Math.abs(mid - center);
+    if (d < min) { min = d; closest = i; }
+  });
+  if (closest !== active) { active = closest; updateActive(); }
+});
+
+document.getElementById('prevBtn').addEventListener('click', function() { scrollToIndex(active - 1); });
+document.getElementById('nextBtn').addEventListener('click', function() { scrollToIndex(active + 1); });
+updateActive();
+cards[active].scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+
+// Mobile tap-to-expand for project cards
+document.querySelectorAll('.project-card').forEach(function(card) {
+  card.addEventListener('click', function() {
+    if (window.innerWidth <= 768) {
+      card.classList.toggle('active');
+    }
+  });
+});
+</script>
+
 </body>
 </html>
