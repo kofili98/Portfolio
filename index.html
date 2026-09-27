@@ -958,8 +958,15 @@ seenYears.forEach(function(year) {
 
 function scrollToIndex(i) {
   active = Math.max(0, Math.min(cards.length - 1, i));
-  cards[active].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  scrollToCard(cards[active], 'smooth');
   updateActive();
+}
+
+function scrollToCard(card, behavior) {
+  var scrollerLeft = scroller.getBoundingClientRect().left;
+  var cardLeft = card.getBoundingClientRect().left - scrollerLeft + scroller.scrollLeft;
+  var left = cardLeft - (scroller.clientWidth - card.clientWidth) / 2;
+  scroller.scrollTo({ left: left, behavior: behavior });
 }
 
 function updateActive() {
@@ -985,7 +992,7 @@ scroller.addEventListener('scroll', function() {
 document.getElementById('prevBtn').addEventListener('click', function() { scrollToIndex(active - 1); });
 document.getElementById('nextBtn').addEventListener('click', function() { scrollToIndex(active + 1); });
 updateActive();
-cards[active].scrollIntoView({ behavior: 'auto', inline: 'center', block: 'nearest' });
+scrollToCard(cards[active], 'auto');
 
 // Mobile tap-to-expand for project cards
 document.querySelectorAll('.project-card').forEach(function(card) {
