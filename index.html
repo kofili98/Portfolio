@@ -99,11 +99,15 @@ header.nav nav { display: flex; align-items: center; justify-content: space-betw
 .field-notes { width: 100%;  min-width: 0;  margin-top: 3rem;  display: grid;  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));  gap: 1.5rem;}
 @media (min-width:640px){ .field-notes{grid-template-columns: 1fr 1fr;} }
 .field-note { border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.02); overflow: hidden; }
-.field-note .fn-img { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
-.field-note .fn-img img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05) brightness(.85); transition: filter .4s, transform .4s; }
-.field-note .fn-img::after { content: ''; position: absolute; inset: 0; background: var(--terminal); opacity: .08; mix-blend-mode: color; pointer-events: none; }
-.field-note:hover .fn-img img { filter: grayscale(.4) contrast(1.05) brightness(.95); transform: scale(1.03); }
-.field-note .fn-caption { padding: .9rem 1rem; color: var(--stone); font-size: .72rem; line-height: 1.5; border-top: 1px solid rgba(255,255,255,.1); }
+.field-note-toggle { width: 100%; display: flex; flex-direction: column; align-items: stretch; padding: 0; border: 0; background: none; color: inherit; text-align: left; cursor: pointer; }
+.field-note-toggle:focus-visible { outline: 1px solid var(--terminal); outline-offset: -2px; }
+.field-note-preview { position: relative; width: 100%; max-height: 9rem; overflow: hidden; transition: max-height .6s ease; }
+.field-note-preview img { display: block; width: 100%; height: auto; filter: grayscale(1) contrast(1.05) brightness(.75); transition: filter .4s; }
+.field-note:hover .field-note-preview, .field-note.active .field-note-preview { max-height: 2000px; }
+.field-note:hover .field-note-preview img, .field-note.active .field-note-preview img { filter: grayscale(.4) contrast(1.05) brightness(.95); }
+.field-note .fn-expand-indicator { position: absolute; right: .75rem; bottom: .75rem; display: grid; place-items: center; width: 2rem; height: 2rem; border: 1px solid rgba(255,140,0,.6); background: rgba(10,10,10,.3); color: var(--terminal); font-size: 1.2rem; line-height: 1; transition: background .2s, color .2s; }
+.field-note:hover .fn-expand-indicator, .field-note.active .fn-expand-indicator { background: rgba(10,10,10,.18); }
+.field-note .fn-caption { flex: 1; padding: .9rem 1rem; color: var(--stone); font-size: .72rem; line-height: 1.5; }
 
 /* JOURNEY */
 .journey { background: rgba(255,255,255,.015); }
@@ -316,12 +320,22 @@ header.nav nav { display: flex; align-items: center; justify-content: space-betw
           </ul>
         <div class="field-notes">
           <div class="field-note">
-            <div class="fn-img"><img src="https://kofili98.github.io/Portfolio/image/GrandCanyon.JPEG" alt="Kenechukwu at Grand Canyon National Park" /></div>
-            <div class="fn-caption mono-label">Grand Canyon National Park · Off the clock</div>
+            <button class="field-note-toggle" type="button" aria-expanded="false">
+              <span class="field-note-preview">
+                <img src="https://kofili98.github.io/Portfolio/image/GrandCanyon.JPEG" alt="Kenechukwu at Grand Canyon National Park" />
+                <span class="fn-expand-indicator" aria-hidden="true">↘</span>
+              </span>
+              <span class="fn-caption mono-label">Grand Canyon National Park · Off the clock</span>
+            </button>
           </div>
           <div class="field-note">
-            <div class="fn-img"><img src="https://kofili98.github.io/Portfolio/image/Graduation.JPEG" alt="Kenechukwu at graduation" /></div>
-            <div class="fn-caption mono-label">Graduation Day · Purdue University</div>
+            <button class="field-note-toggle" type="button" aria-expanded="false">
+              <span class="field-note-preview">
+                <img src="https://kofili98.github.io/Portfolio/image/Graduation.JPEG" alt="Kenechukwu at graduation" />
+                <span class="fn-expand-indicator" aria-hidden="true">↘</span>
+              </span>
+              <span class="fn-caption mono-label">Graduation Day · Purdue University</span>
+            </button>
           </div>
         </div>
       </div>
@@ -1026,6 +1040,14 @@ document.getElementById('prevBtn').addEventListener('click', function() { scroll
 document.getElementById('nextBtn').addEventListener('click', function() { scrollToIndex(active + 1); });
 updateActive();
 scrollToCard(cards[active], 'auto');
+
+document.querySelectorAll('.field-note-toggle').forEach(function(toggle) {
+  toggle.addEventListener('click', function() {
+    var note = toggle.closest('.field-note');
+    var isExpanded = note.classList.toggle('active');
+    toggle.setAttribute('aria-expanded', String(isExpanded));
+  });
+});
 
 // Mobile tap-to-expand for project cards
 document.querySelectorAll('.project-card').forEach(function(card) {
