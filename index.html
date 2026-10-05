@@ -868,6 +868,39 @@ header.nav nav { display: flex; align-items: center; justify-content: space-betw
           </div>
         </div>
       </article>
+
+      <article class="project-card">
+        <div class="pc-inner">
+          <div class="pc-top">
+            <span class="num">05</span>
+            <span class="tag mono-label">Power Electronics</span>
+          </div>
+
+          <h3>Inverter & Converter Modeling</h3>
+
+          <div class="pc-head-bottom">
+            <div class="meta mono-label">MATLAB · Simulink</div>
+            <div class="pc-hint mono-label">+ View Details</div>
+          </div>
+
+          <div class="project-expand">
+            <div>
+              <p class="desc">Power converters sit inside every motor drive and audio amplifier, and the distortion they create decides whether a system runs cleanly. To understand their behavior, I built MATLAB models of DC-DC converters, rectifiers, and single-phase and 3-phase PWM inverters, solved with backward Euler integration. I wrote Fourier and THD tools to measure each output, then verified every result against analytical values.</p>
+              <div class="impact-label mono-label">Impact</div>
+              <ul class="impact">
+                <li>Validated inverter simulations against analytical values, with a dc-link to load power balance within 1% (298 W vs. 300 W)</li>
+                <li>Sized the minimum dc-link voltage (78 V) for balanced 20 A currents with no low-frequency harmonics</li>
+                <li>Designed an LC output filter for a 1 kW, 8 Ω digital amplifier that reached 0.3% switching-frequency THD in simulation</li>
+              </ul>
+            </div>
+
+            <div class="pc-media">
+              <img src="https://kofili98.github.io/Portfolio/image/PowerElectronics_3Phase_Currents.jpg" alt="Provider data pipeline results" />
+              <div class="pc-caption">Balanced 3-phase currents from a 30 kHz sine-triangle PWM inverter driving an RL load.</div>
+            </div>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
