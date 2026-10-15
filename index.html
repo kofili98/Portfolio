@@ -743,10 +743,43 @@ header.nav nav { display: flex; align-items: center; justify-content: space-betw
     </div>
 
     <div class="projects-list">
-      <article class="project-card">
+       <article class="project-card">
         <div class="pc-inner">
           <div class="pc-top">
             <span class="num">01</span>
+            <span class="tag mono-label">Data Engineering &amp Enterprise BI</span>
+          </div>
+
+          <h3>Healthcare Provider Data Pipeline &amp; SSRS Reporting Suite</h3>
+
+          <div class="pc-head-bottom">
+            <div class="meta mono-label">Data Pipeline · Python, Microsoft SQL Server 2025, T-SQL, SSRS 2022, SQLite, REST API, pyodbc, Pytest</div>
+            <div class="pc-hint mono-label">+ View Details</div>
+          </div>
+
+          <div class="project-expand">
+            <div>
+              <p class="desc">Healthcare directory data is public but frequently stale, self-reported, and incomplete, creating serious compliance and billing risks under federal mandates like the No Surprises Act. I engineered an automated ETL pipeline and BI reporting platform that harvests regional practitioner records from the federal CMS NPI Registry REST API, centering the architecture on in-engine regulatory data quality validation rather than treating governance as an afterthought. The system was migrated from a local SQLite prototype to Microsoft SQL Server 2025 to enforce relational integrity, calculate ISO/IEC 7812 Luhn checksums directly in T-SQL, visualize network freshness decay in SSRS, and automate unattended, quality-gated vendor CSV deliveries.</p>
+              <div class="impact-label mono-label">Impact</div>
+              <ul class="impact">
+                <li>Built a fault-tolerant Python extraction engine with chunked pagination, exponential backoff, and truncation guards, processing 667 raw API records into 603 deduplicated Colorado providers</li>
+                <li>Implemented an in-database 15-digit Luhn check digit algorithm and a 14-rule regulatory validation engine to catch fatal syntax errors, missing degrees, and facility duplications</li>
+                <li>Developed an executive SSRS dashboard with KPI scorecards, dynamic filters, and a 5-tier freshness histogram that surfaced a critical 48.4% directory staleness risk (292 records)</li>
+                <li>Automated monthly unattended CSV exports via SQL Server Agent with built-in quality suppression logic, verifying 100% data lineage and parity through automated Pytest and T-SQL reconciliation suites. </li>
+              </ul>
+            </div>
+
+            <div class="pc-media">
+              <img src="https://kofili98.github.io/Portfolio/image/Providerdataproject_pipeline.jpg" alt="Provider data pipeline results" />
+              <div class="pc-caption">SQL validation output flagging stale and incomplete provider records.</div>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="project-card">
+        <div class="pc-inner">
+          <div class="pc-top">
+            <span class="num">02</span>
             <span class="tag mono-label">IoT / Hardware</span>
           </div>
 
@@ -771,39 +804,6 @@ header.nav nav { display: flex; align-items: center; justify-content: space-betw
             <div class="pc-media">
               <img src="https://kofili98.github.io/Portfolio/image/ES9.JPG" alt="Battery charging system schematic" />
               <div class="pc-caption">Schematic for the proposed battery charging system based on a buck/boost IC.</div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <div class="pc-inner">
-          <div class="pc-top">
-            <span class="num">02</span>
-            <span class="tag mono-label">Data Analytics</span>
-          </div>
-
-          <h3>NC Birth Records &amp; Maternal Patterns</h3>
-
-          <div class="pc-head-bottom">
-            <div class="meta mono-label">Research · R Studio, Excel</div>
-            <div class="pc-hint mono-label">+ View Details</div>
-          </div>
-
-          <div class="project-expand">
-            <div>
-              <p class="desc">Public health datasets contain thousands of observations, making it hard to quickly identify maternal factors tied to infant health outcomes. I ran exploratory analysis and hypothesis testing in R on the North Carolina Birth Records dataset to evaluate maternal smoking, marital status, and age against birth weight.</p>
-              <div class="impact-label mono-label">Impact</div>
-              <ul class="impact">
-                <li>Analyzed 1,000+ birth records using R and Excel</li>
-                <li>Identified maternal smoking as a statistically significant predictor of lower birth weight (p = 0.019)</li>
-                <li>Produced executive-ready visualizations translating findings into healthcare insights</li>
-              </ul>
-            </div>
-
-            <div class="pc-media">
-              <img src="https://kofili98.github.io/Portfolio/image/MaternalHabits_boxplot.jpg" alt="Maternal habits boxplot" />
-              <div class="pc-caption">Variance in birthing outcomes based on maternal smoking habits.</div>
             </div>
           </div>
         </div>
@@ -842,34 +842,34 @@ header.nav nav { display: flex; align-items: center; justify-content: space-betw
     </div>
       </article>
 
-      <article class="project-card">
+     <article class="project-card">
         <div class="pc-inner">
           <div class="pc-top">
             <span class="num">04</span>
-            <span class="tag mono-label">Data Engineering</span>
+            <span class="tag mono-label">Data Analytics</span>
           </div>
 
-          <h3>Provider Data Pipeline</h3>
+          <h3>NC Birth Records &amp; Maternal Patterns</h3>
 
           <div class="pc-head-bottom">
-            <div class="meta mono-label">Data Pipeline · Python, SQL, SQLite, REST API</div>
+            <div class="meta mono-label">Research · R Studio, Excel</div>
             <div class="pc-hint mono-label">+ View Details</div>
           </div>
 
           <div class="project-expand">
             <div>
-              <p class="desc">Healthcare provider directories pulled from public registries carry stale entries, missing fields, and duplicates. I treated validation as the core deliverable: ingestion normalizes NPI API records into a relational schema, and 14 SQL rules score each one for validity, freshness, and duplication before export.</p>
+              <p class="desc">Public health datasets contain thousands of observations, making it hard to quickly identify maternal factors tied to infant health outcomes. I ran exploratory analysis and hypothesis testing in R on the North Carolina Birth Records dataset to evaluate maternal smoking, marital status, and age against birth weight.</p>
               <div class="impact-label mono-label">Impact</div>
               <ul class="impact">
-                <li>Loaded 601 unique Colorado providers from 6 API searches with zero data-integrity errors</li>
-                <li>Flagged 292 stale records and 18 missing credentials via automated SQL rules</li>
-                <li>Diagnosed and fixed a specialty-name mismatch causing a silent empty export</li>
+                <li>Analyzed 1,000+ birth records using R and Excel</li>
+                <li>Identified maternal smoking as a statistically significant predictor of lower birth weight (p = 0.019)</li>
+                <li>Produced executive-ready visualizations translating findings into healthcare insights</li>
               </ul>
             </div>
 
             <div class="pc-media">
-              <img src="https://kofili98.github.io/Portfolio/image/Providerdataproject_pipeline.jpg" alt="Provider data pipeline results" />
-              <div class="pc-caption">SQL validation output flagging stale and incomplete provider records.</div>
+              <img src="https://kofili98.github.io/Portfolio/image/MaternalHabits_boxplot.jpg" alt="Maternal habits boxplot" />
+              <div class="pc-caption">Variance in birthing outcomes based on maternal smoking habits.</div>
             </div>
           </div>
         </div>
